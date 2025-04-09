@@ -1,6 +1,8 @@
-﻿namespace Tower
+﻿using UnityEngine;
+
+namespace Tower
 {
-    public class TowerControl
+    public class TowerControl : MonoBehaviour
     {
         
     }

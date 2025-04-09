@@ -15,6 +15,7 @@ namespace Util
             }
         }
         private static T _instance = null;
+        public static bool IsDontDestroy = true;
         public static bool HasInstance => !ReferenceEquals(_instance, null);
         public static void Make() => Init();
 
@@ -35,7 +36,7 @@ namespace Util
                     _instance = componet;
                     if(_instance is Singleton<T> s1)
                         s1.Initialize();
-                    DontDestroyOnLoad(_instance.gameObject);
+                    if(IsDontDestroy) DontDestroyOnLoad(_instance.gameObject);
                     return;
                 }
 
