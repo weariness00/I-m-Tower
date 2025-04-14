@@ -4,27 +4,27 @@ using UnityEditor;
 using UnityEngine;
 using Util;
 
-namespace Unit
+namespace Skill
 {
 #if UNITY_EDITOR
-    public class UnitSOProvider
+    
+    public static class SkillProvider
     {
         [SettingsProvider]
-        public static SettingsProvider CreateSettingsProvider()
+        public static SettingsProvider CreateSettingProvider()
         {
             var provider = new SettingsProvider(
-                "Project/Game Play/Unit", 
-                SettingsScope.Project, 
-                new []{ "Scriptable", "Game Play", "Unit",})
+                "Project/Game Play/Skill",
+                SettingsScope.Project,
+                new []{"Game", "Skill"})
             {
-                guiHandler = (searchContext) =>
+                guiHandler = searchContext =>
                 {
-                    // 설정 창에 표시할 UI
-                    EditorGUILayout.LabelField("Unit", EditorStyles.boldLabel);
-                    var setting = SettingProviderHelper.setting = (UnitSOManager)EditorGUILayout.ObjectField(
-                        $"Unit Scriptable Object Manager",
+                    EditorGUILayout.LabelField("Skill", EditorStyles.boldLabel);
+                    var setting = SettingProviderHelper.setting = (SkillPrefabSO)EditorGUILayout.ObjectField(
+                        $"User Data",
                         SettingProviderHelper.setting,
-                        typeof(UnitSOManager),
+                        typeof(SkillPrefabSO),
                         false
                     );
 
@@ -38,14 +38,14 @@ namespace Unit
                     {
                         SettingProviderHelper.Save();
                     }
-                },
+                }
             };
-        
+
             return provider;
         }
     }
     
-#endif
+#endif   
     
     [Serializable]
     public struct SettingJson
@@ -55,10 +55,10 @@ namespace Unit
 
     public static class SettingProviderHelper
     {
-        public static UnitSOManager setting;
+        public static SkillPrefabSO setting;
 
         private static readonly string JsonDirectory = "Assets/Resources/Data/Json";
-        private static readonly string SettingKey = nameof(UnitSOManager);
+        private static readonly string SettingKey = nameof(SkillPrefabSO);
 
 #if UNITY_EDITOR
         static SettingProviderHelper()
@@ -90,8 +90,8 @@ namespace Unit
             if (DataPrefs.HasKey(SettingKey))
             {
                 string settingPath = DataPrefs.GetString(SettingKey, string.Empty);
-                setting = AssetDatabase.LoadAssetAtPath<UnitSOManager>(settingPath);
-                Debug.Assert(setting != null, $"해당 경로에 {nameof(UnitSOManager)} 데이터가 존재하지 않습니다.");
+                setting = AssetDatabase.LoadAssetAtPath<SkillPrefabSO>(settingPath);
+                Debug.Assert(setting != null, $"해당 경로에 {nameof(SkillPrefabSO)} 데이터가 존재하지 않습니다.");
             }
         }
         

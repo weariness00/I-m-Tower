@@ -9086,10 +9086,13 @@ GameObject:
   - component: {fileID: 8001725777308468699}
   - component: {fileID: 1552927188359789252}
   - component: {fileID: 7041621832041790542}
+  - component: {fileID: -4115803421617550811}
+  - component: {fileID: -7904071266072927458}
   - component: {fileID: 2947382125700063199}
-  m_Layer: 0
+  - component: {fileID: 7071605951880696801}
+  m_Layer: 7
   m_Name: People
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9215,6 +9218,54 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 0
+--- !u!65 &-4115803421617550811
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3910857712047626281}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.5, z: 1}
+  m_Center: {x: 0, y: 0.75, z: 0}
+--- !u!54 &-7904071266072927458
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3910857712047626281}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &2947382125700063199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9228,6 +9279,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 0}
+--- !u!114 &7071605951880696801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3910857712047626281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57662ef3c4a493a428f10c49ca79c292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value:
+    hp:
+      _min: 0
+      _max: 10
+      _current: 10
+      _isMin: 0
+      _isMax: 1
+      isOverMax: 0
+      isOverMin: 0
+    speed: 1
+    damage: 1
+    attackRange: 1
+    attackTimer:
+      _min: 0
+      _max: 1
+      _current: 0
+      _isMin: 1
+      _isMax: 0
+      isOverMax: 1
+      isOverMin: 0
+  onDieEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3973613103567678037
 GameObject:
   m_ObjectHideFlags: 0
