@@ -8,6 +8,7 @@ namespace Skill
     {
         public int id;
         public string skillName;
+        public Sprite icon;
 
         [InspectorName("등급")] public RatingType rating;
         [HideInInspector] public LayerMask targetLayer;

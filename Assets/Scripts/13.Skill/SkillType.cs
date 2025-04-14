@@ -4,7 +4,7 @@ namespace Skill
 {
     public enum SkillType
     {
-        [InspectorName("액티브")] Active,
-        [InspectorName("패시브")] Passive,
+        [InspectorName("공격형")] Attack,
+        [InspectorName("강화형")] Reinforce,
     }
 }

@@ -7,6 +7,18 @@ namespace Util
 {
     public static class ArrayExtension
     {
+        public static T Random<T>(this T[] array)
+        {
+            if (array == null || array == Array.Empty<T>())
+            {
+#if UNITY_EDITOR
+                Debug.LogError($"{nameof(T)}의 Array가 비어있습니다.");
+#endif
+                return default;
+            }
+            return array[UnityEngine.Random.Range(0, array.Length)];
+        }
+        
         public static T GetNear<T>(this T[] array, Vector3 position, bool isNullBreak = true) where T : Object
         {
             if (array == Array.Empty<T>())

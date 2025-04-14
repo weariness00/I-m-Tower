@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Util;
 
 namespace Skill
 {
@@ -20,5 +21,7 @@ namespace Skill
             var index = Array.BinarySearch(Instance.skillArray, id);
             return index >= 0 ? Instance.skillArray[index] : null;
         }
+
+        public static SkillBase GetRandomSkill() => Instance.skillArray.Random();
     }
 }
