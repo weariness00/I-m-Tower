@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   skillName: "\uD30C\uAD34\uC758 \uD654\uC0B4"
+  icon: {fileID: 0}
   rating: 0
   targetLayer:
     serializedVersion: 2
@@ -74,7 +75,8 @@ MonoBehaviour:
       isOverMax: 0
       isOverMin: 0
     speed: 10
-    damage: 1
+    damage: 5
+    damageMultiple: 1
     attackRange: 100
     attackTimer:
       _min: 0
@@ -87,4 +89,8 @@ MonoBehaviour:
   onDieEvent:
     m_PersistentCalls:
       m_Calls: []
+  level: 0
   skillType: 0
+  onLevelUpEvent:
+    m_PersistentCalls:
+      m_Calls: []

@@ -7,12 +7,7 @@ namespace Tower
 {
     public class TowerControl : MonoBehaviour
     {
+        public TowerStatus status;
         [HideInInspector] public List<SkillBase> skillList = new();
-        
-        public void Awake()
-        {
-            var skill = Instantiate(SkillPrefabSO.GetSkill(0), transform);
-            skillList.Add(skill);
-        }
     }
 }

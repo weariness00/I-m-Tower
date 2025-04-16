@@ -1,4 +1,5 @@
 ﻿using System;
+using Game.Status;
 using ProjectTile;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -42,16 +43,22 @@ namespace Skill
 
             if (status.AttackTimer.IsMax)
             {
-                Physics.OverlapSphereNonAlloc(transform.position, status.AttackRange, searchColliders, targetLayer);
-                var nearTarget = searchColliders.GetNear(transform.position);
+                var length = Physics.OverlapSphereNonAlloc(transform.position, status.AttackRange, searchColliders, targetLayer);
+                var nearTarget = searchColliders.GetNear(transform.position, length);
                 if (nearTarget != null)
                 {
                     status.AttackTimer.SetMin();
                     var arrow = arrowPool.Get();
                     arrow.transform.position = transform.position;
                     arrow.targetTransform = nearTarget.transform;
+                    arrow.targetStatus = nearTarget.GetComponent<StatusBase>();
                 }
             }
+        }
+
+        public override void LevelUp(int upCount)
+        {
+            status.DamageMultiple += upCount * 0.5f;
         }
     }
 }

@@ -9,12 +9,15 @@ namespace ProjectTile
     {
         [HideInInspector] public GameObject ownerObject;
         [HideInInspector] public StatusBase ownerStatus;
+        
         [HideInInspector] public Transform targetTransform;
+        [HideInInspector] public StatusBase targetStatus; 
+        
         [HideInInspector] public new Collider collider;
 
         public ObjectPool<ProjectileBase> pool;
 
-        private Vector3 targetPosition;
+        private Vector3 direction;
 
         public virtual void Awake()
         {
@@ -23,13 +26,13 @@ namespace ProjectTile
 
         public virtual void Update()
         {
-            if (targetTransform != null)
+            if (!targetStatus.Hp.IsMin && targetTransform != null)
             {
-                targetPosition = targetTransform.position;
+                direction = (targetTransform.position - transform.position).normalized;
             }
 
-            transform.LookAt(targetPosition);
-            transform.position += Time.deltaTime * ownerStatus.Speed * transform.forward;
+            transform.LookAt(transform.position + direction);
+            transform.position += Time.deltaTime * ownerStatus.Speed * direction;
         }
 
         public virtual void OnTriggerEnter(Collider other)

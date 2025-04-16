@@ -1,4 +1,5 @@
-﻿using Tower;
+﻿using System;
+using Tower;
 using UnityEngine;
 using Util;
 
@@ -12,6 +13,11 @@ namespace Game
         {
             base.Initialize();
             IsDontDestroy = false;
+        }
+
+        public void Start()
+        {
+            tower.status.AddEXP(tower.status.experience.Max);
         }
     }
 }

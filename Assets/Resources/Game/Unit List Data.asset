@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb605059d98643029b0b48b2885040f9, type: 3}
   m_Name: Unit List Data
   m_EditorClassIdentifier: 
-  unitDataArray:
+  monsterDataArray:
   - {fileID: 11400000, guid: 9a6ea60d58c83ef4c817d3d3a75cfe59, type: 2}

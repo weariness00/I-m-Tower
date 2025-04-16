@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using Game;
 using UnityEngine;
 
 namespace Skill.UI
@@ -18,16 +20,15 @@ namespace Skill.UI
             {
                 ui.button.onClick.AddListener(() =>
                 {
-                    if(isSelect) return;
-                    isSelect = true;
-                    
-                    gameObject.SetActive(false);
+                    Select(ui);
                 });
             }
+            GameManager.Instance.tower.status.onLevelUpEvent.AddListener(On);
         }
 
         public void On()
         {
+            Time.timeScale = 0f;
             isSelect = false;
             gameObject.SetActive(true);
             
@@ -35,10 +36,38 @@ namespace Skill.UI
             {
                 var skill = SkillPrefabSO.GetRandomSkill();
                 var ui = selectUIArray[i];
-                ui.skill = skill;
+                ui.skillID = skill.id;
                 ui.icon.sprite = skill.icon;
                 ui.explainText.text = $"{skill.skillName}\n" + "간단 설명, 초당 공격횟수, 범위, 공격력";
             }
+        }
+
+        // 선택 안하고 건너뛸 경우
+        public void NotSelect()
+        {
+            isSelect = true;
+            gameObject.SetActive(false);
+            // 플레이어 레벨 하락해야됨
+            // 혹은 다른거 되게끔
+        }
+
+        private void Select(SkillSelectUI ui)
+        {
+            if(isSelect) return;
+            isSelect = true;
+                    
+            gameObject.SetActive(false);
+
+            var tower = GameManager.Instance.tower;
+            var skill = tower.skillList.FirstOrDefault(s => ui.skillID == s.id);
+            if (skill == null)
+            {
+                skill = Instantiate(SkillPrefabSO.GetSkill(ui.skillID), tower.transform);
+                tower.skillList.Add(skill);
+            }
+            skill.LevelUp(1);
+            
+            Time.timeScale = 1f;
         }
     }
 }

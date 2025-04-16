@@ -1,11 +1,13 @@
-﻿using Game.Status;
+﻿using System;
+using System.Collections;
+using Game.Status;
 using UnityEngine;
 using Util;
 
 namespace Unit
 {
     [CreateAssetMenu(fileName = "Unit Data", menuName = "Game/Unit/Data", order = 0)]
-    public class UnitSO : ScriptableObject
+    public partial class UnitSO : ScriptableObject
     {
         public int id;
         
@@ -14,4 +16,22 @@ namespace Unit
         
         public StatusData data;
     }
+
+    public partial class UnitSO : IComparable, IComparable<UnitSO>
+    {
+        public int CompareTo(object obj)
+        {
+            if(obj is int otherID)
+                return id.CompareTo(otherID);
+            return 0;
+        }
+
+        public int CompareTo(UnitSO other)
+        {
+            if (ReferenceEquals(this, other)) return 0;
+            if (ReferenceEquals(null, other)) return 1;
+            return id.CompareTo(other.id);
+        }
+    }
+
 }

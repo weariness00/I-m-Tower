@@ -19,17 +19,19 @@ namespace Util
             return array[UnityEngine.Random.Range(0, array.Length)];
         }
         
-        public static T GetNear<T>(this T[] array, Vector3 position, bool isNullBreak = true) where T : Object
+        public static T GetNear<T>(this T[] array, Vector3 position, int length = -1, bool isNullBreak = true) where T : Object
         {
-            if (array == Array.Empty<T>())
+            if (array == Array.Empty<T>() || length == 0)
                 return null;
             
             T nearT = null;
             float minDis = float.MaxValue;
+            if (length == -1) length = array.Length;
             if (array is Object[] objectArray)
             {
-                foreach (var obj in objectArray)
+                for (var i = 0; i < length; i++)
                 {
+                    var obj = objectArray[i];
                     if (ReferenceEquals(obj, null))
                     {
                         if (isNullBreak) break;

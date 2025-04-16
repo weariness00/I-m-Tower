@@ -15,6 +15,12 @@ namespace Unit.Monster
             navMeshAgent = GetComponent<NavMeshAgent>();
             status = base.status as MonsterStatus;
         }
+
+        public override void InitStatus()
+        {
+            base.InitStatus();
+            status.value.Copy(UnitSOManager.GetMonsterSO(id).data);
+        }
     }
 }
 

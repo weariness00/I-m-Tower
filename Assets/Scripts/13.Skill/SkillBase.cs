@@ -19,7 +19,14 @@ namespace Skill
         {
             targetLayer = LayerMask.GetMask("Monster");
             status = GetComponent<SkillStatus>();
+            
+            status.onLevelUpEvent.AddListener(LevelUp);
         }
+    }
+
+    public abstract partial class SkillBase
+    {
+        public abstract void LevelUp(int upCount);
     }
 
     public partial class SkillBase : IComparable, IComparable<SkillBase>

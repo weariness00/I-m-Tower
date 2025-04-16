@@ -5,33 +5,9 @@ using Util;
 
 namespace Game.Status
 {
-    [Serializable]
-    public class StatusData
-    {
-        public MinMaxValue<int> hp = new(10,0,10);
-        public float speed = 1;
-
-        public float damage = 1;
-        public float attackRange = 1;
-        public MinMaxValue<float> attackTimer = new(0, 0, 1, false, true);
-
-        public void Copy(StatusData otherData)
-        {
-            hp.Min = otherData.hp.Min;
-            hp.Max = otherData.hp.Max;
-            hp.Current = otherData.hp.Current;
-
-            speed = otherData.speed;
-        
-            damage = otherData.damage;
-            attackRange = otherData.attackRange;
-            attackTimer.Max = otherData.attackTimer.Max;
-        }
-    }
-
     public class StatusBase : MonoBehaviour
     {
-        [SerializeField] private StatusData value = new();
+        [InspectorName("기본 Data")] public StatusData value = new();
 
         public UnityEvent<int> onDieEvent = new ();
             
@@ -39,6 +15,11 @@ namespace Game.Status
         public float Speed => value.speed;
 
         public int Damage => (int)value.damage;
+        public float DamageMultiple
+        {
+            get => value.damageMultiple;
+            set => this.value.damageMultiple = value;
+        }
         public float AttackRange => value.attackRange;
         public MinMaxValue<float> AttackTimer => value.attackTimer;
 

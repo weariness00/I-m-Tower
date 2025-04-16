@@ -6,7 +6,7 @@ namespace Skill.UI
 {
     public class SkillSelectUI : MonoBehaviour
     {
-        public SkillBase skill;
+        public int skillID;
         
         public Button button;
         
