@@ -10,27 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
-  m_Name: Skill Table Shared Data
+  m_Name: Skill Name Shared Data
   m_EditorClassIdentifier: 
-  m_TableCollectionName: Skill Table
+  m_TableCollectionName: Skill Name
   m_TableCollectionNameGuidString: e81481ee6f7bf314993d99091b400e26
   m_Entries:
-  - m_Id: 37515177984
-    m_Key: Destruction Arrow
+  - m_Id: 374038355968
+    m_Key: "\uD30C\uAD34\uC758 \uD654\uC0B4"
     m_Metadata:
       m_Items: []
-  - m_Id: 111586586624
-    m_Key: Mana Bullet
+  - m_Id: 457349816320
+    m_Key: "\uB9C8\uB098 \uD0C4\uD658"
     m_Metadata:
       m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
-    rid: 2919838178840412451
+    rid: 8080476276238319859
   references:
     version: 2
     RefIds:
-    - rid: 2919838178840412451
+    - rid: 8080476276238319859
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:
-        m_CustomEpoch: 1744883420908
+        m_CustomEpoch: 1744898658198

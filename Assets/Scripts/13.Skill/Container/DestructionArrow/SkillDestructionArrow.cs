@@ -7,6 +7,7 @@ using Util;
 
 namespace Skill
 {
+    [RequireComponent(typeof(SkillDestructionArrowStatus))]
     public class SkillDestructionArrow : SkillBase
     {
         [NonSerialized] public new SkillDestructionArrowStatus status;
@@ -14,7 +15,7 @@ namespace Skill
         public ProjectileBase arrowPrefab;
 
         private Collider[] searchColliders = new Collider[100];
-
+        
         public override void Awake()
         {
             base.Awake();
@@ -47,6 +48,12 @@ namespace Skill
         public override void LevelUp(int upCount)
         {
             status.DamageMultiple += upCount * 0.5f;
+        }
+        
+        public override string Explain()
+        {
+            if(status == null) status = base.status as SkillDestructionArrowStatus;
+            return base.Explain();
         }
     }
 }

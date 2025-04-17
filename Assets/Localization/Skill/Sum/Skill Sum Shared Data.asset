@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Skill Sum Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Skill Sum
+  m_TableCollectionNameGuidString: e6b1235b7fadc294e93c30b1ce27fa6c
+  m_Entries:
+  - m_Id: 8076943360
+    m_Key: 'Default
+
+'
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 8080476276238319823
+  references:
+    version: 2
+    RefIds:
+    - rid: 8080476276238319823
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1744894672339

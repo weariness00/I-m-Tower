@@ -15,8 +15,20 @@ MonoBehaviour:
   m_GroupName: Localization-String-Tables-English (United States) (en-US)
   m_GUID: 9cf3d513ce107a34384080ca8ffde921
   m_SerializeEntries:
+  - m_GUID: b6fa916150e7932448277bcf024c1ac8
+    m_Address: Skill Sum_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cda231e8e0aac4642a08e97b2ac15840
-    m_Address: Skill Table_en-US
+    m_Address: Skill Name_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fdf74eccd997c2843b9763d0e00de24b
+    m_Address: Skill Explain_en-US
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en-US

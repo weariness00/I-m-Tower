@@ -25,6 +25,7 @@ namespace Skill.UI
                     Select(ui);
                 });
             }
+            
             GameManager.Instance.tower.status.onLevelUpEvent.AddListener(On);
         }
 
@@ -38,9 +39,9 @@ namespace Skill.UI
             {
                 var skill = SkillPrefabSO.GetRandomSkill();
                 var ui = selectUIArray[i];
-                ui.skillID = skill.id;
+                ui.skill = skill;
                 ui.icon.sprite = skill.icon;
-                ui.explainText.text = $"{skill.skillName}\n" + "간단 설명, 초당 공격횟수, 범위, 공격력";
+                ui.explainText.text = skill.Explain();
             }
         }
 
@@ -61,10 +62,10 @@ namespace Skill.UI
             canvas.gameObject.SetActive(false);
 
             var tower = GameManager.Instance.tower;
-            var skill = tower.skillList.FirstOrDefault(s => ui.skillID == s.id);
+            var skill = tower.skillList.FirstOrDefault(s => ui.skill.id == s.id);
             if (skill == null)
             {
-                skill = Instantiate(SkillPrefabSO.GetSkill(ui.skillID), tower.transform);
+                skill = Instantiate(SkillPrefabSO.GetSkill(ui.skill.id), tower.transform);
                 tower.skillList.Add(skill);
             }
             skill.LevelUp(1);

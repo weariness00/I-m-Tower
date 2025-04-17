@@ -7,6 +7,7 @@ namespace Skill.Editor
     [CustomEditor(typeof(SkillSelectCanvas))]
     public class SkillSelectCanvasEditor : UnityEditor.Editor
     {
+        public static int skillID;
         public override void OnInspectorGUI()
         {
             if (EditorApplication.isPlaying)
@@ -15,6 +16,14 @@ namespace Skill.Editor
                 if (GUILayout.Button("On"))
                 {
                     script.On();
+                }
+
+                EditorGUILayout.Space();
+                skillID = EditorGUILayout.IntField(skillID);
+                if (GUILayout.Button("Set Skill ID On"))
+                {
+                    script.On();
+                    script.selectUIArray[0].skill = SkillPrefabSO.GetSkill(skillID);
                 }
             }
             

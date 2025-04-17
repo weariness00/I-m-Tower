@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   skillName: "\uD30C\uAD34\uC758 \uD654\uC0B4"
+  skillExplain: 
   icon: {fileID: 0}
   rating: 0
   targetLayer:

@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
-  m_Name: Skill Table_en-US
+  m_Name: Skill Explain_ko-KR
   m_EditorClassIdentifier: 
   m_LocaleId:
-    m_Code: en-US
-  m_SharedData: {fileID: 11400000, guid: e81481ee6f7bf314993d99091b400e26, type: 2}
+    m_Code: ko-KR
+  m_SharedData: {fileID: 11400000, guid: 7a6201ae5a994cc4fa533fc0093e0672, type: 2}
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 37515177984
-    m_Localized: Destruction Arrow
+  - m_Id: 223982936064
+    m_Localized: "\u3134"
     m_Metadata:
       m_Items: []
-  - m_Id: 111586586624
-    m_Localized: Mana Bullet
+  - m_Id: 366719295488
+    m_Localized: "\u3141"
     m_Metadata:
       m_Items: []
   references:

@@ -22,7 +22,7 @@ namespace Game.Status
         }
         public float AttackRange => value.attackRange;
         public MinMaxValue<float> AttackTimer => value.attackTimer;
-
+        public float AttackSpeed => 1f / value.attackTimer.Max; 
         public virtual void OnDrawGizmos()
         {
             if (AttackRange > 0)

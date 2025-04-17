@@ -11,7 +11,7 @@ namespace Tower
         public int level;
         public MinMaxValue<float> experience = new(0,0,1,false,true);
 
-        public UnityEvent onLevelUpEvent;
+        public UnityEvent onLevelUpEvent = new();
 
         public void AddEXP(float exp)
         {

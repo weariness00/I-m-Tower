@@ -15,8 +15,18 @@ MonoBehaviour:
   m_GroupName: Localization-Assets-Shared
   m_GUID: dd5e8a0a03325c2428615071d0798e1e
   m_SerializeEntries:
+  - m_GUID: 7a6201ae5a994cc4fa533fc0093e0672
+    m_Address: Assets/Resources/Localization/Skill/Explain/Skill Explain Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e6b1235b7fadc294e93c30b1ce27fa6c
+    m_Address: Assets/Resources/Localization/Skill/Sum/Skill Sum Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e81481ee6f7bf314993d99091b400e26
-    m_Address: Assets/Resources/Localization/Skill Table Shared Data.asset
+    m_Address: Assets/Resources/Localization/Skill/Name/Skill Name Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

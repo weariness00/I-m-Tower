@@ -17,6 +17,7 @@ namespace Skill
         public string skillName;
         public Sprite icon;
 
+        [Space]
         [InspectorName("등급")] public RatingType rating;
         [HideInInspector] public LayerMask targetLayer;
 
@@ -31,8 +32,6 @@ namespace Skill
             status = GetComponent<SkillStatus>();
             
             status.onLevelUpEvent.AddListener(LevelUp);
-
-            LocalizationManager.Instance.onChangeLanguage.AddListener(LocaleChanged);
         }
 
         public bool InstantiateProjectile()
@@ -52,16 +51,17 @@ namespace Skill
             }
             return false;
         }
-
-        public virtual void LocaleChanged(Locale locale)
-        {
-            skillName = LocalizationSettings.StringDatabase.GetLocalizedString("Skill Table", skillName);
-        }
     }
 
     public abstract partial class SkillBase
     {
         public abstract void LevelUp(int upCount);
+
+        public virtual string Explain()
+        {
+            if (status == null) status = GetComponent<SkillStatus>();
+            return $"{skillName}\n" + $"{skillName}\n" + $"공격력 {status.Damage}, 공격 속도 {status.AttackSpeed}";
+        }
     }
 
     public partial class SkillBase : IComparable, IComparable<SkillBase>
