@@ -13,7 +13,7 @@ namespace Game.Status
         public float damage = 1;
         [Tooltip("공격력 배율")]public float damageMultiple = 1f;
         public float attackRange = 1;
-        public MinMaxValue<float> attackTimer = new(0, 0, 1, false, true);
+        public MinMaxValue<float> attackTimer = new(0, 0, 1, false, false);
 
         public void Copy(StatusData otherData)
         {

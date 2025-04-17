@@ -7,6 +7,8 @@ namespace Skill.UI
 {
     public class SkillSelectCanvas : MonoBehaviour
     {
+        public Canvas canvas;
+        
         public int selectCount = 3;
         public SkillSelectUI[] selectUIArray;
 
@@ -14,7 +16,7 @@ namespace Skill.UI
 
         public void Awake()
         {
-            gameObject.SetActive(false);
+            canvas.gameObject.SetActive(false);
 
             foreach (var ui in selectUIArray)
             {
@@ -30,7 +32,7 @@ namespace Skill.UI
         {
             Time.timeScale = 0f;
             isSelect = false;
-            gameObject.SetActive(true);
+            canvas.gameObject.SetActive(true);
             
             for (int i = 0; i < selectCount; i++)
             {
@@ -46,7 +48,7 @@ namespace Skill.UI
         public void NotSelect()
         {
             isSelect = true;
-            gameObject.SetActive(false);
+            canvas.gameObject.SetActive(false);
             // 플레이어 레벨 하락해야됨
             // 혹은 다른거 되게끔
         }
@@ -56,7 +58,7 @@ namespace Skill.UI
             if(isSelect) return;
             isSelect = true;
                     
-            gameObject.SetActive(false);
+            canvas.gameObject.SetActive(false);
 
             var tower = GameManager.Instance.tower;
             var skill = tower.skillList.FirstOrDefault(s => ui.skillID == s.id);

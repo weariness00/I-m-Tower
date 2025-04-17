@@ -1,6 +1,13 @@
 ﻿using System;
 using Game;
+using Game.Status;
+using Manager;
+using ProjectTile;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
+using UnityEngine.Pool;
+using Util;
 
 namespace Skill
 {
@@ -14,6 +21,9 @@ namespace Skill
         [HideInInspector] public LayerMask targetLayer;
 
         [NonSerialized] public SkillStatus status;
+        
+        public ObjectPool<ProjectileBase> projectilePool;
+        protected Collider[] searchColliders;
 
         public virtual void Awake()
         {
@@ -21,6 +31,31 @@ namespace Skill
             status = GetComponent<SkillStatus>();
             
             status.onLevelUpEvent.AddListener(LevelUp);
+
+            LocalizationManager.Instance.onChangeLanguage.AddListener(LocaleChanged);
+        }
+
+        public bool InstantiateProjectile()
+        {
+            if (status.AttackTimer.IsMax)
+            {
+                var length = Physics.OverlapSphereNonAlloc(transform.position, status.AttackRange, searchColliders, targetLayer);
+                var nearTarget = searchColliders.GetNear(transform.position, length);
+                if (nearTarget != null)
+                {
+                    var arrow = projectilePool.Get();
+                    arrow.transform.position = transform.position;
+                    arrow.targetTransform = nearTarget.transform;
+                    arrow.targetStatus = nearTarget.GetComponent<StatusBase>();
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public virtual void LocaleChanged(Locale locale)
+        {
+            skillName = LocalizationSettings.StringDatabase.GetLocalizedString("Skill Table", skillName);
         }
     }
 

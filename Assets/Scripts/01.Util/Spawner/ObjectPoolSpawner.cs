@@ -44,8 +44,12 @@ namespace Util
             NextInterval();
             
             var obj = PoolInstantiate();
-            
-            if (spawnPlaceType == SpawnPlaceType.Transform && isSameLayer && obj is GameObject go) go.layer = spawnPlaceList[_spawnPlaceCount].gameObject.layer;
+            var go = obj.GameObject();
+
+            go.transform.position = currentPosition;
+            go.transform.rotation = currentRotate;
+            go.transform.SetParent(parentTransform);
+            if (spawnPlaceType == SpawnPlaceType.Transform && isSameLayer) go.layer = spawnPlaceList[_spawnPlaceCount].gameObject.layer;
 
             onSpawnSuccessAction.Invoke(obj);
         }

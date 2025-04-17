@@ -26,9 +26,14 @@ namespace ProjectTile
 
         public virtual void Update()
         {
-            if (!targetStatus.Hp.IsMin && targetTransform != null)
+            if (targetStatus != null && !targetStatus.Hp.IsMin)
             {
                 direction = (targetTransform.position - transform.position).normalized;
+            }
+            else
+            {
+                targetStatus = null;
+                targetTransform = null;
             }
 
             transform.LookAt(transform.position + direction);

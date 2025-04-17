@@ -12,7 +12,6 @@ namespace Skill
         [NonSerialized] public new SkillDestructionArrowStatus status;
 
         public ProjectileBase arrowPrefab;
-        public ObjectPool<ProjectileBase> arrowPool;
 
         private Collider[] searchColliders = new Collider[100];
 
@@ -20,15 +19,16 @@ namespace Skill
         {
             base.Awake();
             status = base.status as SkillDestructionArrowStatus;
-
-            arrowPool = new(
+            searchColliders = new Collider[100];
+            
+            projectilePool = new(
                 () =>
                 {
                     var arrow = Instantiate(arrowPrefab);
                     arrow.ownerObject = gameObject;
                     arrow.ownerStatus = status;
                     arrow.collider.includeLayers = LayerMask.GetMask("Monster");
-                    arrow.pool = arrowPool;
+                    arrow.pool = projectilePool;
 
                     return arrow;
                 },
@@ -40,20 +40,8 @@ namespace Skill
         public void Update()
         {
             status.AttackTimer.Current += Time.deltaTime;
-
-            if (status.AttackTimer.IsMax)
-            {
-                var length = Physics.OverlapSphereNonAlloc(transform.position, status.AttackRange, searchColliders, targetLayer);
-                var nearTarget = searchColliders.GetNear(transform.position, length);
-                if (nearTarget != null)
-                {
-                    status.AttackTimer.SetMin();
-                    var arrow = arrowPool.Get();
-                    arrow.transform.position = transform.position;
-                    arrow.targetTransform = nearTarget.transform;
-                    arrow.targetStatus = nearTarget.GetComponent<StatusBase>();
-                }
-            }
+            
+            if(InstantiateProjectile()) status.AttackTimer.SetMin();
         }
 
         public override void LevelUp(int upCount)
