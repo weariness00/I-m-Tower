@@ -9090,6 +9090,7 @@ GameObject:
   - component: {fileID: -7904071266072927458}
   - component: {fileID: 2947382125700063199}
   - component: {fileID: 7071605951880696801}
+  - component: {fileID: -6558584480025981462}
   m_Layer: 7
   m_Name: People
   m_TagString: Monster
@@ -9184,7 +9185,7 @@ Animator:
   m_GameObject: {fileID: 3910857712047626281}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 02ded044b8e0963439276550f50be6f9, type: 3}
-  m_Controller: {fileID: 9100000, guid: f5a5df21e2ce72749aab436d5667e57b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 99237c04dfea0c64c912fe813522d6fc, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -9278,6 +9279,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f4ee75fd26e484188738b9348890253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collider: {fileID: 0}
+  id: 0
+  behaviorGraphAgent: {fileID: 0}
   navMeshAgent: {fileID: 0}
 --- !u!114 &7071605951880696801
 MonoBehaviour:
@@ -9302,6 +9306,7 @@ MonoBehaviour:
       isOverMin: 0
     speed: 1
     damage: 1
+    damageMultiple: 1
     attackRange: 1
     attackTimer:
       _min: 0
@@ -9314,6 +9319,61 @@ MonoBehaviour:
   onDieEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-6558584480025981462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3910857712047626281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Graph: {fileID: 6819776264860800598, guid: a24b5bd814bf19e489a4e99bd1795a06, type: 2}
+  m_BlackboardVariableOverridesList:
+  - rid: 2919838209593311662
+  - rid: 2919838209593311914
+  - rid: 2919838209593311915
+  - rid: 2919838209593311916
+  m_IsInitialised: 0
+  m_IsStarted: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 2919838209593311662
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1
+          m_Value1: 0
+        Name: Self
+        m_Value: {fileID: 3910857712047626281}
+    - rid: 2919838209593311914
+      type: {class: 'BlackboardVariable`1[[Unit.Monster.MonsterControl, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 8520957109443522914
+          m_Value1: 8442731594176567237
+        Name: Monster
+        m_Value: {fileID: 2947382125700063199}
+    - rid: 2919838209593311915
+      type: {class: 'BlackboardVariable`1[[UnityEngine.AI.NavMeshAgent, UnityEngine.AIModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 17596418523184494651
+          m_Value1: 3620663631676259884
+        Name: Nav Mesh Agent
+        m_Value: {fileID: 7041621832041790542}
+    - rid: 2919838209593311916
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Animator, UnityEngine.AnimationModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 16448788694409741103
+          m_Value1: 2977400902220612708
+        Name: Animator
+        m_Value: {fileID: 1552927188359789252}
 --- !u!1 &3973613103567678037
 GameObject:
   m_ObjectHideFlags: 0
