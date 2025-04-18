@@ -20,6 +20,11 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e4b3969a1b5fbc249938559cfe6fa5eb
+    m_Address: Assets/Localization/Font/Font Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e6b1235b7fadc294e93c30b1ce27fa6c
     m_Address: Assets/Resources/Localization/Skill/Sum/Skill Sum Shared Data.asset
     m_ReadOnly: 1
