@@ -16,7 +16,7 @@ MonoBehaviour:
   m_TableCollectionNameGuidString: e4b3969a1b5fbc249938559cfe6fa5eb
   m_Entries:
   - m_Id: 7999860736
-    m_Key: New Entry
+    m_Key: Font
     m_Metadata:
       m_Items: []
   m_Metadata:
@@ -38,5 +38,6 @@ MonoBehaviour:
         - m_KeyId: 7999860736
           m_TableCodes:
           - ko-KR
+          - en-US
         m_TypeString: TMPro.TMP_FontAsset, Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
