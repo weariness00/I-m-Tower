@@ -20,12 +20,10 @@ MonoBehaviour:
     - rid: 8080476276238319825
   m_TableData:
   - m_Id: 8076943360
-    m_Localized: '{skillName}
+    m_Localized: '{skillExplain}
 
-      {skillExplain}
-
-      ATK {damage.skill.status.Damage},
-      ATK Speed {attackSpeed.skill.status.AttackSpeed}'
+      ATK {damage.skill.status.Damage}, ATK Speed
+      {attackSpeed.skill.status.AttackSpeed}'
     m_Metadata:
       m_Items:
       - rid: 8080476276238319825

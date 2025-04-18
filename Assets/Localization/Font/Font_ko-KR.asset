@@ -22,6 +22,10 @@ MonoBehaviour:
     m_Localized: 3abc1f2d964560e4e9e0649aa86820f7
     m_Metadata:
       m_Items: []
+  - m_Id: 68631334760448
+    m_Localized: '3abc1f2d964560e4e9e0649aa86820f7[NotoSansKR-Regular SDF Material]'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

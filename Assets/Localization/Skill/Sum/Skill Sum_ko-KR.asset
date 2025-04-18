@@ -20,7 +20,7 @@ MonoBehaviour:
     - rid: 8080476276238319826
   m_TableData:
   - m_Id: 8076943360
-    m_Localized: "{skillName}\n{skillExplain}\n\uACF5\uACA9\uB825 {damage.skill.status.Damage},
+    m_Localized: "{skillExplain}\n\uACF5\uACA9\uB825 {damage.skill.status.Damage},
       \uACF5\uACA9\uC18D\uB3C4 {attackSpeed.skill.status.AttackSpeed}"
     m_Metadata:
       m_Items:

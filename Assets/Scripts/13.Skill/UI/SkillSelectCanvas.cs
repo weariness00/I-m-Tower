@@ -39,9 +39,7 @@ namespace Skill.UI
             {
                 var skill = SkillPrefabSO.GetRandomSkill();
                 var ui = selectUIArray[i];
-                ui.skill = skill;
-                ui.icon.sprite = skill.icon;
-                ui.explainText.text = skill.Explain();
+                ui.SetSKill(skill);
             }
         }
 

@@ -26,6 +26,11 @@ MonoBehaviour:
     m_Localized: a
     m_Metadata:
       m_Items: []
+  - m_Id: 258138109652992
+    m_Localized: Flipping debris into the air with psychokinesis and dropping it
+      to attack
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

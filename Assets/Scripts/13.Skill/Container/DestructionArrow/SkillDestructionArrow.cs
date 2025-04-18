@@ -26,6 +26,7 @@ namespace Skill
                 () =>
                 {
                     var arrow = Instantiate(arrowPrefab);
+                    arrow.Move = new TargetMove(arrow);
                     arrow.ownerObject = gameObject;
                     arrow.ownerStatus = status;
                     arrow.collider.includeLayers = LayerMask.GetMask("Monster");
@@ -42,7 +43,7 @@ namespace Skill
         {
             status.AttackTimer.Current += Time.deltaTime;
             
-            if(InstantiateProjectile()) status.AttackTimer.SetMin();
+            if(status.AttackTimer.IsMax && TryInstantiateProjectile(out var arrow)) status.AttackTimer.SetMin();
         }
 
         public override void LevelUp(int upCount)

@@ -19,9 +19,14 @@ MonoBehaviour:
     m_Key: Font
     m_Metadata:
       m_Items: []
+  - m_Id: 68631334760448
+    m_Key: Material
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items:
     - rid: 2919838200842944513
+    - rid: 2919838200842944651
   m_KeyGenerator:
     rid: 2919838200842944512
   references:
@@ -41,3 +46,13 @@ MonoBehaviour:
           - en-US
         m_TypeString: TMPro.TMP_FontAsset, Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
+    - rid: 2919838200842944651
+      type: {class: AssetTypeMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries:
+        - m_KeyId: 68631334760448
+          m_TableCodes:
+          - ko-KR
+          - en-US
+        m_TypeString: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null

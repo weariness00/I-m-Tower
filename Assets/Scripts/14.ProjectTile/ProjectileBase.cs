@@ -17,7 +17,7 @@ namespace ProjectTile
 
         public ObjectPool<ProjectileBase> pool;
 
-        private Vector3 direction;
+        public IProjectileMove Move;
 
         public virtual void Awake()
         {
@@ -26,18 +26,7 @@ namespace ProjectTile
 
         public virtual void Update()
         {
-            if (targetStatus != null && !targetStatus.Hp.IsMin)
-            {
-                direction = (targetTransform.position - transform.position).normalized;
-            }
-            else
-            {
-                targetStatus = null;
-                targetTransform = null;
-            }
-
-            transform.LookAt(transform.position + direction);
-            transform.position += Time.deltaTime * ownerStatus.Speed * direction;
+            Move?.Move(Time.deltaTime);
         }
 
         public virtual void OnTriggerEnter(Collider other)

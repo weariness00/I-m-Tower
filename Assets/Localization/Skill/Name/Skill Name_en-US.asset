@@ -26,6 +26,10 @@ MonoBehaviour:
     m_Localized: Mana Bullet
     m_Metadata:
       m_Items: []
+  - m_Id: 258658501144576
+    m_Localized: Telekinetic Slam
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

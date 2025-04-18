@@ -34,21 +34,19 @@ namespace Skill
             status.onLevelUpEvent.AddListener(LevelUp);
         }
 
-        public bool InstantiateProjectile()
+        public bool TryInstantiateProjectile(out ProjectileBase projectile)
         {
-            if (status.AttackTimer.IsMax)
+            var length = Physics.OverlapSphereNonAlloc(transform.position, status.AttackRange, searchColliders, targetLayer);
+            var nearTarget = searchColliders.GetNear(transform.position, length);
+            if (nearTarget != null)
             {
-                var length = Physics.OverlapSphereNonAlloc(transform.position, status.AttackRange, searchColliders, targetLayer);
-                var nearTarget = searchColliders.GetNear(transform.position, length);
-                if (nearTarget != null)
-                {
-                    var arrow = projectilePool.Get();
-                    arrow.transform.position = transform.position;
-                    arrow.targetTransform = nearTarget.transform;
-                    arrow.targetStatus = nearTarget.GetComponent<StatusBase>();
-                    return true;
-                }
+                projectile = projectilePool.Get();
+                projectile.transform.position = transform.position;
+                projectile.targetTransform = nearTarget.transform;
+                projectile.targetStatus = nearTarget.GetComponent<StatusBase>();
+                return true;
             }
+            projectile = null;
             return false;
         }
     }
@@ -60,7 +58,7 @@ namespace Skill
         public virtual string Explain()
         {
             if (status == null) status = GetComponent<SkillStatus>();
-            return $"{skillName}\n" + $"{skillName}\n" + $"공격력 {status.Damage}, 공격 속도 {status.AttackSpeed}";
+            return $"{skillName}\n" + $"공격력 {status.Damage}, 공격 속도 {status.AttackSpeed}";
         }
     }
 

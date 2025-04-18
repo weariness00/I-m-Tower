@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Skill Prefab List
   m_EditorClassIdentifier: 
   skillArray:
-  - {fileID: 8157671785556365833, guid: 6faafbec32361b34792354eb91c50f45, type: 3}
+  - {fileID: 1653000983646291803, guid: a2c6184d1a7a3e643aa3165ac6b1b154, type: 3}
   - {fileID: 5777552427496914014, guid: ece613dd4a1b6544d96cfc948d72777b, type: 3}
+  - {fileID: 8157671785556365833, guid: 6faafbec32361b34792354eb91c50f45, type: 3}

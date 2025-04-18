@@ -27,7 +27,7 @@ namespace Manager
 
     public static class LocalizationExtension
     {
-        public static bool GetLocalizedString(this LocalizeStringEvent localizeStringEvent, string key, out LocalizedString localizedString)
+        public static bool GetVariableLocalizedString(this LocalizeStringEvent localizeStringEvent, string key, out LocalizedString localizedString)
         {
             if (localizeStringEvent.StringReference.TryGetValue(key, out IVariable variable) &&
                 variable is LocalizedString ls)

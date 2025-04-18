@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Default Local Group
   m_GUID: 3b7009450b89f074494c149f8e54fb83
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: ab62b58c80024a4409a84f86dbd6b848
+    m_Address: Assets/Localization/Skill/Name/Skill Name.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 9d10ac121e2fdce47bb10b61e6f33906, type: 2}
   m_SchemaSet:

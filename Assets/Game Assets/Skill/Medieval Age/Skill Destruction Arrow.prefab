@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2375172778811956080
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6907248352919384592}
+  - component: {fileID: 8157671785556365833}
+  - component: {fileID: 594781936574025199}
+  m_Layer: 0
+  m_Name: Skill Destruction Arrow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6907248352919384592
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375172778811956080}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8157671785556365833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375172778811956080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11bb7a7ab5c397641855f77484801e68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 301
+  skillName: "\uD30C\uAD34\uC758 \uD654\uC0B4"
+  icon: {fileID: 0}
+  rating: 0
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  arrowPrefab: {fileID: 6570474942989543696, guid: a3efef99689abe240bf7490d082d2486, type: 3}
+--- !u!114 &594781936574025199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375172778811956080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd6a8d00f270577449dcc3d8d2219377, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value:
+    hp:
+      _min: 0
+      _max: 10
+      _current: 10
+      _isMin: 0
+      _isMax: 1
+      isOverMax: 0
+      isOverMin: 0
+    speed: 10
+    damage: 5
+    damageMultiple: 1
+    attackRange: 100
+    attackTimer:
+      _min: 0
+      _max: 1
+      _current: 0
+      _isMin: 1
+      _isMax: 0
+      isOverMax: 1
+      isOverMin: 0
+  onDieEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  level: 0
+  skillType: 0
+  onLevelUpEvent:
+    m_PersistentCalls:
+      m_Calls: []
