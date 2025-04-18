@@ -16,7 +16,6 @@ namespace ProjectTile
         [HideInInspector] public new Collider collider;
 
         public ObjectPool<ProjectileBase> pool;
-
         public IProjectileMove Move;
 
         public virtual void Awake()

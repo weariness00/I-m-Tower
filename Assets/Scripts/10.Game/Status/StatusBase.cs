@@ -14,7 +14,7 @@ namespace Game.Status
         public MinMaxValue<int> Hp => value.hp;
         public float Speed => value.speed;
 
-        public int Damage => (int)value.damage;
+        public virtual int Damage => (int)value.damage;
         public float DamageMultiple
         {
             get => value.damageMultiple;

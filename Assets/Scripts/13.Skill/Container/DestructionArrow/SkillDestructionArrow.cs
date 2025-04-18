@@ -45,11 +45,6 @@ namespace Skill
             
             if(status.AttackTimer.IsMax && TryInstantiateProjectile(out var arrow)) status.AttackTimer.SetMin();
         }
-
-        public override void LevelUp(int upCount)
-        {
-            status.DamageMultiple += upCount * 0.5f;
-        }
         
         public override string Explain()
         {

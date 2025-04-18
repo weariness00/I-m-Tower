@@ -49,14 +49,14 @@ namespace Skill
             }
         }
 
-        public override void LevelUp(int upCount)
-        {
-            status.value.damage += status.upDamageSize * upCount;
-        }
-        
         public override string Explain()
         {
             if(status == null) status = base.status as SkillTelekineticSlamStatus;
+            var value = base.Explain();
+            var nextLevel = status.level + 1;
+            if (nextLevel == 10) value += "공격속도 2배 증가";
+            else if (nextLevel == 20) value += "대미지 2배 증가";
+            
             return base.Explain();
         }
     }

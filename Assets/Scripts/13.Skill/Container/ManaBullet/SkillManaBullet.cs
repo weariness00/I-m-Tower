@@ -37,12 +37,7 @@ namespace Skill
             status.AttackTimer.Current += Time.deltaTime;
             if(status.AttackTimer.IsMax && TryInstantiateProjectile(out var bullet)) status.AttackTimer.SetMin();
         }
-
-        public override void LevelUp(int upCount)
-        {
-            status.DamageMultiple += upCount * 0.5f;
-        }
-
+        
         public override string Explain()
         {
             if(status == null) status = base.status as SkillManaBulletStatus;

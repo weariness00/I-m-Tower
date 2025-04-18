@@ -30,8 +30,6 @@ namespace Skill
         {
             targetLayer = LayerMask.GetMask("Monster");
             status = GetComponent<SkillStatus>();
-            
-            status.onLevelUpEvent.AddListener(LevelUp);
         }
 
         public bool TryInstantiateProjectile(out ProjectileBase projectile)
@@ -53,8 +51,6 @@ namespace Skill
 
     public abstract partial class SkillBase
     {
-        public abstract void LevelUp(int upCount);
-
         public virtual string Explain()
         {
             if (status == null) status = GetComponent<SkillStatus>();
