@@ -23,7 +23,7 @@ namespace Skill
             if (status.AttackTimer.IsMax)
             {
                 status.AttackTimer.SetMin();
-                GameManager.Instance.tower.status.AddEXP(status.drainManaAmount);
+                GameManager.Instance.tower.status.AddEXP(status.DrainMana);
             }
         }
 

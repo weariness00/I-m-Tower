@@ -9,6 +9,8 @@ namespace Skill
 {
     public abstract partial class SkillStatus : StatusBase
     {
+        public static readonly int MaxLevel = 50;
+        
         public int level = 1;
         public SkillType skillType;
 

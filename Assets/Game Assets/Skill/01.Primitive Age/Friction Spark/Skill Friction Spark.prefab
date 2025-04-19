@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2029667031339032617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1867071814996005676}
+  - component: {fileID: 2630159364182360336}
+  - component: {fileID: 8982193267050493924}
+  m_Layer: 0
+  m_Name: Skill Friction Spark
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1867071814996005676
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029667031339032617}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2630159364182360336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029667031339032617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c06d1e51748e46579b65a7e782e55926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value:
+    hp:
+      _min: 0
+      _max: 10
+      _current: 10
+      _isMin: 0
+      _isMax: 1
+      isOverMax: 0
+      isOverMin: 0
+    speed: 1
+    damage: 1
+    damageMultiple: 1
+    attackRange: 1
+    attackTimer:
+      _min: 0
+      _max: 1
+      _current: 0
+      _isMin: 1
+      _isMax: 0
+      isOverMax: 0
+      isOverMin: 0
+  onDieEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  level: 1
+  skillType: 0
+  onLevelUpEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  burnDamage: 1
+  burnDamageMultiple: 1
+  burnTickInterval: 0.5
+  burnChange: 0.3
+  burnDuration: 1
+--- !u!114 &8982193267050493924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029667031339032617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02a9e80a3e1042e18d66578d51d32214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 1003
+  skillName: "\uB9C8\uCC30\uC758 \uBD88\uAF43"
+  icon: {fileID: 0}
+  rating: 0
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  sparkProjectilePrefab: {fileID: 2130342723573831170, guid: 13afee3396c021f42864d6a0f69a11e8, type: 3}
