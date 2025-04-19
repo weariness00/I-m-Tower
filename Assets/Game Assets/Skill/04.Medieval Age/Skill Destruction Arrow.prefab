@@ -89,7 +89,7 @@ MonoBehaviour:
   onDieEvent:
     m_PersistentCalls:
       m_Calls: []
-  level: 0
+  level: 1
   skillType: 0
   onLevelUpEvent:
     m_PersistentCalls:

@@ -30,6 +30,10 @@ MonoBehaviour:
     m_Localized: Telekinetic Slam
     m_Metadata:
       m_Items: []
+  - m_Id: 610838223532032
+    m_Localized: Mana Residual Drain
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -69,12 +69,11 @@ MonoBehaviour:
   onDieEvent:
     m_PersistentCalls:
       m_Calls: []
-  level: 0
+  level: 1
   skillType: 0
   onLevelUpEvent:
     m_PersistentCalls:
       m_Calls: []
-  levelGoalDataList: []
   upDamageSize: 10
 --- !u!114 &1653000983646291803
 MonoBehaviour:

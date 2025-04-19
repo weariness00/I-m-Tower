@@ -31,6 +31,10 @@ MonoBehaviour:
       to attack
     m_Metadata:
       m_Items: []
+  - m_Id: 610579749548032
+    m_Localized: Draws in lingering mana from the air, empowering the user.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

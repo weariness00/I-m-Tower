@@ -8,17 +8,15 @@ namespace Skill
 
         public override void LevelUp(int upCount)
         {
-            var nextLevel = level + upCount;
-            var prevLevel = level;
             base.LevelUp(upCount);
             value.damage += upDamageSize * upCount;
 
-            if (CheckGoalLevel(10, prevLevel, nextLevel))
+            if (CheckGoalLevel(10))
             {
                 // 대미지 2배
                 DamageMultiple += 2f;
             }
-            else if (CheckGoalLevel(20, prevLevel, nextLevel))
+            else if (CheckGoalLevel(20))
             {
                 // 공격속도 2배
                 AttackTimer.Max *= 0.5f;

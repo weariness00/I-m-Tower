@@ -15,14 +15,6 @@ MonoBehaviour:
   id: 0
   lootingDataArray:
   - id:
-      id: 1
-    probability: 0
-    prefab: {fileID: 0}
-  - id:
-      id: 2
-    probability: 0
-    prefab: {fileID: 0}
-  - id:
-      id: 3
-    probability: 0
-    prefab: {fileID: 0}
+      id: 58224
+    probability: 1
+    prefab: {fileID: 4572881526136658381, guid: 368e8ed42b29299488229a7c8da7f079, type: 3}

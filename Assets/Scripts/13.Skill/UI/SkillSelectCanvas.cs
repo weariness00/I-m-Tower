@@ -66,7 +66,8 @@ namespace Skill.UI
                 skill = Instantiate(SkillPrefabSO.GetSkill(ui.skill.id), tower.transform);
                 tower.skillList.Add(skill);
             }
-            skill.status.LevelUp(1);
+            else
+                skill.status.LevelUp(1);
             
             Time.timeScale = 1f;
         }

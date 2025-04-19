@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Game.Status;
+using Manager;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,20 +9,27 @@ namespace Skill
 {
     public abstract partial class SkillStatus : StatusBase
     {
-        public int level = 0;
+        public int level = 1;
         public SkillType skillType;
 
         public UnityEvent<int> onLevelUpEvent = new();
+
+        protected int prevLevel = 0;
+        protected int nextLevel = 0;
         
         public virtual void LevelUp(int upCount)
         {
+            nextLevel = level + upCount;
+            prevLevel = level;
             level += upCount;
             onLevelUpEvent.Invoke(upCount);
         }
 
-        protected bool CheckGoalLevel(int goalLevel, int prevLevel, int nextLevel)
+        protected bool CheckGoalLevel(int goalLevel)
         {
-            return prevLevel < goalLevel && goalLevel <= nextLevel;
+            bool isGoal = prevLevel < goalLevel && goalLevel <= nextLevel;
+            if(isGoal) DebugManager.Log($"{name}이 {goalLevel}레벨에 도달했습니다.");
+            return isGoal;
         }
     }
 }
