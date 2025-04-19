@@ -23,7 +23,8 @@ namespace Skill.Editor
                 if (GUILayout.Button("Set Skill ID On"))
                 {
                     script.On();
-                    script.selectUIArray[0].skill = SkillPrefabSO.GetSkill(skillID);
+                    var skill = SkillPrefabSO.GetSkill(skillID);
+                    script.selectUIArray[0].SetSKill(skill);
                 }
             }
             

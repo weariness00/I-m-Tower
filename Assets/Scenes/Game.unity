@@ -4899,14 +4899,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1232073196}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1893907504}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &1232073199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7583,22 +7583,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:e6b1235b7fadc294e93c30b1ce27fa6c
+      m_TableCollectionName: GUID:7a6201ae5a994cc4fa533fc0093e0672
     m_TableEntryReference:
-      m_KeyId: 8076943360
+      m_KeyId: 0
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
-    m_LocalVariables:
-    - name: skillExplain
-      variable:
-        rid: 8080476276238319879
-    - name: damage
-      variable:
-        rid: 8080476276238319857
-    - name: attackSpeed
-      variable:
-        rid: 8080476276238319858
+    m_LocalVariables: []
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
@@ -7617,26 +7608,7 @@ MonoBehaviour:
         m_CallState: 1
   references:
     version: 2
-    RefIds:
-    - rid: 8080476276238319857
-      type: {class: ObjectVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
-      data:
-        m_Value: {fileID: 1188828514}
-    - rid: 8080476276238319858
-      type: {class: ObjectVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
-      data:
-        m_Value: {fileID: 1188828514}
-    - rid: 8080476276238319879
-      type: {class: LocalizedString, ns: UnityEngine.Localization, asm: Unity.Localization}
-      data:
-        m_TableReference:
-          m_TableCollectionName: GUID:7a6201ae5a994cc4fa533fc0093e0672
-        m_TableEntryReference:
-          m_KeyId: 0
-          m_Key: 
-        m_FallbackState: 0
-        m_WaitForCompletion: 0
-        m_LocalVariables: []
+    RefIds: []
 --- !u!114 &1866937619
 MonoBehaviour:
   m_ObjectHideFlags: 0

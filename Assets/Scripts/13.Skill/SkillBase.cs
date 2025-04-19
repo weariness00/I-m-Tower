@@ -29,6 +29,11 @@ namespace Skill
         public virtual void Awake()
         {
             targetLayer = LayerMask.GetMask("Monster");
+            Init();
+        }
+
+        public virtual void Init()
+        {
             status = GetComponent<SkillStatus>();
         }
 
@@ -53,7 +58,6 @@ namespace Skill
     {
         public virtual string Explain()
         {
-            if (status == null) status = GetComponent<SkillStatus>();
             return $"{skillName}\n" + $"공격력 {status.Damage}, 공격 속도 {status.AttackSpeed}";
         }
     }

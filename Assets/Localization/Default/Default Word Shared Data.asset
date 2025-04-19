@@ -10,39 +10,47 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
-  m_Name: Skill Explain Shared Data
+  m_Name: Default Word Shared Data
   m_EditorClassIdentifier: 
-  m_TableCollectionName: Skill Explain
-  m_TableCollectionNameGuidString: 7a6201ae5a994cc4fa533fc0093e0672
+  m_TableCollectionName: Default Word
+  m_TableCollectionNameGuidString: 9b57ddae13c1445409694f4de4a836dc
   m_Entries:
-  - m_Id: 223982936064
-    m_Key: "\uD30C\uAD34\uC758 \uD654\uC0B4"
+  - m_Id: 7393271808
+    m_Key: "\uB300\uBBF8\uC9C0"
     m_Metadata:
       m_Items: []
-  - m_Id: 366719295488
-    m_Key: "\uB9C8\uB098 \uD0C4\uD658"
+  - m_Id: 67074023424
+    m_Key: "\uACF5\uACA9\uB825"
     m_Metadata:
       m_Items: []
-  - m_Id: 258138109652992
-    m_Key: "\uB099\uD558 \uCDA9\uACA9"
+  - m_Id: 134111584256
+    m_Key: "\uD654\uC5FC"
     m_Metadata:
       m_Items: []
-  - m_Id: 610579749548032
-    m_Key: "\uC794\uB958 \uB9C8\uB098 \uD761\uC218"
+  - m_Id: 205595107328
+    m_Key: "\uACF5\uACA9\uC18D\uB3C4"
     m_Metadata:
       m_Items: []
-  - m_Id: 700944290177024
-    m_Key: "\uB9C8\uCC30\uC758 \uBD88\uAF43"
+  - m_Id: 309630623744
+    m_Key: "\uC2A4\uD53C\uB4DC"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421819867136
+    m_Key: "\uCCB4\uB825"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 476840747008
+    m_Key: "\uB9C8\uB098"
     m_Metadata:
       m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
-    rid: 8080476276238319860
+    rid: 8080476321469431808
   references:
     version: 2
     RefIds:
-    - rid: 8080476276238319860
+    - rid: 8080476321469431808
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:
-        m_CustomEpoch: 1744898731405
+        m_CustomEpoch: 1745066057363

@@ -11,7 +11,7 @@ namespace Skill
         
         public SkillBase[] skillArray;
 
-        private void Init()
+        public void Init()
         {
             Array.Sort(skillArray, (a,b) => a.id.CompareTo(b.id));
         }

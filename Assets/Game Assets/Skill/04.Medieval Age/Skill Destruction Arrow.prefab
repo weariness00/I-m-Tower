@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11bb7a7ab5c397641855f77484801e68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 301
+  id: 4001
   skillName: "\uD30C\uAD34\uC758 \uD654\uC0B4"
   icon: {fileID: 0}
   rating: 0

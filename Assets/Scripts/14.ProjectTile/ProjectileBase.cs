@@ -23,6 +23,11 @@ namespace ProjectTile
             collider = GetComponent<Collider>();
         }
 
+        public virtual void Start()
+        {
+            
+        }
+
         public virtual void Update()
         {
             Move?.Move(Time.deltaTime);

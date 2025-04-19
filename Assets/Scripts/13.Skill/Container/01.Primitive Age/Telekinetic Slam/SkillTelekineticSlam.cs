@@ -13,7 +13,6 @@ namespace Skill
         public override void Awake()
         {
             base.Awake();
-            status = base.status as SkillTelekineticSlamStatus;
 
             searchColliders = new Collider[100];
             projectilePool = new(
@@ -43,9 +42,14 @@ namespace Skill
             }
         }
 
+        public override void Init()
+        {
+            base.Init();
+            status = base.status as SkillTelekineticSlamStatus;
+        }
+
         public override string Explain()
         {
-            if(status == null) status = base.status as SkillTelekineticSlamStatus;
             var value = base.Explain();
             var nextLevel = status.level + 1;
             if (nextLevel == 10) value += "공격속도 2배 증가";

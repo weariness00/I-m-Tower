@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a49ed20d2ef2405ba222f4e8f9effd28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 1
+  id: 1001
   skillName: "\uB099\uD558 \uCDA9\uACA9"
   icon: {fileID: 0}
   rating: 0

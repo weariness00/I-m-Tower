@@ -11,12 +11,6 @@ namespace Skill
     {
         [NonSerialized] public new SkillManaResidualDrainStatus status;
 
-        public override void Awake()
-        {
-            base.Awake();
-            status = base.status as SkillManaResidualDrainStatus;
-        }
-
         public void Update()
         {
             status.AttackTimer.Current += Time.deltaTime;
@@ -27,9 +21,14 @@ namespace Skill
             }
         }
 
+        public override void Init()
+        {
+            base.Init();
+            status = base.status as SkillManaResidualDrainStatus;
+        }
+
         public override string Explain()
         {
-            if(status == null) status = base.status as SkillManaResidualDrainStatus;
             var value = base.Explain();
             var nextLevel = status.level + 1;
             if (nextLevel == 10) value += "잔류 마나 흡수 속도 2배";

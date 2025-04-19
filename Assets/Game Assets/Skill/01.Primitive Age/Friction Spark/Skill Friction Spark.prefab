@@ -54,7 +54,7 @@ MonoBehaviour:
       _isMax: 1
       isOverMax: 0
       isOverMin: 0
-    speed: 1
+    speed: 10
     damage: 1
     damageMultiple: 1
     attackRange: 1
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02a9e80a3e1042e18d66578d51d32214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 1003
+  id: 1002
   skillName: "\uB9C8\uCC30\uC758 \uBD88\uAF43"
   icon: {fileID: 0}
   rating: 0

@@ -10,32 +10,40 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
-  m_Name: Skill Name_en-US
+  m_Name: Default Word_en-US
   m_EditorClassIdentifier: 
   m_LocaleId:
     m_Code: en-US
-  m_SharedData: {fileID: 11400000, guid: e81481ee6f7bf314993d99091b400e26, type: 2}
+  m_SharedData: {fileID: 11400000, guid: 9b57ddae13c1445409694f4de4a836dc, type: 2}
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 374038355968
-    m_Localized: Destruction Arrow
+  - m_Id: 7393271808
+    m_Localized: Damage
     m_Metadata:
       m_Items: []
-  - m_Id: 457349816320
-    m_Localized: Mana Bullet
+  - m_Id: 67074023424
+    m_Localized: Attack
     m_Metadata:
       m_Items: []
-  - m_Id: 258658501144576
-    m_Localized: Telekinetic Slam
+  - m_Id: 134111584256
+    m_Localized: Fire
     m_Metadata:
       m_Items: []
-  - m_Id: 610838223532032
-    m_Localized: Mana Residual Drain
+  - m_Id: 205595107328
+    m_Localized: Attack Speed
     m_Metadata:
       m_Items: []
-  - m_Id: 701021125632000
-    m_Localized: Friction Spark
+  - m_Id: 309630623744
+    m_Localized: Speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421819867136
+    m_Localized: HP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 476840747008
+    m_Localized: Mana
     m_Metadata:
       m_Items: []
   references:

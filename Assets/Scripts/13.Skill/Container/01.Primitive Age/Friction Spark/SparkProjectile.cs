@@ -10,6 +10,12 @@ namespace Skill
     public class SparkProjectile : ProjectileBase
     {
         [NonSerialized] public new SkillFrictionSparkStatus ownerStatus;
+        
+        public override void Start()
+        {
+            base.Start();
+            base.ownerStatus = ownerStatus;
+        }
 
         public override void OnTriggerEnter(Collider other)
         {

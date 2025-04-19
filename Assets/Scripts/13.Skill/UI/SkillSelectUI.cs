@@ -26,18 +26,16 @@ namespace Skill.UI
         public void SetSKill(SkillBase _skill)
         {
             skill = _skill;
+            skill.Init();
             icon.sprite = skill.icon;
             nameText.text = skill.skillName;
             explainText.text = skill.Explain();
             
             nameLSE.StringReference.TableEntryReference = skill.skillName;
             nameLSE.RefreshString();
-
-            if (explainLSE.GetVariableLocalizedString("skillExplain", out var localizedString))
-            {
-                localizedString.TableEntryReference = skill.skillName;
-                localizedString.RefreshString();
-            }
+            
+            explainLSE.StringReference.TableEntryReference = skill.skillName;
+            explainLSE.RefreshString();
         }
     }
 }

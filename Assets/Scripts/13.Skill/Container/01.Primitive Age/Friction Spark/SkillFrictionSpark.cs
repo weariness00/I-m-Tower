@@ -17,23 +17,24 @@ namespace Skill
         public override void Awake()
         {
             base.Awake();
-            status = base.status as SkillFrictionSparkStatus;
 
             projectilePool = new(
                 () =>
                 {
                     var spark = Instantiate(sparkProjectilePrefab);
-                    spark.pool = projectilePool;
                     spark.ownerObject = gameObject;
                     spark.ownerStatus = status;
-                    spark.Move = new NonTargetMove(spark)
-                    {
-                        direction = Vector3.forward
-                    };
+                    spark.pool = projectilePool;
+                    spark.Move = new NonTargetMove(spark);
 
                     return spark;
-                }, 
-                spark => spark.gameObject.SetActive(true),
+                },
+                spark =>
+                {
+                    spark.gameObject.SetActive(true);
+                    spark.transform.position = transform.position;
+                    spark.transform.rotation = transform.rotation;
+                },
                 spark => spark.gameObject.SetActive(false),
                 spark => Destroy(spark.gameObject));
         }
@@ -46,6 +47,12 @@ namespace Skill
                 status.AttackTimer.SetMin();
                 projectilePool.Get();
             }
+        }
+
+        public override void Init()
+        {
+            base.Init();
+            status = base.status as SkillFrictionSparkStatus;
         }
     }
 }

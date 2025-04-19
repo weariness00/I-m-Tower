@@ -75,6 +75,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   drainManaAmount: 0.5
+  drainManaMultiple: 1
 --- !u!114 &4787740679431991636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,7 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4384b14efd14444ba636d74fdfac6029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  id: 1
   skillName: "\uC794\uB958 \uB9C8\uB098 \uD761\uC218"
   icon: {fileID: 0}
   rating: 0

@@ -19,7 +19,6 @@ namespace Skill
         public override void Awake()
         {
             base.Awake();
-            status = base.status as SkillDestructionArrowStatus;
             searchColliders = new Collider[100];
             
             projectilePool = new(
@@ -45,11 +44,11 @@ namespace Skill
             
             if(status.AttackTimer.IsMax && TryInstantiateProjectile(out var arrow)) status.AttackTimer.SetMin();
         }
-        
-        public override string Explain()
+
+        public override void Init()
         {
-            if(status == null) status = base.status as SkillDestructionArrowStatus;
-            return base.Explain();
+            base.Init();
+            status = base.status as SkillDestructionArrowStatus;
         }
     }
 }

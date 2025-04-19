@@ -15,7 +15,6 @@ namespace Skill
         public override void Awake()
         {
             base.Awake();
-            status = base.status as SkillManaBulletStatus;
             projectilePool = new(
                 () =>
                 {
@@ -37,11 +36,11 @@ namespace Skill
             status.AttackTimer.Current += Time.deltaTime;
             if(status.AttackTimer.IsMax && TryInstantiateProjectile(out var bullet)) status.AttackTimer.SetMin();
         }
-        
-        public override string Explain()
+
+        public override void Init()
         {
-            if(status == null) status = base.status as SkillManaBulletStatus;
-            return base.Explain();
+            base.Init();
+            status = base.status as SkillManaBulletStatus;
         }
     }
 }

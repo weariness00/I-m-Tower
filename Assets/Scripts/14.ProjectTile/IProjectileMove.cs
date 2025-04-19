@@ -17,10 +17,9 @@ namespace ProjectTile
         }
         
         public ProjectileBase Projectile { get; set; }
-        public Vector3 direction;
         public void Move(float deltaTime)
         {
-            Projectile.transform.position += deltaTime * Projectile.ownerStatus.Speed * direction;
+            Projectile.transform.position += deltaTime * Projectile.ownerStatus.Speed * Projectile.transform.forward;
         }
     }
 

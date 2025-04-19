@@ -35,6 +35,10 @@ MonoBehaviour:
     m_Localized: Draws in lingering mana from the air, empowering the user.
     m_Metadata:
       m_Items: []
+  - m_Id: 700944290177024
+    m_Localized: Creates fire using friction and minor mana, then fires it as a projectile.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
