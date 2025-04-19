@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3465d1de1b471941b8991eb8741f74a, type: 3}
+  m_Name: Debug Manager Data
+  m_EditorClassIdentifier: 
+  isDebug: 1
+  log: 1
+  logWaring: 1
+  logError: 1
+  isToDo: 1
+  isToDoError: 1
+  drawRay: 0
+  drawBoxRay: 0

@@ -1,4 +1,5 @@
 ﻿using System;
+using Looting;
 using Unity.Behavior;
 using UnityEngine;
 using UnityEngine.AI;
@@ -17,12 +18,19 @@ namespace Unit.Monster
             behaviorGraphAgent = GetComponent<BehaviorGraphAgent>();
             navMeshAgent = GetComponent<NavMeshAgent>();
             status = base.status as MonsterStatus;
+            
+            status.onDieEvent.AddListener(OnLooting);
         }
 
         public override void InitStatus()
         {
             base.InitStatus();
             status.value.Copy(UnitSOManager.GetMonsterSO(id).data);
+        }
+
+        protected virtual void OnLooting()
+        {
+            LootingTableHandleSO.GetLootingTableSO(0).OnLooting(transform);
         }
     }
 }

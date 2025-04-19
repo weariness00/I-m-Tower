@@ -9,7 +9,7 @@ namespace Unit.Monster
         public override MonsterControl OnCreateObject()
         {
             var monster = base.OnCreateObject();
-            monster.status.onDieEvent.AddListener(atk => Release(monster));
+            monster.status.onDieEvent.AddListener(() => Release(monster));
             return monster;
         }
 

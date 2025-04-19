@@ -9,7 +9,7 @@ namespace Game.Status
     {
         [InspectorName("기본 Data")] public StatusData value = new();
 
-        public UnityEvent<int> onDieEvent = new ();
+        public UnityEvent onDieEvent = new ();
             
         public MinMaxValue<int> Hp => value.hp;
         public float Speed => value.speed;
@@ -37,7 +37,7 @@ namespace Game.Status
 
             if (Hp.IsMin)
             {
-                onDieEvent.Invoke(atk);
+                onDieEvent.Invoke();
             }
         }
     }

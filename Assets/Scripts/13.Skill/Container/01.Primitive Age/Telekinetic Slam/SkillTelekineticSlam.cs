@@ -38,13 +38,7 @@ namespace Skill
                 TryInstantiateProjectile(out var projectile) &&
                 projectile is TelekineticSlamDebris debris)
             {
-                debris.Move = new TargetAroundMove(debris)
-                {
-                    rotateAxis = Vector3.up,
-                    rotateSpeed = 0,
-                    radius = 5,
-                };
-                debris.StartCoroutine(debris.A());
+                debris.StartCoroutine(debris.ChangedMoveCoroutine());
                 status.AttackTimer.SetMin();
             }
         }
