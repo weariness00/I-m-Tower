@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4772384782381626105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8828693547046020980}
+  - component: {fileID: 4291024020747971566}
+  - component: {fileID: 8869894297349710926}
+  m_Layer: 0
+  m_Name: Skill Dust Gale
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8828693547046020980
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4772384782381626105}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4291024020747971566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4772384782381626105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d799783bf19a904fb8fa212fd828988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value:
+    hp:
+      _min: 0
+      _max: 10
+      _current: 10
+      _isMin: 0
+      _isMax: 1
+      isOverMax: 0
+      isOverMin: 0
+    speed: 1
+    damage: 1
+    damageMultiple: 1
+    attackRange: 1
+    attackTimer:
+      _min: 0
+      _max: 1
+      _current: 0
+      _isMin: 1
+      _isMax: 0
+      isOverMax: 0
+      isOverMin: 0
+  onDieEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  isStun: 0
+  speedMultiple: 1
+  moreDamageMultiple: 1
+  level: 1
+  skillType: 2
+  onLevelUpEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  dustRadius: 5
+  dustDuration: 3
+  moveSpeedDown: 0.2
+  dustMoreDamageMultiple: 0
+  stunDuration: 1
+  stunProbability: 0
+--- !u!114 &8869894297349710926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4772384782381626105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a2faa2259480864a9ab6adad4f651b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 1003
+  skillName: "\uD759\uBA3C\uC9C0 \uBC14\uB78C"
+  icon: {fileID: 0}
+  rating: 0
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  dustGalePrefab: {fileID: 791827989357684879, guid: f619c085aa3e5584fb4efb65a32e641a, type: 3}

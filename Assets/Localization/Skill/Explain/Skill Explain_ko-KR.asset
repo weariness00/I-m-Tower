@@ -41,6 +41,12 @@ MonoBehaviour:
       \uBD88\uC744 \uC810\uD654\uD6C4 \uBC1C\uC0AC"
     m_Metadata:
       m_Items: []
+  - m_Id: 763735952875520
+    m_Localized: "\uC9C0\uBA74\uC758 \uD759\uBA3C\uC9C0\uB97C \uD718\uBAB0\uC544
+      \uAC15\uD55C \uB3CC\uD48D\uC744 \uB9CC\uB4E4\uC5B4 \uC801\uC758 \uC2DC\uC57C\uB97C
+      \uAC00\uB9AC\uACE0 \uC774\uB3D9\uC744 \uBC29\uD574\uD569\uB2C8\uB2E4."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

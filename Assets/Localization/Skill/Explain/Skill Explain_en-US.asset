@@ -39,6 +39,11 @@ MonoBehaviour:
     m_Localized: Creates fire using friction and minor mana, then fires it as a projectile.
     m_Metadata:
       m_Items: []
+  - m_Id: 763735952875520
+    m_Localized: Whips up loose dust and soil into a blinding gust that slows and
+      disorients enemies.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

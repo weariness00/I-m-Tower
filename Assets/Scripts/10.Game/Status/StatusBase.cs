@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using Util;
@@ -10,11 +11,15 @@ namespace Game.Status
         [InspectorName("기본 Data")] public StatusData value = new();
 
         public UnityEvent onDieEvent = new ();
+        private int stunRefCount = 0; // 현재 스턴중인 횟수
+        public bool isStun;
             
         public MinMaxValue<int> Hp => value.hp;
-        public float Speed => value.speed;
+        [HideInInspector] public float speedMultiple = 1f;
+        public float Speed => value.speed * speedMultiple;
 
         public virtual int Damage => (int)value.damage;
+        public float moreDamageMultiple = 1f;
         public float DamageMultiple
         {
             get => value.damageMultiple;
@@ -33,12 +38,24 @@ namespace Game.Status
 
         public virtual void Damaged(int atk)
         {
-            Hp.Current -= atk;
+            Hp.Current -= Mathf.FloorToInt(atk * moreDamageMultiple);
 
             if (Hp.IsMin)
             {
                 onDieEvent.Invoke();
             }
+        }
+
+        // 스턴은 누적되지 않는다.
+        public void Stun(float duration) => StartCoroutine(StunCoroutine(duration));
+        private IEnumerator StunCoroutine(float duration)
+        {
+            ++stunRefCount;
+            isStun = true;
+            yield return new WaitForSeconds(duration);
+            --stunRefCount;
+            if (stunRefCount <= 0)
+                isStun = false;
         }
     }
 }

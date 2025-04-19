@@ -4943,6 +4943,9 @@ MonoBehaviour:
   onDieEvent:
     m_PersistentCalls:
       m_Calls: []
+  isStun: 0
+  speedMultiple: 1
+  moreDamageMultiple: 1
   level: 0
   experience:
     _min: 0
