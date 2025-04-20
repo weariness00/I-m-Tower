@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections;
+using System.Threading;
+using Manager;
 using UnityEngine;
 using UnityEngine.Events;
 using Util;
@@ -11,6 +13,7 @@ namespace Game.Status
         [InspectorName("기본 Data")] public StatusData value = new();
 
         public UnityEvent onDieEvent = new ();
+        public CancellationTokenSource dieCancelToken = new CancellationTokenSource();
         private int stunRefCount = 0; // 현재 스턴중인 횟수
         public bool isStun;
             
@@ -38,11 +41,17 @@ namespace Game.Status
 
         public virtual void Damaged(int atk)
         {
-            Hp.Current -= Mathf.FloorToInt(atk * moreDamageMultiple);
+            var realDamage =  Mathf.FloorToInt(atk * moreDamageMultiple);
+            Hp.Current -= realDamage;
+            
+            DebugManager.Log($"{name}이 {realDamage}만큼 피해를 입었습니다.");
 
             if (Hp.IsMin)
             {
                 onDieEvent.Invoke();
+                dieCancelToken.Cancel();
+                dieCancelToken.Dispose();
+                dieCancelToken = new();
             }
         }
 

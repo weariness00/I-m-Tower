@@ -2,10 +2,11 @@
 using Game.Status;
 using UnityEngine;
 using UnityEngine.Pool;
+using Util;
 
 namespace ProjectTile
 {
-    public class ProjectileBase : MonoBehaviour
+    public class ProjectileBase : MonoBehaviour, IPoolOnOff
     {
         [HideInInspector] public GameObject ownerObject;
         [HideInInspector] public StatusBase ownerStatus;
@@ -41,6 +42,15 @@ namespace ProjectTile
                 otherStatus.Damaged(ownerStatus.Damage);
                 pool.Release(this);
             }
+        }
+
+        public virtual void PoolOn()
+        {
+            
+        }
+
+        public virtual void PoolOff()
+        {
         }
     }
 }

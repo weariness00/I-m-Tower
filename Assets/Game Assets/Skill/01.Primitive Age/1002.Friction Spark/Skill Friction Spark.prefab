@@ -69,6 +69,9 @@ MonoBehaviour:
   onDieEvent:
     m_PersistentCalls:
       m_Calls: []
+  isStun: 0
+  speedMultiple: 1
+  moreDamageMultiple: 1
   level: 1
   skillType: 0
   onLevelUpEvent:
@@ -78,7 +81,7 @@ MonoBehaviour:
   burnDamageMultiple: 1
   burnTickInterval: 0.5
   burnChange: 0.3
-  burnDuration: 1
+  burnDuration: 3
 --- !u!114 &8982193267050493924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,3 +102,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   sparkProjectilePrefab: {fileID: 2130342723573831170, guid: 13afee3396c021f42864d6a0f69a11e8, type: 3}
+  burnEffectPrefab: {fileID: 198714429152696258, guid: fcf74f95928177e4cafdb18c5a23c7a0, type: 3}

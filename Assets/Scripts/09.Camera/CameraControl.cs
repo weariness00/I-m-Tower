@@ -1,9 +1,8 @@
-﻿using System;
-using System.Threading;
-using DG.Tweening;
+﻿using DG.Tweening;
 using Manager;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using InputManager = Manager.InputManager;
 
 namespace CameraBase
 {

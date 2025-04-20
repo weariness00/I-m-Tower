@@ -16,7 +16,7 @@ namespace Util
         }
         private static T _instance = null;
         public static bool IsDontDestroy = true;
-        public static bool HasInstance => !ReferenceEquals(_instance, null);
+        public static bool HasInstance => _instance != null;
         public static void Make() => Init();
 
         public virtual void Awake()

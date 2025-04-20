@@ -1,7 +1,8 @@
 ﻿using System;
 using ProjectTile;
-using Unit.Monster;
 using UnityEngine;
+using UnityEngine.Pool;
+using UnityEngine.VFX;
 using Util;
 
 namespace Skill
@@ -14,6 +15,9 @@ namespace Skill
         [NonSerialized] public new SkillFrictionSparkStatus status;
         public SparkProjectile sparkProjectilePrefab;
 
+        public ObjectPool<ParticleSystem> burnEffectPool;
+        public ParticleSystem burnEffectPrefab;
+
         public override void Awake()
         {
             base.Awake();
@@ -22,21 +26,49 @@ namespace Skill
                 () =>
                 {
                     var spark = Instantiate(sparkProjectilePrefab);
-                    spark.ownerObject = gameObject;
+                    spark.ownerObject = this;
                     spark.ownerStatus = status;
                     spark.pool = projectilePool;
                     spark.Move = new NonTargetMove(spark);
 
                     return spark;
                 },
-                spark =>
+                projectile =>
                 {
-                    spark.gameObject.SetActive(true);
-                    spark.transform.position = transform.position;
-                    spark.transform.rotation = transform.rotation;
+                    projectile.gameObject.SetActive(true);
+                    projectile.transform.position = transform.position;
+                    projectile.transform.rotation = transform.rotation;
+                    
+                    if(projectile is IPoolOnOff poolOnOff)
+                        poolOnOff.PoolOn();
                 },
-                spark => spark.gameObject.SetActive(false),
+                projectile =>
+                {
+                    projectile.gameObject.SetActive(false);
+                    
+                    if(projectile is IPoolOnOff poolOnOff)
+                        poolOnOff.PoolOff();
+                },
                 spark => Destroy(spark.gameObject));
+
+            burnEffectPool = new(
+                () =>
+                {
+                    var burnEffect = Instantiate(burnEffectPrefab);
+                    return burnEffect;
+                },
+                burnEffect =>
+                {
+                    burnEffect.gameObject.SetActive(true);
+                    burnEffect.Play();
+                },
+                burnEffect =>
+                {
+                    burnEffect.gameObject.SetActive(false);
+                    burnEffect.transform.SetParent(transform);
+                    burnEffect.Stop();
+                },
+                burnEffect => Destroy(burnEffect.gameObject));
         }
 
         public void Update()

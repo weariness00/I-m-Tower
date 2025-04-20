@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+
 namespace Skill
 {
     public class SkillFrictionSparkStatus : SkillStatus

@@ -24,8 +24,8 @@ namespace Looting
                     () =>
                     {
                         var item = Instantiate(itemPrefab, lootingTransform.position, lootingTransform.rotation);
-                        if(item.TryGetComponent(out ILootingItem lootingItem))
-                            lootingItem.ID = itemPrefab.GetInstanceID();
+                        if (item.TryGetComponent(out ILootingItem lootingItem))
+                            lootingItem.ID = id;
 
                         return item;
                     },
