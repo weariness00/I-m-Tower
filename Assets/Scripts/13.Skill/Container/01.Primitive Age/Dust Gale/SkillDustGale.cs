@@ -41,6 +41,7 @@ namespace Skill
                 var monster = FindAnyObjectByType<MonsterControl>();
                 if (monster != null)
                 {
+                    status.AttackTimer.SetMin();
                     var dustGale = dustGalePool.Get();
                     dustGale.transform.position = monster.transform.position;
                     
