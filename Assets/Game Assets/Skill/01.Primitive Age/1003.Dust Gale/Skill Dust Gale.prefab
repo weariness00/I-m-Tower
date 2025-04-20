@@ -57,10 +57,10 @@ MonoBehaviour:
     speed: 1
     damage: 1
     damageMultiple: 1
-    attackRange: 1
+    attackRange: 100
     attackTimer:
       _min: 0
-      _max: 1
+      _max: 6
       _current: 0
       _isMin: 1
       _isMax: 0
@@ -78,7 +78,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   dustRadius: 5
-  dustDuration: 3
+  dustDuration: 5
   moveSpeedDown: 0.2
   dustMoreDamageMultiple: 0
   stunDuration: 1

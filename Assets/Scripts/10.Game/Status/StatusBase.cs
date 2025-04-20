@@ -59,12 +59,17 @@ namespace Game.Status
         public void Stun(float duration) => StartCoroutine(StunCoroutine(duration));
         private IEnumerator StunCoroutine(float duration)
         {
+            DebugManager.Log($"{name}이 스턴에 걸렸습니다.");
+            
             ++stunRefCount;
             isStun = true;
             yield return new WaitForSeconds(duration);
             --stunRefCount;
             if (stunRefCount <= 0)
+            {
                 isStun = false;
+                DebugManager.Log($"{name}이 스턴에서 해제되었습니다.");
+            }
         }
     }
 }

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
+using Cysharp.Threading.Tasks;
 using Manager;
 using Unit.Monster;
 using UnityEngine;
 using UnityEngine.Pool;
+using Util;
 
 namespace Skill
 {
@@ -28,8 +30,18 @@ namespace Skill
                     
                     return dustGale;
                 },
-                dustGale => dustGale.gameObject.SetActive(true),
-                dustGale => dustGale.gameObject.SetActive(false),
+                dustGale =>
+                {
+                    dustGale.gameObject.SetActive(true);
+                    if(dustGale is IPoolOnOff poolOnOff)
+                        poolOnOff.PoolOn();
+                },
+                dustGale =>
+                {
+                    dustGale.gameObject.SetActive(false);
+                    if(dustGale is IPoolOnOff poolOnOff)
+                        poolOnOff.PoolOff();
+                },
                 dustGale => Destroy(dustGale.gameObject));
         }
 
@@ -45,8 +57,7 @@ namespace Skill
                     var dustGale = dustGalePool.Get();
                     dustGale.transform.position = monster.transform.position;
                     
-                    DebugManager.ToDo("n초뒤 먼지 바람 제거를 임시 코루틴으로 사용중\nR3를 깔면 해당으로 바꾸기");
-                    StartCoroutine(Wait(dustGale, status.dustDuration));
+                    WaitTask(dustGale, status.dustDuration).Forget();
                 }
             }
         }
@@ -58,9 +69,9 @@ namespace Skill
         }
         
         // 임시
-        private IEnumerator Wait(DustGaleObject dustGale, float duration)
+        private async UniTaskVoid WaitTask(DustGaleObject dustGale, float duration)
         {
-            yield return new WaitForSeconds(duration);
+            await UniTask.WaitForSeconds(duration);
             dustGalePool.Release(dustGale);
         }
     }
