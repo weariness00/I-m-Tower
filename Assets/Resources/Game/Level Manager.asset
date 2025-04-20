@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75f5b9aa31e64d6dbda50729bccf073b, type: 3}
-  m_Name: Default Looting Data
+  m_Script: {fileID: 11500000, guid: 77139eff8fb04dc5a012bf3e65975c83, type: 3}
+  m_Name: Level Manager
   m_EditorClassIdentifier: 
-  id: 0
-  lootingDataArray:
-  - id:
-      id: 57100
-    probability: 1
-    prefab: {fileID: 4572881526136658381, guid: 368e8ed42b29299488229a7c8da7f079, type: 3}
+  levelSOArray: []
