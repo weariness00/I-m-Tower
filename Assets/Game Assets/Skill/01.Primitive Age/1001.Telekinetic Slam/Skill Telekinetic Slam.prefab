@@ -57,24 +57,36 @@ MonoBehaviour:
     speed: 20
     damage: 0
     damageMultiple: 1
+    criticalChange: 0.1
+    criticalMultiple: 2
     attackRange: 100
     attackTimer:
       _min: 0
-      _max: 1
+      _max: 5
       _current: 0
       _isMin: 1
       _isMax: 0
       isOverMax: 0
       isOverMin: 0
+    defense: 0
   onDieEvent:
     m_PersistentCalls:
       m_Calls: []
+  isStun: 0
+  speedMultiple: 1
+  moreDamageMultiple: 1
+  DefenseMultiple: 1
   level: 1
   skillType: 0
   onLevelUpEvent:
     m_PersistentCalls:
       m_Calls: []
   upDamageSize: 10
+  targetDefensePenetrationMultiple: 0
+  targetMoreDamageMultiple: 0
+  targetMoreDamageMultipleDuration: 0
+  targetHpPercent: 0
+  slamCriticalChange: 0
 --- !u!114 &1653000983646291803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,3 +107,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   debrisPrefab: {fileID: 6652333672847785722, guid: a820300185b06024fa9ff11fd36be198, type: 3}
+  hitEffectPrefab: {fileID: 2089605140711329207, guid: bb9e6c25528eec64b921ed16e556d1c0, type: 3}

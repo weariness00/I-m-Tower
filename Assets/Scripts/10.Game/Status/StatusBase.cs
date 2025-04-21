@@ -21,7 +21,7 @@ namespace Game.Status
         [HideInInspector] public float speedMultiple = 1f;
         public float Speed => value.speed * speedMultiple;
 
-        public virtual int Damage => (int)value.damage;
+        public virtual int Damage => Mathf.FloorToInt(value.damage * (value.criticalChange.IsProbability() ? 1f : value.criticalMultiple));
         public float moreDamageMultiple = 1f;
         public float DamageMultiple
         {
@@ -31,6 +31,10 @@ namespace Game.Status
         public float AttackRange => value.attackRange;
         public MinMaxValue<float> AttackTimer => value.attackTimer;
         public float AttackSpeed => 1f / value.attackTimer.Max; 
+        
+        public int Defense => Mathf.FloorToInt(value.defense * DefenseMultiple);
+        public float DefenseMultiple = 1f;
+        
         public virtual void OnDrawGizmos()
         {
             if (AttackRange > 0)
@@ -39,9 +43,9 @@ namespace Game.Status
             }
         }
 
-        public virtual void Damaged(int atk)
+        public virtual void Damaged(int atk, int defencePenetrationValue = 0)
         {
-            var realDamage =  Mathf.FloorToInt(atk * moreDamageMultiple);
+            var realDamage =  Mathf.FloorToInt(atk * moreDamageMultiple) - (Defense - defencePenetrationValue);
             Hp.Current -= realDamage;
             
             DebugManager.Log($"{name}이 {realDamage}만큼 피해를 입었습니다.");
