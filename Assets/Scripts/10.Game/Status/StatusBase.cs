@@ -13,6 +13,8 @@ namespace Game.Status
         [InspectorName("기본 Data")] public StatusData value = new();
 
         public UnityEvent onDieEvent = new ();
+        public Action<int> onDamagedEvent;
+        
         public CancellationTokenSource dieCancelToken = new CancellationTokenSource();
         private int stunRefCount = 0; // 현재 스턴중인 횟수
         public bool isStun;
@@ -47,6 +49,7 @@ namespace Game.Status
         {
             var realDamage =  Mathf.FloorToInt(atk * moreDamageMultiple) - (Defense - defencePenetrationValue);
             Hp.Current -= realDamage;
+            onDamagedEvent?.Invoke(realDamage);
             
             DebugManager.Log($"{name}이 {realDamage}만큼 피해를 입었습니다.");
 
