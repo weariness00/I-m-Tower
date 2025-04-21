@@ -9,5 +9,7 @@ namespace Tower
     {
         public TowerStatus status;
         [HideInInspector] public List<SkillBase> skillList = new();
+
+        public Action<SkillBase> onAddSkillEvent;
     }
 }

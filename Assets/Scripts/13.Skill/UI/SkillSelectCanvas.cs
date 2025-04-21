@@ -65,6 +65,7 @@ namespace Skill.UI
             {
                 skill = Instantiate(SkillPrefabSO.GetSkill(ui.skill.id), tower.transform);
                 tower.skillList.Add(skill);
+                tower.onAddSkillEvent?.Invoke(skill);
             }
             else
                 skill.status.LevelUp(1);

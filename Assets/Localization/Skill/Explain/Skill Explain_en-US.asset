@@ -32,7 +32,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 610579749548032
-    m_Localized: Draws in lingering mana from the air, empowering the user.
+    m_Localized: Absorbs residual mana from the air, converting it into usable energy
+      over time.
     m_Metadata:
       m_Items: []
   - m_Id: 700944290177024
