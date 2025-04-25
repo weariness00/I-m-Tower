@@ -37,6 +37,7 @@ namespace Util
     
     public partial class ObjectPoolSpawner<TGameObject> : ObjectSpawner<TGameObject> where TGameObject : Object
     {
+        private HashSet<TGameObject> aliveObjectSet = new();
         public override void Spawn()
         {
             NextObject();
@@ -46,12 +47,22 @@ namespace Util
             var obj = PoolInstantiate();
             var go = obj.GameObject();
 
+            aliveObjectSet.Add(obj);
+
             go.transform.position = currentPosition;
             go.transform.rotation = currentRotate;
             go.transform.SetParent(parentTransform);
             if (spawnPlaceType == SpawnPlaceType.Transform && isSameLayer) go.layer = spawnPlaceList[_spawnPlaceCount].gameObject.layer;
 
             onSpawnSuccessAction.Invoke(obj);
+        }
+
+        public virtual void Clear()
+        {
+            var copy = new HashSet<TGameObject>(aliveObjectSet);
+            foreach (var obj in copy)
+                Release(obj);
+            aliveObjectSet.Clear();
         }
     }
 
@@ -99,6 +110,7 @@ namespace Util
                 poolDictionary.TryGetValue(identifier.prefab, out var pool))
             {
                 pool.Release(obj);
+                aliveObjectSet.Remove(obj);
             }
             else
             {

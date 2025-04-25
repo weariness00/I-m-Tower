@@ -2236,12 +2236,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 468933857}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -40, y: 0, z: 40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1609307286}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &468933859
 MonoBehaviour:
@@ -2759,6 +2759,66 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: f46056aa6c238664bb6e0af30f681126, type: 3}
   m_PrefabInstance: {fileID: 500035276}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &509900871
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 509900873}
+  - component: {fileID: 509900872}
+  m_Layer: 0
+  m_Name: Leveling Control
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &509900872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509900871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb16ca8b50686c4c881b1c2a331da2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentStageLevel: 1
+  currentStageData:
+    age: 0
+    levelRange:
+      _min: 0
+      _max: 0
+    clearGold: 0
+    clearGoldMultiplePerStageLevel: 0
+    monsterHP: 0
+    monsterHPMultiplePerStageLevel: 0
+    monsterAttack: 0
+    monsterAttackMultiplePerStageLevel: 0
+    monsterDefense: 0
+    monsterDefenseMultiplePerStageLevel: 0
+    monsterEXP: 0
+    monsterEXPMultiplePerStageLevel: 0
+--- !u!4 &509900873
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509900871}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -40, y: 0, z: 40}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &515178424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3154,6 +3214,57 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5734590494499124481, guid: 469ac250658782b48bc5bca6b0cd09b9, type: 3}
   m_PrefabInstance: {fileID: 596802325}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &603033037
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 603033039}
+  - component: {fileID: 603033038}
+  m_Layer: 0
+  m_Name: Map
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &603033038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603033037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d27ef9f51c4214084159bfe2d0503c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapDataArray:
+  - age: 0
+    mapObject: {fileID: 1609307285}
+    monsterSpawnerArray:
+    - {fileID: 468933859}
+--- !u!4 &603033039
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603033037}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1609307286}
+  - {fileID: 1358934863}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &603837877
 GameObject:
   m_ObjectHideFlags: 0
@@ -7013,6 +7124,8 @@ MonoBehaviour:
     speed: 1
     damage: 1
     damageMultiple: 1
+    criticalChange: 0.1
+    criticalMultiple: 2
     attackRange: 1
     attackTimer:
       _min: 0
@@ -7022,12 +7135,14 @@ MonoBehaviour:
       _isMax: 0
       isOverMax: 1
       isOverMin: 0
+    defense: 0
   onDieEvent:
     m_PersistentCalls:
       m_Calls: []
   isStun: 0
   speedMultiple: 1
   moreDamageMultiple: 1
+  DefenseMultiple: 1
   level: 0
   experience:
     _min: 0
@@ -7257,6 +7372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tower: {fileID: 1232073197}
+  levelingControl: {fileID: 509900872}
 --- !u!4 &1283534614
 Transform:
   m_ObjectHideFlags: 0
@@ -7874,7 +7990,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1358934862}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7884,7 +8000,7 @@ Transform:
   - {fileID: 384090757}
   - {fileID: 124635383}
   - {fileID: 1447623182}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 603033039}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &1361063671 stripped
 Transform:
@@ -9553,7 +9669,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1609307285}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9561,8 +9677,9 @@ Transform:
   - {fileID: 2036049933}
   - {fileID: 648233959}
   - {fileID: 60810493}
+  - {fileID: 468933858}
   - {fileID: 1569801239}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 603033039}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1609307287
 MonoBehaviour:
@@ -12960,10 +13077,9 @@ SceneRoots:
   - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}
-  - {fileID: 1232073198}
-  - {fileID: 468933858}
-  - {fileID: 1283534614}
-  - {fileID: 815190931}
   - {fileID: 1343650588}
-  - {fileID: 1609307286}
-  - {fileID: 1358934863}
+  - {fileID: 815190931}
+  - {fileID: 1232073198}
+  - {fileID: 603033039}
+  - {fileID: 509900873}
+  - {fileID: 1283534614}

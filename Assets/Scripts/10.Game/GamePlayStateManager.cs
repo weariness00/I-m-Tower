@@ -7,7 +7,8 @@ namespace Game
     {
         // 시간 단위로 리셋되는 통계값
         private float elapsedTime = 0f;
-
+        
+        // 초당 통계값
         private float damageThisSecond = 0;
         private int killsThisSecond = 0;
         private float expThisSecond = 0;

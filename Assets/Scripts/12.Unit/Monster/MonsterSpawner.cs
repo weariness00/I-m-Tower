@@ -1,11 +1,13 @@
-﻿using Game;
-using UnityEngine;
+﻿using System;
+using Game;
 using Util;
 
 namespace Unit.Monster
 {
     public class MonsterSpawner : ObjectPoolSpawner<MonsterControl>
     {
+        public Action<MonsterControl> onReleaseSuccess;
+        
         public override MonsterControl OnCreateObject()
         {
             var monster = base.OnCreateObject();
@@ -31,6 +33,8 @@ namespace Unit.Monster
         {
             monster.collider.enabled = false;
             monster.gameObject.SetActive(false);
+            
+            onReleaseSuccess?.Invoke(monster);
         }
 
         public override void OnDestroyObject(MonsterControl monster)

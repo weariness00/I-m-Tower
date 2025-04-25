@@ -21,10 +21,10 @@ namespace Leveling
                 {
                     // 설정 창에 표시할 UI
                     EditorGUILayout.LabelField("Leveling", EditorStyles.boldLabel);
-                    var setting = SettingProviderHelper.setting = (LevelingManagerSO)EditorGUILayout.ObjectField(
+                    var setting = SettingProviderHelper.setting = (LevelingDataSO)EditorGUILayout.ObjectField(
                         $"Leveling Data",
                         SettingProviderHelper.setting,
-                        typeof(LevelingManagerSO),
+                        typeof(LevelingDataSO),
                         false
                     );
 
@@ -43,8 +43,9 @@ namespace Leveling
 
             return provider;
         }
-        
-           
+    }
+
+
     [Serializable]
     public struct SettingJson
     {
@@ -53,10 +54,10 @@ namespace Leveling
 
     public static class SettingProviderHelper
     {
-        public static LevelingManagerSO setting;
+        public static LevelingDataSO setting;
 
         private static readonly string JsonDirectory = "Assets/Resources/Data/Json";
-        private static readonly string SettingKey = nameof(LevelingManagerSO);
+        private static readonly string SettingKey = nameof(LevelingDataSO);
 
 #if UNITY_EDITOR
         static SettingProviderHelper()
@@ -88,11 +89,11 @@ namespace Leveling
             if (DataPrefs.HasKey(SettingKey))
             {
                 string settingPath = DataPrefs.GetString(SettingKey, string.Empty);
-                setting = AssetDatabase.LoadAssetAtPath<LevelingManagerSO>(settingPath);
-                Debug.Assert(setting != null, $"해당 경로에 {nameof(LevelingManagerSO)} 데이터가 존재하지 않습니다.");
+                setting = AssetDatabase.LoadAssetAtPath<LevelingDataSO>(settingPath);
+                Debug.Assert(setting != null, $"해당 경로에 {nameof(LevelingDataSO)} 데이터가 존재하지 않습니다.");
             }
         }
-        
+
 #else
         static SettingProviderHelper()
         {
@@ -101,14 +102,8 @@ namespace Leveling
 
         public static void Load()
         {
-            var settingTextFile = Resources.Load<TextAsset>(JsonDirectory.Replace("Assets/","").Replace("Resources/", "").Replace(".json",""));
-            if (settingTextFile != null)
-            {
-                string json = settingTextFile.text;
-                var data = JsonUtility.FromJson<SettingJson>(json);
-                var path = GetDataPath(data.SettingPath);
-                setting = Resources.Load<LevelingSO>(path);
-            }
+                string settingPath = DataPrefs.GetString(SettingKey, string.Empty);
+                setting = AssetDatabase.LoadAssetAtPath<LevelingDataSO>(GetDataPath(settingPath));
         }
 #endif
         public static string GetDataPath(string path)
@@ -118,6 +113,5 @@ namespace Leveling
             path = path.Replace(".asset", "");
             return path;
         }
-    }
     }
 }
