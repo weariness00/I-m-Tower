@@ -3,6 +3,7 @@ using Looting;
 using Unity.Behavior;
 using UnityEngine;
 using UnityEngine.AI;
+using Util.AStar;
 
 namespace Unit.Monster
 {
@@ -10,6 +11,7 @@ namespace Unit.Monster
     {
         [HideInInspector] public BehaviorGraphAgent behaviorGraphAgent;
         [HideInInspector] public NavMeshAgent navMeshAgent;
+        [HideInInspector] public AStarAgent aStarAgent;
         [NonSerialized] public new MonsterStatus status;
 
         public override void Awake()
@@ -17,9 +19,15 @@ namespace Unit.Monster
             base.Awake();
             behaviorGraphAgent = GetComponent<BehaviorGraphAgent>();
             navMeshAgent = GetComponent<NavMeshAgent>();
+            aStarAgent = GetComponent<AStarAgent>();
             status = base.status as MonsterStatus;
             
             status.onDieEvent.AddListener(OnLooting);
+        }
+
+        public void Update()
+        {
+            aStarAgent.Move(status.Speed * Time.deltaTime);
         }
 
         public override void InitStatus()

@@ -19,7 +19,7 @@ namespace Game
 
         public void ChangeMap(AgeType age)
         {
-            CurrentMapData.mapObject.SetActive(false);
+            if(CurrentMapData != null) CurrentMapData.mapObject.SetActive(false);
             CurrentMapData = mapDataArray.FirstOrDefault(map => map.age == age);
             CurrentMapData.mapObject.SetActive(true);
         }

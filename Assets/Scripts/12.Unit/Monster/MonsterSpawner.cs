@@ -26,7 +26,8 @@ namespace Unit.Monster
             monster.InitStatus();
             monster.collider.enabled = true;
             monster.gameObject.SetActive(true);
-            monster.navMeshAgent.SetDestination(GameManager.Instance.tower.transform.position);
+            monster.aStarAgent.Find(monster.transform.position, GameManager.Instance.tower.transform.position);
+            // monster.navMeshAgent.SetDestination(GameManager.Instance.tower.transform.position);
         }
 
         public override void OnReleaseObject(MonsterControl monster)

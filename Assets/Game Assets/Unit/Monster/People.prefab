@@ -9091,6 +9091,7 @@ GameObject:
   - component: {fileID: 2947382125700063199}
   - component: {fileID: 7071605951880696801}
   - component: {fileID: -6558584480025981462}
+  - component: {fileID: 2496397108959162671}
   m_Layer: 7
   m_Name: People
   m_TagString: Monster
@@ -9204,7 +9205,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3910857712047626281}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
@@ -9283,6 +9284,7 @@ MonoBehaviour:
   id: 0
   behaviorGraphAgent: {fileID: 0}
   navMeshAgent: {fileID: 0}
+  aStarAgent: {fileID: 0}
 --- !u!114 &7071605951880696801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9307,6 +9309,8 @@ MonoBehaviour:
     speed: 1
     damage: 1
     damageMultiple: 1
+    criticalChange: 0.1
+    criticalMultiple: 2
     attackRange: 1
     attackTimer:
       _min: 0
@@ -9316,9 +9320,14 @@ MonoBehaviour:
       _isMax: 0
       isOverMax: 1
       isOverMin: 0
+    defense: 0
   onDieEvent:
     m_PersistentCalls:
       m_Calls: []
+  isStun: 0
+  speedMultiple: 1
+  moreDamageMultiple: 1
+  DefenseMultiple: 1
 --- !u!114 &-6558584480025981462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9374,6 +9383,20 @@ MonoBehaviour:
           m_Value1: 2977400902220612708
         Name: Animator
         m_Value: {fileID: 1552927188359789252}
+--- !u!114 &2496397108959162671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3910857712047626281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb59322893248d6429b234647964e66b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  findingDirection:
+    directions: 0001000101000100
 --- !u!1 &3973613103567678037
 GameObject:
   m_ObjectHideFlags: 0
