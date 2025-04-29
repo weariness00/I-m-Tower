@@ -2,6 +2,7 @@
 
 namespace Util.AStar
 {
+    
     public struct Node
     {
         public int2 position;

@@ -25,6 +25,7 @@ namespace Game
         {
             tower.status.AddEXP(tower.status.experience.Max);
             
+            ageMap.ChangeMap(AgeType.Primitive);
             levelingControl.StageStart();
         }
     }

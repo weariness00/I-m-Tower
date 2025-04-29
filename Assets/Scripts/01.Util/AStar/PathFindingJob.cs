@@ -9,8 +9,7 @@ namespace Util.AStar
     [BurstCompile]
     public struct PathFindingJob : IJob
     {
-        public int gridSizeX;
-        public int gridSizeZ;
+        public int3 gridSize;
         public float nodeSize;
         public float3 gridOffset;
 
@@ -48,9 +47,7 @@ namespace Util.AStar
                 if (current.Equals(endPos))
                 {
                     RetracePath(startPos, endPos);
-                    openSet.Dispose();
-                    closedSet.Dispose();
-                    return;
+                    break;
                 }
 
                 openSet.RemoveAtSwapBack(openSet.IndexOf(current));
@@ -101,14 +98,14 @@ namespace Util.AStar
 
         bool IsWalkable(int2 pos)
         {
-            if (pos.x < 0 || pos.x >= gridSizeX || pos.y < 0 || pos.y >= gridSizeZ)
+            if (pos.x < 0 || pos.x >= gridSize.x || pos.y < 0 || pos.y >= gridSize.z)
                 return false;
             return nodes[GetIndex(pos.x, pos.y)].walkable;
         }
 
         int GetIndex(int x, int z)
         {
-            return x + gridSizeX * z;
+            return x + gridSize.x * z;
         }
 
         NativeList<int2> GetNeighbors(int2 pos)
@@ -117,13 +114,15 @@ namespace Util.AStar
 
             int2[] dirs = new int2[]
             {
-                new int2(0, 1), new int2(0, -1), new int2(-1, 0), new int2(1, 0),
-                new int2(-1, 1), new int2(1, 1), new int2(-1, -1), new int2(1, -1)
+                new int2(-1, 1),   new int2(0, 1),   new int2(1, 1),
+                new int2(-1, 0),                         new int2(1, 0),
+                new int2(-1, -1),  new int2(0, -1),  new int2(1, -1)
             };
 
-            foreach (var dir in dirs)
+            for (int i = 0; i < dirs.Length; i++)
             {
-                int2 neighborPos = pos + dir;
+                if (!allowedDirection[i]) continue;
+                int2 neighborPos = pos + dirs[i];
                 if (IsWalkable(neighborPos))
                     neighbors.Add(neighborPos);
             }

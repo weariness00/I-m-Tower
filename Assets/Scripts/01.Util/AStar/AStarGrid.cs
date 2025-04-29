@@ -1,4 +1,5 @@
-﻿using Unity.Collections;
+﻿using System;
+using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -6,34 +7,46 @@ namespace Util.AStar
 {
     public class AStarGrid : MonoBehaviour
     {
-        public int gridSizeX = 20;
-        public int gridSizeZ = 20;
+        public Vector3 center = Vector3.zero;
+        public Vector3 size = Vector3.one;
         public float nodeSize = 1.5f;
-        public Vector3 gridOffset = Vector3.zero;
-        public LayerMask obstacleMask;
+        public LayerMask obstacleMask = int.MaxValue;
 
-        public NativeArray<Node> gridNodeArray;
+        [ReadOnly, SerializeField] private Node[] gridNodeArray;
+        [NonSerialized] public NativeArray<Node> gridNodeNativeArray;
+        [NonSerialized] public int3 gridSize;
 
         private void Awake()
         {
-            CreateGrid();
+            gridNodeNativeArray = gridNodeArray.ToNativeArray(Allocator.Persistent);
+            AStarGridManager.Subscribe(this);
         }
 
         private void OnDestroy()
         {
-            if (gridNodeArray.IsCreated)
-                gridNodeArray.Dispose();
+            AStarGridManager.Unsubscribe(this);
+            if (gridNodeNativeArray.IsCreated)
+                gridNodeNativeArray.Dispose();
         }
 
-        void CreateGrid()
+        public void CalculateGridSize()
         {
-            gridNodeArray = new NativeArray<Node>(gridSizeX * gridSizeZ, Allocator.Persistent);
-            for (int x = 0; x < gridSizeX; x++)
+            gridSize = new int3(
+                Mathf.CeilToInt(size.x / nodeSize),
+                0,
+                Mathf.CeilToInt(size.z / nodeSize)
+            );
+        }
+
+        public void CreateGrid()
+        {
+            gridNodeArray = new Node[gridSize.x * gridSize.z];
+            for (int x = 0; x < gridSize.x; x++)
             {
-                for (int z = 0; z < gridSizeZ; z++)
+                for (int z = 0; z < gridSize.z; z++)
                 {
-                    Vector3 worldPos = GridToWorld(x, z) + new Vector3(nodeSize, 0, nodeSize) * 0.5f;
-                    bool walkable = !Physics.CheckSphere(worldPos, nodeSize * 0.4f, obstacleMask);
+                    Vector3 worldPos = GridToWorld(x, z);
+                    bool walkable = !Physics.CheckSphere(worldPos, nodeSize * 0.5f, obstacleMask);
                     Node node = new Node
                     {
                         position = new int2(x, z),
@@ -49,22 +62,31 @@ namespace Util.AStar
 
         public int GetIndex(int x, int z)
         {
-            return x + gridSizeX * z;
+            return x + gridSize.x * z;
         }
+
+        public Vector3 GridToWorld(int2 gridPos) => GridToWorld(gridPos.x, gridPos.y);
 
         public Vector3 GridToWorld(int x, int z)
         {
-            return new Vector3(x * nodeSize, 0, z * nodeSize) + gridOffset;
+            Vector3 start = center - size * 0.5f;
+            return new Vector3(x * nodeSize, 0, z * nodeSize) + start;
         }
 
-        public bool IsPointInGrid(Vector2 point)
+        
+        public int2 WorldToGrid(Vector3 worldPos)
         {
-            Vector3 point3 = new Vector3(point.x, 0, point.y);
-            Vector3 localPos = point3 - gridOffset;
-            int x = Mathf.FloorToInt(localPos.x / nodeSize);
-            int z = Mathf.FloorToInt(localPos.z / nodeSize);
-            return x >= 0 && x < gridSizeX && z >= 0 && z < gridSizeZ;
+            Vector3 start = center - size * 0.5f;
+            Vector3 localPos = worldPos - start - new Vector3(nodeSize * 0.5f, 0, nodeSize * 0.5f);
+            int x = Mathf.RoundToInt(localPos.x / nodeSize);
+            int z = Mathf.RoundToInt(localPos.z / nodeSize);
+            return new int2(x, z);
+        }
+
+        public bool IsPointInGrid(Vector3 point)
+        {
+            int2 gridPos = WorldToGrid(point);
+            return gridPos.x >= 0 && gridPos.x < gridSize.x && gridPos.y >= 0 && gridPos.y < gridSize.z;
         }
     }
-}
-
+} 

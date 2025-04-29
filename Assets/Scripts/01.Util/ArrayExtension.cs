@@ -1,4 +1,5 @@
 ﻿using System;
+using Unity.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -48,6 +49,16 @@ namespace Util
             }
 
             return nearT;
+        }
+        
+        public static NativeArray<T> ToNativeArray<T>(this T[] array, Allocator allocator) where T : struct
+        {
+            var nativeArray = new NativeArray<T>(array.Length, allocator, NativeArrayOptions.UninitializedMemory);
+            for (var i = 0; i < array.Length; i++)
+            {
+                nativeArray[i] = array[i];
+            }
+            return nativeArray;
         }
     }
 }

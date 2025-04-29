@@ -2255,7 +2255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c629c51e80244cdd82620e4c038eefc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStartSpawn: 1
+  isStartSpawn: 0
   isEnableSpawn: 1
   isLoop: 1
   isPause: 0
@@ -7371,8 +7371,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2df2f93f7db549f69967f7e14c61e962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentAge: 0
   tower: {fileID: 1232073197}
   levelingControl: {fileID: 509900872}
+  ageMap: {fileID: 603033038}
 --- !u!4 &1283534614
 Transform:
   m_ObjectHideFlags: 0
@@ -9654,6 +9656,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1609307286}
   - component: {fileID: 1609307287}
+  - component: {fileID: 1609307288}
   m_Layer: 0
   m_Name: Primitive Age Map
   m_TagString: Untagged
@@ -9688,7 +9691,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1609307285}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
   m_Name: 
@@ -9713,6 +9716,24 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 139775900e641f84798496a0c8c2e7ae, type: 2}
   m_BuildHeightMesh: 0
+--- !u!114 &1609307288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609307285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15ea75607db044c48f29189f5cd72582, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {x: 0, y: 0, z: 0}
+  size: {x: 90, y: 0, z: 90}
+  nodeSize: 1
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1001 &1611134482
 PrefabInstance:
   m_ObjectHideFlags: 0
