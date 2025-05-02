@@ -25,11 +25,15 @@ namespace Util.AStar
         {
             NativeList<int2> openSet = new NativeList<int2>(Allocator.Temp);
             NativeHashSet<int2> closedSet = new NativeHashSet<int2>(0, Allocator.Temp);
-
+            NativeArray<Node> copyNodes = new NativeArray<Node>(nodes.Length, Allocator.Temp);
+            nodes.CopyTo(copyNodes);
+            
+            resultPath.Add(startPos);
+            
             int startIndex = GetIndex(startPos.x, startPos.y);
-            Node startNode = nodes[startIndex];
+            Node startNode = copyNodes[startIndex];
             startNode.gCost = 0;
-            nodes[startIndex] = startNode;
+            copyNodes[startIndex] = startNode;
 
             openSet.Add(startPos);
 
@@ -38,7 +42,7 @@ namespace Util.AStar
                 int2 current = openSet[0];
                 for (int i = 1; i < openSet.Length; i++)
                 {
-                    if (nodes[GetIndex(openSet[i].x, openSet[i].y)].FCost < nodes[GetIndex(current.x, current.y)].FCost)
+                    if (copyNodes[GetIndex(openSet[i].x, openSet[i].y)].FCost < copyNodes[GetIndex(current.x, current.y)].FCost)
                     {
                         current = openSet[i];
                     }
@@ -46,7 +50,8 @@ namespace Util.AStar
 
                 if (current.Equals(endPos))
                 {
-                    RetracePath(startPos, endPos);
+                    resultPath.RemoveAt(0);
+                    RetracePath(startPos, endPos, copyNodes);
                     break;
                 }
 
@@ -58,26 +63,26 @@ namespace Util.AStar
                     if (!IsWalkable(neighbor) || closedSet.Contains(neighbor))
                         continue;
 
-                    float tentativeGCost = nodes[GetIndex(current.x, current.y)].gCost + math.distance(current, neighbor);
-                    if (tentativeGCost < nodes[GetIndex(neighbor.x, neighbor.y)].gCost)
+                    float tentativeGCost = copyNodes[GetIndex(current.x, current.y)].gCost + math.distance(current, neighbor);
+                    if (tentativeGCost < copyNodes[GetIndex(neighbor.x, neighbor.y)].gCost)
                     {
-                        Node neighborNode = nodes[GetIndex(neighbor.x, neighbor.y)];
+                        Node neighborNode = copyNodes[GetIndex(neighbor.x, neighbor.y)];
                         neighborNode.gCost = tentativeGCost;
                         neighborNode.hCost = math.distance(neighbor, endPos);
                         neighborNode.parent = current;
-                        nodes[GetIndex(neighbor.x, neighbor.y)] = neighborNode;
+                        copyNodes[GetIndex(neighbor.x, neighbor.y)] = neighborNode;
 
                         if (!openSet.Contains(neighbor))
                             openSet.Add(neighbor);
                     }
                 }
             }
-
+            
             openSet.Dispose();
             closedSet.Dispose();
         }
 
-        void RetracePath(int2 start, int2 end)
+        void RetracePath(int2 start, int2 end, NativeArray<Node> copyNodes)
         {
             NativeList<int2> path = new NativeList<int2>(Allocator.Temp);
             int2 current = end;
@@ -85,7 +90,7 @@ namespace Util.AStar
             while (!current.Equals(start))
             {
                 path.Add(current);
-                current = nodes[GetIndex(current.x, current.y)].parent;
+                current = copyNodes[GetIndex(current.x, current.y)].parent;
             }
 
             for (int i = path.Length - 1; i >= 0; i--)
@@ -124,7 +129,9 @@ namespace Util.AStar
                 if (!allowedDirection[i]) continue;
                 int2 neighborPos = pos + dirs[i];
                 if (IsWalkable(neighborPos))
+                {
                     neighbors.Add(neighborPos);
+                }
             }
 
             return neighbors;

@@ -1,8 +1,9 @@
-﻿using Unity.Mathematics;
+﻿using System;
+using Unity.Mathematics;
 
 namespace Util.AStar
 {
-    
+    [Serializable]
     public struct Node
     {
         public int2 position;

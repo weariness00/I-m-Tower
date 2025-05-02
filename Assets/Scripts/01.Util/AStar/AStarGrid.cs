@@ -12,13 +12,16 @@ namespace Util.AStar
         public float nodeSize = 1.5f;
         public LayerMask obstacleMask = int.MaxValue;
 
-        [ReadOnly, SerializeField] private Node[] gridNodeArray;
+        [InspectorReadOnly] public int3 gridSize;
+        [InspectorReadOnly] public Node[] gridNodeArray;
         [NonSerialized] public NativeArray<Node> gridNodeNativeArray;
-        [NonSerialized] public int3 gridSize;
 
         private void Awake()
         {
             gridNodeNativeArray = gridNodeArray.ToNativeArray(Allocator.Persistent);
+#if !UNITY_EDITOR
+            gridNodeArray = null;       
+#endif
             AStarGridManager.Subscribe(this);
         }
 
@@ -77,7 +80,7 @@ namespace Util.AStar
         public int2 WorldToGrid(Vector3 worldPos)
         {
             Vector3 start = center - size * 0.5f;
-            Vector3 localPos = worldPos - start - new Vector3(nodeSize * 0.5f, 0, nodeSize * 0.5f);
+            Vector3 localPos = worldPos - start;
             int x = Mathf.RoundToInt(localPos.x / nodeSize);
             int z = Mathf.RoundToInt(localPos.z / nodeSize);
             return new int2(x, z);

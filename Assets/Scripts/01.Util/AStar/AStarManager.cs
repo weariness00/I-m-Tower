@@ -2,6 +2,7 @@
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 
 namespace Util.AStar
@@ -16,7 +17,7 @@ namespace Util.AStar
             var endNode = grid.WorldToGrid(targetWorld);
 
             NativeList<int2> pathResult = new NativeList<int2>(Allocator.Persistent);
-
+            
             PathFindingJob job = new PathFindingJob
             {
                 gridSize = grid.gridSize,
@@ -30,17 +31,9 @@ namespace Util.AStar
             };
 
             JobHandle handle = job.Schedule();
-
-            StartCoroutine(CompleteJob(handle, pathResult, callback));
-        }
-
-        private System.Collections.IEnumerator CompleteJob(JobHandle handle, NativeList<int2> resultPath, System.Action<NativeList<int2>> callback)
-        {
-            yield return new WaitUntil(() => handle.IsCompleted);
             handle.Complete();
-
-            callback?.Invoke(resultPath);
-            resultPath.Dispose();
+            callback?.Invoke(pathResult);
+            pathResult.Dispose();
         }
     }
 }

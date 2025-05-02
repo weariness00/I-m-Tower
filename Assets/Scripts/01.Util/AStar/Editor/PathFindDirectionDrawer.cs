@@ -8,7 +8,7 @@ namespace Util.AStar.Editor
     {
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            return EditorGUIUtility.singleLineHeight * 4f;
+            return EditorGUIUtility.singleLineHeight * 4f + 3f;
         }
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)

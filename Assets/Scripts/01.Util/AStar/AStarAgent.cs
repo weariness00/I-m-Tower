@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
@@ -10,6 +11,8 @@ namespace Util.AStar
         public PathFindDirection findingDirection;
         public List<int2> path;
         private int2 currentPoint;
+
+        [Space] public bool isStop;
 
 #if UNITY_EDITOR
         [InspectorReadOnly][SerializeField] private Vector3 destination;
@@ -34,28 +37,33 @@ namespace Util.AStar
             if (newPath.Length > 0)
             {
                 currentPoint = path[0];
+                isStop = false;
             }
         }
 
         public void Move(float speed)
         {
-            var grid = AStarGridManager.GetGrid(transform.position);
-            var currentPosition = grid.GridToWorld(currentPoint);
+            if(isStop) return;
 
-#if UNITY_EDITOR
+            var grid = AStarGridManager.GetGrid(transform.position);
             destination = grid.GridToWorld(currentPoint);
-#endif
+            transform.position = Vector3.MoveTowards(transform.position, destination, speed);
             
-            transform.position = Vector3.MoveTowards(transform.position, currentPosition, speed);
-            
-            if (Vector3.Distance(transform.position, currentPosition) < 0.1f)
+            if (Vector3.Distance(transform.position, destination) < 0.1f)
             {
+                if (path.Count > 0)
                     path.RemoveAt(0);
-                    if (path.Count > 0)
-                    {
-                        currentPoint = path[0];
-                    }
+                if (path.Count > 0)
+                    currentPoint = path[0];
+                else
+                    isStop = true;
             }
+        }
+
+        public void Look()
+        {
+            if(isStop) return;
+            transform.LookAt(destination);
         }
     }
 }

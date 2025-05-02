@@ -14,6 +14,7 @@ namespace Game
 
         public void Awake()
         {
+            CurrentMapData = null;
             Array.Sort(mapDataArray, (a,b) => a.age.CompareTo(b.age));
         }
 

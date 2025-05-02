@@ -1,7 +1,7 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿#if UNITY_EDITOR
 
-public class InspectorReadOnlyAttribute : PropertyAttribute { }
+using UnityEditor;
+using UnityEngine;
 
 [CustomPropertyDrawer(typeof(InspectorReadOnlyAttribute))]
 public class InspectorReadOnlyDrawer : PropertyDrawer
@@ -12,4 +12,11 @@ public class InspectorReadOnlyDrawer : PropertyDrawer
         EditorGUI.PropertyField(pos, prop, label, true);
         GUI.enabled = true;
     }
+    
+    public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+    {
+        return EditorGUI.GetPropertyHeight(property, label, true);
+    }
 }
+
+#endif

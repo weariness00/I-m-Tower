@@ -9085,7 +9085,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8001725777308468699}
   - component: {fileID: 1552927188359789252}
-  - component: {fileID: 7041621832041790542}
   - component: {fileID: -4115803421617550811}
   - component: {fileID: -7904071266072927458}
   - component: {fileID: 2947382125700063199}
@@ -9198,28 +9197,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!195 &7041621832041790542
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3910857712047626281}
-  m_Enabled: 0
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 0
 --- !u!65 &-4115803421617550811
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9306,7 +9283,7 @@ MonoBehaviour:
       _isMax: 1
       isOverMax: 0
       isOverMin: 0
-    speed: 1
+    speed: 5
     damage: 1
     damageMultiple: 1
     criticalChange: 0.1
@@ -9374,7 +9351,7 @@ MonoBehaviour:
           m_Value0: 17596418523184494651
           m_Value1: 3620663631676259884
         Name: Nav Mesh Agent
-        m_Value: {fileID: 7041621832041790542}
+        m_Value: {fileID: 0}
     - rid: 2919838209593311916
       type: {class: 'BlackboardVariable`1[[UnityEngine.Animator, UnityEngine.AnimationModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -9397,6 +9374,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   findingDirection:
     directions: 0001000101000100
+  path: []
+  isStop: 0
+  destination: {x: 0, y: 0, z: 0}
 --- !u!1 &3973613103567678037
 GameObject:
   m_ObjectHideFlags: 0

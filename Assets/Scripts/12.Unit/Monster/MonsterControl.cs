@@ -27,6 +27,7 @@ namespace Unit.Monster
 
         public void Update()
         {
+            aStarAgent.Look();
             aStarAgent.Move(status.Speed * Time.deltaTime);
         }
 
