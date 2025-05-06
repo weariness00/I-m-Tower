@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using Cysharp.Threading.Tasks;
-using Manager;
 using Unit.Monster;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -9,7 +7,6 @@ using Util;
 
 namespace Skill
 {
-
     [RequireComponent(typeof(SkillDustGaleStatus))]
     public class SkillDustGale : SkillBase
     {

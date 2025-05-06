@@ -1,0 +1,27 @@
+{
+    "name": "Project.Skill.Container",
+    "rootNamespace": "Skill",
+    "references": [
+        "GUID:21b0c8d1703a94250bfac916590cea4f",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:4e43c64074ecbed4080d6029d6028589",
+        "GUID:cd10f377dfac1a148bd37ccfdd0d2b53",
+        "GUID:fad028808bd97b24886dc311701efab2",
+        "GUID:eda1d12ffe13e6f43bdcd13fbbaffde4",
+        "GUID:a0be04595de164d49bbc7046e6f5cc6a",
+        "GUID:3195fa58bf402334aa9886e2bb7751a5",
+        "GUID:7daaf6c15bb0b5040b5212e0b577d06e",
+        "GUID:bb8bde03af2db37468a75b477e9c08a4",
+        "GUID:ef396f7a4004b5d4bb84628a3d7a2030",
+        "GUID:61499bd637f67214584b8ac30c00983b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

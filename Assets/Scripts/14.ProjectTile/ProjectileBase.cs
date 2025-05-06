@@ -1,5 +1,5 @@
 ﻿using System;
-using Game.Status;
+using Status;
 using UnityEngine;
 using UnityEngine.Pool;
 using Util;

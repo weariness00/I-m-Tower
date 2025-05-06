@@ -1,9 +1,10 @@
 ﻿using System.Collections;
-using Game;
+using Looting;
 using Manager;
+using Tower;
 using UnityEngine;
 
-namespace Looting.Item
+namespace Item
 {
     // 경험치
     public class ManaCore : MonoBehaviour, ILootingItem, ILootingSuccess
@@ -19,11 +20,10 @@ namespace Looting.Item
         private IEnumerator Earn()
         {
             yield return new WaitForSeconds(1f);
-            GameManager.Instance.tower.status.AddEXP(manaAmount);
+            TowerControl.Instance.status.AddEXP(manaAmount);
             LootingManager.Instance.Release(ID, gameObject);
             DebugManager.Log($"경험치(마나) {manaAmount}를 획득");
         }
-
     }
 }
 

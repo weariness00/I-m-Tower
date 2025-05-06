@@ -1,0 +1,17 @@
+{
+    "name": "Project.Leveling.Age",
+    "rootNamespace": "",
+    "references": [
+        "GUID:7daaf6c15bb0b5040b5212e0b577d06e",
+        "GUID:d1b919a941f039e42916158eb58a276d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

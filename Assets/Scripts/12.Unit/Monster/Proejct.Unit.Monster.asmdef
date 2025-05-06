@@ -1,0 +1,23 @@
+{
+    "name": "Proejct.Unit.Monster",
+    "rootNamespace": "",
+    "references": [
+        "GUID:73907d139b13f8a43b7e3e95c329d30a",
+        "GUID:cd10f377dfac1a148bd37ccfdd0d2b53",
+        "GUID:fa84cd05f0e28fc479e196354a1ce52d",
+        "GUID:e7e5af790d457c34fb345378f38c74c9",
+        "GUID:eda1d12ffe13e6f43bdcd13fbbaffde4",
+        "GUID:3195fa58bf402334aa9886e2bb7751a5",
+        "GUID:61499bd637f67214584b8ac30c00983b",
+        "GUID:1037ffad1f7755148b97f46782f44426"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

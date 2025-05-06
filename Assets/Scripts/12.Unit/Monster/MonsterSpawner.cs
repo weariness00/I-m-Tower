@@ -1,5 +1,8 @@
 ﻿using System;
 using Game;
+using PlasticPipe;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 using Util;
 
 namespace Unit.Monster
@@ -7,17 +10,34 @@ namespace Unit.Monster
     public class MonsterSpawner : ObjectPoolSpawner<MonsterControl>
     {
         public Action<MonsterControl> onReleaseSuccess;
-        
+
+        private Transform targetTransform;
+
+        public override void Awake()
+        {
+            base.Awake();
+
+            var scene = SceneManager.GetActiveScene();
+            foreach (var rootGameObject in scene.GetRootGameObjects())
+            {
+                if (rootGameObject.layer == LayerMask.NameToLayer("Tower"))
+                {
+                    targetTransform = rootGameObject.transform;
+                    break;
+                }
+            }
+        }
+
         public override MonsterControl OnCreateObject()
         {
             var monster = base.OnCreateObject();
             monster.status.onDieEvent.AddListener(() =>
             {
                 Release(monster);
-                GamePlayStateManager.Instance.AddKill();
+                GameManager.Instance.playState.AddKill();
             });
 
-            monster.status.onDamagedEvent += atk => GamePlayStateManager.Instance.AddDamage(atk);
+            monster.status.onDamagedEvent += atk => GameManager.Instance.playState.AddDamage(atk);
             return monster;
         }
 
@@ -26,8 +46,7 @@ namespace Unit.Monster
             monster.InitStatus();
             monster.collider.enabled = true;
             monster.gameObject.SetActive(true);
-            monster.aStarAgent.Find(monster.transform.position, GameManager.Instance.tower.transform.position);
-            // monster.navMeshAgent.SetDestination(GameManager.Instance.tower.transform.position);
+            monster.aStarAgent.Find(monster.transform.position, targetTransform.position);
         }
 
         public override void OnReleaseObject(MonsterControl monster)

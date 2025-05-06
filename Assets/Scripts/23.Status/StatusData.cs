@@ -2,7 +2,7 @@
 using UnityEngine;
 using Util;
 
-namespace Game.Status
+namespace Status
 {
     [Serializable]
     public class StatusData

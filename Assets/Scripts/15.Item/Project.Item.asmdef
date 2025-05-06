@@ -1,0 +1,21 @@
+{
+    "name": "Project.Item",
+    "rootNamespace": "",
+    "references": [
+        "Unity.Collections",
+        "Project.Manager",
+        "Project.Util",
+        "Project.Tower",
+        "Project.Looting",
+        "Project.Status"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

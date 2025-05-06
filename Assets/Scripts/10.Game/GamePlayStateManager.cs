@@ -1,9 +1,10 @@
-﻿using UnityEngine;
-using Util;
+﻿using System;
+using UnityEngine;
 
 namespace Game
 {
-    public class GamePlayStateManager : Singleton<GamePlayStateManager>
+    [Serializable]
+    public class GamePlayStateManager
     {
         // 시간 단위로 리셋되는 통계값
         private float elapsedTime = 0f;

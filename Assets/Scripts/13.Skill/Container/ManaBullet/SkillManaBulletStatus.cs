@@ -1,4 +1,4 @@
-﻿using Game.Status;
+﻿using Status;
 
 namespace Skill
 {

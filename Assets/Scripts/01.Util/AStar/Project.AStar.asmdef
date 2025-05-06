@@ -1,0 +1,21 @@
+{
+    "name": "Project.Util.AStar",
+    "rootNamespace": "",
+    "references": [
+        "GUID:d8b63aba1907145bea998dd612889d6b",
+        "GUID:e0cd26848372d4e5c891c569017e11f1",
+        "GUID:2665a8d13d1b3f18800f46e256720795",
+        "GUID:d1b919a941f039e42916158eb58a276d",
+        "GUID:fad028808bd97b24886dc311701efab2",
+        "GUID:cd10f377dfac1a148bd37ccfdd0d2b53"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

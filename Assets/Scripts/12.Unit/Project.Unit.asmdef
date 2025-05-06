@@ -1,0 +1,17 @@
+{
+    "name": "Project.Unit",
+    "rootNamespace": "",
+    "references": [
+        "GUID:cd10f377dfac1a148bd37ccfdd0d2b53",
+        "GUID:61499bd637f67214584b8ac30c00983b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

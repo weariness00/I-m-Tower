@@ -1,0 +1,23 @@
+{
+    "name": "Project.Leveling",
+    "rootNamespace": "",
+    "references": [
+        "GUID:343deaaf83e0cee4ca978e7df0b80d21",
+        "GUID:cd10f377dfac1a148bd37ccfdd0d2b53",
+        "GUID:fad028808bd97b24886dc311701efab2",
+        "GUID:fa84cd05f0e28fc479e196354a1ce52d",
+        "GUID:4e43c64074ecbed4080d6029d6028589",
+        "GUID:eda1d12ffe13e6f43bdcd13fbbaffde4",
+        "GUID:7daaf6c15bb0b5040b5212e0b577d06e",
+        "GUID:678c363579e210941b7bcc077e9a0376"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

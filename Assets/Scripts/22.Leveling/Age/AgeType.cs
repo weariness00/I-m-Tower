@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game.Age
+namespace Leveling.Age
 {
     public enum AgeType
     {

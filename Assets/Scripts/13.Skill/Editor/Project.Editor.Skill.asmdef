@@ -1,0 +1,20 @@
+{
+    "name": "Project.Editor.Skill",
+    "rootNamespace": "",
+    "references": [
+        "GUID:bb8bde03af2db37468a75b477e9c08a4",
+        "GUID:16705577beed2304dbbda4774daeee16",
+        "GUID:61499bd637f67214584b8ac30c00983b"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

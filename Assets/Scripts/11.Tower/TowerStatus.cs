@@ -1,5 +1,5 @@
 ﻿using Game;
-using Game.Status;
+using Status;
 using UnityEngine;
 using UnityEngine.Events;
 using Util;
@@ -17,7 +17,7 @@ namespace Tower
         public void AddEXP(float exp)
         {
             experience.Current += exp;
-            GamePlayStateManager.Instance.AddExp(exp);
+            GameManager.Instance.playState.AddExp(exp);
             if (experience.IsMax)
             {
                 experience.Current -= experience.Max;

@@ -1,0 +1,19 @@
+{
+    "name": "Project.Manager",
+    "rootNamespace": "",
+    "references": [
+        "GUID:eec0964c48f6f4e40bc3ec2257ccf8c5",
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:cd10f377dfac1a148bd37ccfdd0d2b53",
+        "GUID:8aeae0b99abced34fb54915b9417576c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

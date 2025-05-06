@@ -1,6 +1,5 @@
-﻿using System;
-using System.Linq;
-using Game;
+﻿using System.Linq;
+using Tower;
 using UnityEngine;
 
 namespace Skill.UI
@@ -26,7 +25,7 @@ namespace Skill.UI
                 });
             }
             
-            GameManager.Instance.tower.status.onLevelUpEvent.AddListener(On);
+            TowerControl.Instance.status.onLevelUpEvent.AddListener(On);
         }
 
         public void On()
@@ -59,7 +58,7 @@ namespace Skill.UI
                     
             canvas.gameObject.SetActive(false);
 
-            var tower = GameManager.Instance.tower;
+            var tower = TowerControl.Instance;
             var skill = tower.skillList.FirstOrDefault(s => ui.skill.id == s.id);
             if (skill == null)
             {

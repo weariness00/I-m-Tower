@@ -1,12 +1,12 @@
 ﻿using System;
 using System.IO;
-using Unit;
 using UnityEditor;
 using UnityEngine;
 using Util;
 
 namespace Leveling
 {
+#if UNITY_EDITOR
     public static class LevelingProvider
     {
         [SettingsProvider]
@@ -30,7 +30,7 @@ namespace Leveling
 
                     if (setting != null)
                     {
-                        Editor.CreateEditor(setting).OnInspectorGUI();
+                        UnityEditor.Editor.CreateEditor(setting).OnInspectorGUI();
                     }
 
                     // setting이 변경되었을 경우 Save() 호출
@@ -44,7 +44,7 @@ namespace Leveling
             return provider;
         }
     }
-
+#endif
 
     [Serializable]
     public struct SettingJson

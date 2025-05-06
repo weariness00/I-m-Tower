@@ -1,5 +1,4 @@
-﻿using Game.Status;
-using UnityEngine;
+﻿using Status;
 
 namespace Unit.Monster
 {

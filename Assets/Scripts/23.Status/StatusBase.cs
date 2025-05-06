@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Util;
 
-namespace Game.Status
+namespace Status
 {
     public class StatusBase : MonoBehaviour
     {

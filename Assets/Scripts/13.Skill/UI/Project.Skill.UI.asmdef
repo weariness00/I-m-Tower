@@ -1,0 +1,22 @@
+{
+    "name": "Project.Skill.UI",
+    "rootNamespace": "Skill",
+    "references": [
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:eec0964c48f6f4e40bc3ec2257ccf8c5",
+        "GUID:bb8bde03af2db37468a75b477e9c08a4",
+        "GUID:a0be04595de164d49bbc7046e6f5cc6a",
+        "GUID:eda1d12ffe13e6f43bdcd13fbbaffde4",
+        "GUID:cd10f377dfac1a148bd37ccfdd0d2b53",
+        "GUID:61499bd637f67214584b8ac30c00983b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

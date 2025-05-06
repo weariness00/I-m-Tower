@@ -18,11 +18,11 @@ namespace Skill
             if (status.AttackTimer.IsMax)
             {
                 status.AttackTimer.SetMin();
-                GameManager.Instance.tower.status.AddEXP(status.DrainMana);
+                TowerControl.Instance.status.AddEXP(status.DrainMana);
 
                 if (status.doubleProcChance.IsProbability())
                 {
-                    GameManager.Instance.tower.status.AddEXP(status.DrainMana);
+                    TowerControl.Instance.status.AddEXP(status.DrainMana);
                 }
             }
         }

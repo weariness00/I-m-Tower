@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using Game.Status;
+﻿using Status;
 using Manager;
-using UnityEngine;
 using UnityEngine.Events;
 
 namespace Skill

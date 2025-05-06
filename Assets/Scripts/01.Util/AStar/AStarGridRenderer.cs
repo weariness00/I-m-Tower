@@ -9,7 +9,7 @@ namespace Util.AStar
     [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
     public class AStarGridRenderer : MonoBehaviour
     {
-        private static readonly string path = "Assets/AStar"; 
+        private static readonly string path = "Assets/Project.AStar"; 
         public AStarGrid targetGrid;
         public Vector3 offset;
 

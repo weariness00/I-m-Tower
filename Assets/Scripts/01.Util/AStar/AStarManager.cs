@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using Unity.Collections;
+﻿using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 
 namespace Util.AStar
@@ -17,6 +15,7 @@ namespace Util.AStar
             var endNode = grid.WorldToGrid(targetWorld);
 
             NativeList<int2> pathResult = new NativeList<int2>(Allocator.Persistent);
+            var directions = agent.findingDirection.directions.ToNativeArray(Allocator.TempJob);
             
             PathFindingJob job = new PathFindingJob
             {
@@ -27,12 +26,14 @@ namespace Util.AStar
                 endPos = endNode,
                 nodes = grid.gridNodeNativeArray,
                 resultPath = pathResult,
-                allowedDirection = agent.findingDirection.directions.ToNativeArray(Allocator.TempJob),
+                allowedDirection = directions,
             };
 
             JobHandle handle = job.Schedule();
             handle.Complete();
+            
             callback?.Invoke(pathResult);
+            directions.Dispose();
             pathResult.Dispose();
         }
     }

@@ -1,0 +1,16 @@
+{
+    "name": "Project.Editor.Util.AStar",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e7e5af790d457c34fb345378f38c74c9"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

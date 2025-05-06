@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using Game.Age;
 using Unit.Monster;
 using UnityEngine;
 
-namespace Game
+namespace Leveling.Age
 {
     public class AgeMap : MonoBehaviour
     {
+        [InspectorReadOnly] public AgeType currentAge;
         [SerializeField] private MapData[] mapDataArray;
         public MapData CurrentMapData { get; private set; }
 
@@ -20,9 +19,11 @@ namespace Game
 
         public void ChangeMap(AgeType age)
         {
-            if(CurrentMapData != null) CurrentMapData.mapObject.SetActive(false);
+            if(CurrentMapData != null && CurrentMapData.mapObject != null) CurrentMapData.mapObject.SetActive(false);
             CurrentMapData = mapDataArray.FirstOrDefault(map => map.age == age);
             CurrentMapData.mapObject.SetActive(true);
+
+            age = currentAge;
         }
 
         [Serializable]

@@ -1,0 +1,21 @@
+{
+    "name": "Project.Tower",
+    "rootNamespace": "Tower",
+    "references": [
+        "GUID:e0cd26848372d4e5c891c569017e11f1",
+        "GUID:cd10f377dfac1a148bd37ccfdd0d2b53",
+        "GUID:fad028808bd97b24886dc311701efab2",
+        "GUID:eda1d12ffe13e6f43bdcd13fbbaffde4",
+        "GUID:bb8bde03af2db37468a75b477e9c08a4",
+        "GUID:61499bd637f67214584b8ac30c00983b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

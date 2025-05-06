@@ -1,0 +1,19 @@
+{
+    "name": "Project.Editor.Looting",
+    "rootNamespace": "",
+    "references": [
+        "GUID:1037ffad1f7755148b97f46782f44426",
+        "GUID:cd10f377dfac1a148bd37ccfdd0d2b53"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

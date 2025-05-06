@@ -1,0 +1,16 @@
+{
+    "name": "Project.Util.MinMax",
+    "rootNamespace": "",
+    "references": [
+        "GUID:cd10f377dfac1a148bd37ccfdd0d2b53"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

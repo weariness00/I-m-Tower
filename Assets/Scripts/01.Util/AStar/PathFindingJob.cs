@@ -21,11 +21,19 @@ namespace Util.AStar
 
         public NativeArray<bool> allowedDirection;
 
+        private static readonly int2[] NeighborOffsets = new int2[]
+        {
+            new int2(-1, 1),  new int2(0, 1),  new int2(1, 1),
+            new int2(-1, 0),                  new int2(1, 0),
+            new int2(-1, -1), new int2(0, -1), new int2(1, -1)
+        };
+        
         public void Execute()
         {
             NativeList<int2> openSet = new NativeList<int2>(Allocator.Temp);
             NativeHashSet<int2> closedSet = new NativeHashSet<int2>(0, Allocator.Temp);
             NativeArray<Node> copyNodes = new NativeArray<Node>(nodes.Length, Allocator.Temp);
+            NativeList<int2> neighbors = new NativeList<int2>(Allocator.Temp);
             nodes.CopyTo(copyNodes);
             
             resultPath.Add(startPos);
@@ -58,7 +66,9 @@ namespace Util.AStar
                 openSet.RemoveAtSwapBack(openSet.IndexOf(current));
                 closedSet.Add(current);
 
-                foreach (var neighbor in GetNeighbors(current))
+                neighbors.Clear();
+                GetNeighbors(current, ref neighbors);
+                foreach (var neighbor in neighbors)
                 {
                     if (!IsWalkable(neighbor) || closedSet.Contains(neighbor))
                         continue;
@@ -77,7 +87,9 @@ namespace Util.AStar
                     }
                 }
             }
-            
+
+            neighbors.Dispose();
+            copyNodes.Dispose();
             openSet.Dispose();
             closedSet.Dispose();
         }
@@ -113,28 +125,17 @@ namespace Util.AStar
             return x + gridSize.x * z;
         }
 
-        NativeList<int2> GetNeighbors(int2 pos)
+        void GetNeighbors(int2 pos, ref NativeList<int2> neighbors)
         {
-            NativeList<int2> neighbors = new NativeList<int2>(Allocator.Temp);
-
-            int2[] dirs = new int2[]
-            {
-                new int2(-1, 1),   new int2(0, 1),   new int2(1, 1),
-                new int2(-1, 0),                         new int2(1, 0),
-                new int2(-1, -1),  new int2(0, -1),  new int2(1, -1)
-            };
-
-            for (int i = 0; i < dirs.Length; i++)
+            for (int i = 0; i < NeighborOffsets.Length; i++)
             {
                 if (!allowedDirection[i]) continue;
-                int2 neighborPos = pos + dirs[i];
+                int2 neighborPos = pos + NeighborOffsets[i];
                 if (IsWalkable(neighborPos))
                 {
                     neighbors.Add(neighborPos);
                 }
             }
-
-            return neighbors;
         }
     }
 }

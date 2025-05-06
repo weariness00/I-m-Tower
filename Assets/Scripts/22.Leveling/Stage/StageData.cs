@@ -1,7 +1,6 @@
 ﻿using System;
-using Game.Age;
+using Leveling.Age;
 using Newtonsoft.Json;
-using UnityEngine.Serialization;
 using Util;
 
 namespace Leveling.Stage

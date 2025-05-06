@@ -15,6 +15,7 @@ namespace Skill
         [NonSerialized] public new SkillFrictionSparkStatus status;
         public SparkProjectile sparkProjectilePrefab;
 
+        private ObjectPool<ProjectileBase> projectilePool;
         public ObjectPool<ParticleSystem> burnEffectPool;
         public ParticleSystem burnEffectPrefab;
 

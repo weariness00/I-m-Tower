@@ -1,5 +1,6 @@
 ﻿using System;
 using ProjectTile;
+using Status;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -14,6 +15,7 @@ namespace Skill
 
         public ProjectileBase debrisPrefab;
 
+        private ObjectPool<ProjectileBase> projectilePool;
         public ParticleSystem hitEffectPrefab;
         public ObjectPool<ParticleSystem> hitEffectPool;
         public override void Awake()
@@ -74,6 +76,22 @@ namespace Skill
             if (nextLevel == 10) value += "공격속도 2배 증가";
             else if (nextLevel == 20) value += "대미지 2배 증가";
             return base.Explain();
+        }
+        
+        private bool TryInstantiateProjectile(out ProjectileBase projectile)
+        {
+            var length = Physics.OverlapSphereNonAlloc(transform.position, status.AttackRange, searchColliders, targetLayer);
+            var nearTarget = searchColliders.GetNear(transform.position, length);
+            if (nearTarget != null)
+            {
+                projectile = projectilePool.Get();
+                projectile.transform.position = transform.position;
+                projectile.targetTransform = nearTarget.transform;
+                projectile.targetStatus = nearTarget.GetComponent<StatusBase>();
+                return true;
+            }
+            projectile = null;
+            return false;
         }
     }
 }

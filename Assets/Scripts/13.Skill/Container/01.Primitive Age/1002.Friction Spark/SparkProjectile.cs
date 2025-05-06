@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Game.Status;
+using Status;
 using ProjectTile;
 using UnityEngine;
 using Util;

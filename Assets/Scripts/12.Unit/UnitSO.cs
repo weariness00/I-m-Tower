@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections;
-using Game.Status;
+using Status;
 using UnityEngine;
-using Util;
 
 namespace Unit
 {

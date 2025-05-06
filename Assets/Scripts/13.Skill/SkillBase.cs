@@ -1,13 +1,6 @@
 ﻿using System;
-using Game;
-using Game.Status;
-using Manager;
-using ProjectTile;
+using Leveling.Age;
 using UnityEngine;
-using UnityEngine.Localization;
-using UnityEngine.Localization.Settings;
-using UnityEngine.Pool;
-using Util;
 
 namespace Skill
 {
@@ -17,13 +10,12 @@ namespace Skill
         public string skillName;
         public Sprite icon;
 
-        [Space]
-        [InspectorName("등급")] public RatingType rating;
+        [Space] 
+        public AgeType ageType;
         [HideInInspector] public LayerMask targetLayer;
 
         [NonSerialized] public SkillStatus status;
         
-        public ObjectPool<ProjectileBase> projectilePool;
         protected Collider[] searchColliders;
 
         public virtual void Awake()
@@ -35,22 +27,6 @@ namespace Skill
         public virtual void Init()
         {
             status = GetComponent<SkillStatus>();
-        }
-
-        public bool TryInstantiateProjectile(out ProjectileBase projectile)
-        {
-            var length = Physics.OverlapSphereNonAlloc(transform.position, status.AttackRange, searchColliders, targetLayer);
-            var nearTarget = searchColliders.GetNear(transform.position, length);
-            if (nearTarget != null)
-            {
-                projectile = projectilePool.Get();
-                projectile.transform.position = transform.position;
-                projectile.targetTransform = nearTarget.transform;
-                projectile.targetStatus = nearTarget.GetComponent<StatusBase>();
-                return true;
-            }
-            projectile = null;
-            return false;
         }
     }
 

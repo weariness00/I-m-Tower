@@ -1,6 +1,5 @@
 ﻿using System;
-using Game.Age;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
+using Leveling.Age;
 using UnityEngine;
 
 namespace Leveling.Stage

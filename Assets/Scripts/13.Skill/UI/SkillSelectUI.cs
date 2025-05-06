@@ -1,12 +1,6 @@
-﻿using System;
-using Manager;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.Localization;
 using UnityEngine.Localization.Components;
-using UnityEngine.Localization.SmartFormat.Extensions;
-using UnityEngine.Localization.SmartFormat.PersistentVariables;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Skill.UI
