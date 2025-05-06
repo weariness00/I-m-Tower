@@ -4,6 +4,7 @@ using UnityEngine.Localization;
 using UnityEngine.Localization.Components;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Localization.SmartFormat.PersistentVariables;
+using UnityEngine.Localization.Tables;
 using Util;
 
 namespace Manager
@@ -38,6 +39,26 @@ namespace Manager
 
             localizedString = null;
             return false;
+        }
+        
+        public static string Localize(string key, string tableName)
+        {
+            // 현재 로케일 기준 테이블을 동기 접근
+            var table = LocalizationSettings.StringDatabase.GetTable(tableName);
+            if (table == null)
+            {
+                Debug.LogWarning($"Table not found: {tableName}");
+                return key;
+            }
+
+            var entry = table.GetEntry(key);
+            if (entry == null)
+            {
+                Debug.LogWarning($"Key not found: {key}");
+                return key;
+            }
+
+            return entry.GetLocalizedString();
         }
     }
 }

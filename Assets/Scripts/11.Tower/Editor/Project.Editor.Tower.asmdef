@@ -1,0 +1,20 @@
+{
+    "name": "Project.Editor.Tower",
+    "rootNamespace": "",
+    "references": [
+        "GUID:fad028808bd97b24886dc311701efab2",
+        "GUID:a0be04595de164d49bbc7046e6f5cc6a",
+        "GUID:61499bd637f67214584b8ac30c00983b"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

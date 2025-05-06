@@ -113,7 +113,12 @@ namespace Util
             isOverMax = _isOverMax;
             CheckCurrent();
         }
-        
+
+        public override string ToString()
+        {
+            return $"{_current}({_min}~{_max})";
+        }
+
         void CheckCurrent()
         {
             _isMin = _isMax = false;

@@ -1,14 +1,13 @@
 ﻿using Status;
 using Manager;
 using UnityEngine.Events;
+using Util;
 
 namespace Skill
 {
     public abstract partial class SkillStatus : StatusBase
     {
-        public static readonly int MaxLevel = 50;
-        
-        public int level = 1;
+        public MinMaxValue<int> level = new(0,0,50);
         public SkillType skillType;
 
         public UnityEvent<int> onLevelUpEvent = new();
@@ -20,7 +19,7 @@ namespace Skill
         {
             nextLevel = level + upCount;
             prevLevel = level;
-            level += upCount;
+            level.Current += upCount;
             onLevelUpEvent.Invoke(upCount);
         }
 

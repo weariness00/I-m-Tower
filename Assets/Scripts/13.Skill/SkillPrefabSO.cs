@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Localization;
 using Util;
 
 namespace Skill
@@ -8,7 +9,8 @@ namespace Skill
     public class SkillPrefabSO : ScriptableObject
     {
         public static SkillPrefabSO Instance => Skill.SettingProviderHelper.setting;
-        
+
+        public static readonly string SkillNameTableKey = "Skill Name";
         public SkillBase[] skillArray;
 
         public void Init()
