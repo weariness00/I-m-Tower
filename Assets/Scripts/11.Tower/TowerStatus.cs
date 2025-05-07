@@ -18,7 +18,7 @@ namespace Tower
         {
             experience.Current += exp;
             GameManager.Instance.playState.AddExp(exp);
-            if (experience.IsMax)
+            while (experience.IsMax)
             {
                 experience.Current -= experience.Max;
                 experience.Max *= 1.2f;
