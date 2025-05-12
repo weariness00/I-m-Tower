@@ -37,7 +37,7 @@ namespace Skill
         {
             base.OnTriggerEnter(other);
             if (other.TryGetComponent(out StatusBase otherStatus) &&
-                !otherStatus.Hp.IsMin)
+                !otherStatus.hp.IsMin)
             {
                 if (ownerStatus.burnChange.IsProbability())
                 {

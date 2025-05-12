@@ -26,7 +26,7 @@ namespace Skill
         protected bool CheckGoalLevel(int goalLevel)
         {
             bool isGoal = prevLevel < goalLevel && goalLevel <= nextLevel;
-            if(isGoal) DebugManager.Log($"{name}이 {goalLevel}레벨에 도달했습니다.");
+            if(isGoal) DebugManager.Log($"{ownerObject.name}이 {goalLevel}레벨에 도달했습니다.");
             return isGoal;
         }
     }

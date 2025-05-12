@@ -28,13 +28,7 @@ namespace Unit.Monster
         public void Update()
         {
             aStarAgent.Look();
-            aStarAgent.Move(status.Speed * Time.deltaTime);
-        }
-
-        public override void InitStatus()
-        {
-            base.InitStatus();
-            status.value.Copy(UnitSOManager.GetMonsterSO(id).data);
+            aStarAgent.Move(status.speed.Value * Time.deltaTime);
         }
 
         protected virtual void OnLooting()

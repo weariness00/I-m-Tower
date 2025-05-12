@@ -74,10 +74,10 @@ namespace Skill
 
         public void Update()
         {
-            status.AttackTimer.Current += Time.deltaTime;
-            if (status.AttackTimer.IsMax)
+            status.attackTimer.Current += Time.deltaTime;
+            if (status.attackTimer.IsMax)
             {
-                status.AttackTimer.SetMin();
+                status.attackTimer.SetMin();
                 projectilePool.Get();
             }
         }

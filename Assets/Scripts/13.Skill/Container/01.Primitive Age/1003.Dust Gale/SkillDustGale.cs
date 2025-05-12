@@ -44,13 +44,13 @@ namespace Skill
 
         public void Update()
         {
-            status.AttackTimer.Current += Time.deltaTime;
-            if (status.AttackTimer.IsMax)
+            status.attackTimer.Current += Time.deltaTime;
+            if (status.attackTimer.IsMax)
             {
                 var monster = FindAnyObjectByType<MonsterControl>();
                 if (monster != null)
                 {
-                    status.AttackTimer.SetMin();
+                    status.attackTimer.SetMin();
                     var dustGale = dustGalePool.Get();
                     dustGale.transform.position = monster.transform.position;
                     
@@ -64,7 +64,7 @@ namespace Skill
             base.Init();
             status = base.status as SkillDustGaleStatus;
         }
-        
+
         // 임시
         private async UniTaskVoid WaitTask(DustGaleObject dustGale, float duration)
         {

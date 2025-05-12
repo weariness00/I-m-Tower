@@ -16,10 +16,6 @@ namespace Unit
             collider = GetComponent<Collider>();
             status = GetComponent<StatusBase>();
         }
-
-        public virtual void InitStatus()
-        {
-        }
     }
 }
 

@@ -37,7 +37,7 @@ namespace ProjectTile
         public virtual void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out StatusBase otherStatus) &&
-                !otherStatus.Hp.IsMin)
+                !otherStatus.hp.IsMin)
             {
                 otherStatus.Damaged(ownerStatus.Damage);
                 pool.Release(this);

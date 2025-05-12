@@ -53,13 +53,13 @@ namespace Skill
         
         public void Update()
         {
-            status.AttackTimer.Current += Time.deltaTime;
-            if (status.AttackTimer.IsMax &&
+            status.attackTimer.Current += Time.deltaTime;
+            if (status.attackTimer.IsMax &&
                 TryInstantiateProjectile(out var projectile) &&
                 projectile is TelekineticSlamDebris debris)
             {
                 debris.StartCoroutine(debris.ChangedMoveCoroutine());
-                status.AttackTimer.SetMin();
+                status.attackTimer.SetMin();
             }
         }
 
@@ -80,7 +80,7 @@ namespace Skill
         
         private bool TryInstantiateProjectile(out ProjectileBase projectile)
         {
-            var length = Physics.OverlapSphereNonAlloc(transform.position, status.AttackRange, searchColliders, targetLayer);
+            var length = Physics.OverlapSphereNonAlloc(transform.position, status.attackRange, searchColliders, targetLayer);
             var nearTarget = searchColliders.GetNear(transform.position, length);
             if (nearTarget != null)
             {

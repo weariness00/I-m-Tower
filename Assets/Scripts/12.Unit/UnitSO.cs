@@ -1,5 +1,4 @@
 ﻿using System;
-using Status;
 using UnityEngine;
 
 namespace Unit
@@ -11,8 +10,6 @@ namespace Unit
         
         public UnitType type;
         public UnitAttackType attackType;
-        
-        public StatusData data;
     }
 
     public partial class UnitSO : IComparable, IComparable<UnitSO>

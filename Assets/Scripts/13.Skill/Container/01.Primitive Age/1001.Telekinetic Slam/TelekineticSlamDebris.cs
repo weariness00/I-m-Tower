@@ -43,13 +43,11 @@ namespace Skill
         public override void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out MonsterStatus otherStatus) &&
-                !otherStatus.Hp.IsMin)
+                !otherStatus.hp.IsMin)
             {
-                var isUnderHP = otherStatus.Hp.NormalizeToRange() <= ownerStatus.targetHpPercent;
-                if (isUnderHP) ownerStatus.value.criticalChange += ownerStatus.slamCriticalChange;
-                otherStatus.Damaged(ownerStatus.Damage, Mathf.FloorToInt(otherStatus.Defense * ownerStatus.targetDefensePenetrationMultiple));
-                if (isUnderHP) ownerStatus.value.criticalChange -= ownerStatus.slamCriticalChange;
-                if(!otherStatus.Hp.IsMin) SetTargetAsync(otherStatus, otherStatus.dieCancelToken.Token).Forget();
+                ownerStatus.slamCriticalChangeModifier.isActive = otherStatus.hp.NormalizeToRange() <= ownerStatus.targetHpPercent;
+                otherStatus.Damaged(ownerStatus.Damage, Mathf.FloorToInt(otherStatus.defense * ownerStatus.targetDefensePenetrationMultiple));
+                if(!otherStatus.hp.IsMin) SetTargetAsync(otherStatus, otherStatus.dieCancelToken.Token).Forget();
                 pool.Release(this);
                 
                 var hitEffect = ownerObject.hitEffectPool.Get();
@@ -66,16 +64,14 @@ namespace Skill
         {
             yield return new WaitForSeconds(1f);
             Move = targetMove;
-            if(targetStatus.Hp.IsMin) targetMove.SetDirection(-Vector3.up);
+            if(targetStatus.hp.IsMin) targetMove.SetDirection(-Vector3.up);
         }
         
         private async UniTask SetTargetAsync(StatusBase _targetStatus, CancellationToken token)
         {
-            _targetStatus.moreDamageMultiple += ownerStatus.targetMoreDamageMultiple;
-            
+            _targetStatus.damaged.AddModifier(ownerStatus.targetDamagedModifier);
             await UniTask.Delay(TimeSpan.FromSeconds(ownerStatus.targetMoreDamageMultipleDuration), cancellationToken: token);
-            
-            _targetStatus.moreDamageMultiple -= ownerStatus.targetMoreDamageMultiple;
+            _targetStatus.damaged.RemoveModifier(ownerStatus.targetDamagedModifier);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Status;
+using UnityEngine;
 
 
 namespace Skill
@@ -10,19 +11,29 @@ namespace Skill
         [Tooltip("화상 대미지 간격")] public float burnTickInterval = 0.5f;
         [Range(0,1)][Tooltip("화상 확률")] public float burnChange = 0.3f;
         [Tooltip("화상 지속 시간")] public float burnDuration = 1f;
+
+        [SerializeField] private StatModifier damageFlat = new(StatModifier.ModifierType.Flat);
+        [SerializeField] private StatModifier damagePercent = new(StatModifier.ModifierType.Percent);
         
         public int BurnDamage => Mathf.CeilToInt(burnDamage * burnDamageMultiple);
-        
+
+        public override void Init()
+        {
+            base.Init();
+            damage.AddModifier(damageFlat);
+            damage.AddModifier(damagePercent);
+        }
+
         public override void LevelUp(int upCount)
         {
             base.LevelUp(upCount);
-            value.damage += 3f * upCount;
+            damageFlat.value += 3f * upCount;
             burnDamage += 0.5f * upCount;
 
             if (CheckGoalLevel(10))
             {
                 // 대미지 2배
-                DamageMultiple += 2f;
+                damagePercent.value += 1f;
             }
             else if (CheckGoalLevel(20))
             {

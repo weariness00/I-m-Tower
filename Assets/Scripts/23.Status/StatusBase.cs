@@ -4,56 +4,58 @@ using System.Threading;
 using Manager;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 using Util;
 
 namespace Status
 {
     public class StatusBase : MonoBehaviour
     {
-        [InspectorName("기본 Data")] public StatusData value = new();
+        public GameObject ownerObject;
 
-        public UnityEvent onDieEvent = new ();
+        [FormerlySerializedAs("Hp")] public MinMaxValue<int> hp = new();
+        public Stat maxHp = new(100);
+        public Stat speed = new(1);
+        public Stat damage = new(0);
+        public Stat criticalDamage = new(1.5f);
+        public Stat criticalChance = new(0.1f);
+        [InspectorReadOnly] public Stat damaged = new(0); // 받는 대미지
+        [Tooltip("방어력")] public Stat defense = new(0);
+        
+        public Stat attackRange = new(10);
+        public Stat attackSpeed = new(1);
+        public MinMaxValue<float> attackTimer = new(0,1);
+        
+        [HideInInspector] public UnityEvent onDieEvent = new ();
         public Action<int> onDamagedEvent;
         
         public CancellationTokenSource dieCancelToken = new CancellationTokenSource();
         private int stunRefCount = 0; // 현재 스턴중인 횟수
         public bool isStun;
-            
-        public MinMaxValue<int> Hp => value.hp;
-        [HideInInspector] public float speedMultiple = 1f;
-        public float Speed => value.speed * speedMultiple;
 
-        public virtual int Damage => Mathf.FloorToInt(value.damage * (value.criticalChange.IsProbability() ? 1f : value.criticalMultiple));
-        public float moreDamageMultiple = 1f;
-        public float DamageMultiple
-        {
-            get => value.damageMultiple;
-            set => this.value.damageMultiple = value;
-        }
-        public float AttackRange => value.attackRange;
-        public MinMaxValue<float> AttackTimer => value.attackTimer;
-        public float AttackSpeed => 1f / value.attackTimer.Max; 
+        public int Damage => Mathf.FloorToInt(damage.Value * ((criticalChance.Value.IsProbability() ? criticalDamage.Value : 1) + 1));
         
-        public int Defense => Mathf.FloorToInt(value.defense * DefenseMultiple);
-        public float DefenseMultiple = 1f;
-        
-        public virtual void OnDrawGizmos()
+        public virtual void Init()
         {
-            if (AttackRange > 0)
-            {
-                Gizmos.DrawWireSphere(transform.position, AttackRange);
-            }
+            hp.SetMax(Mathf.CeilToInt(maxHp.Value));
         }
 
+        public void UpdateAttackTimer(float time)
+        {
+            attackTimer.Max = 1f / attackSpeed.Value;
+            attackTimer.Current += time;
+        }
+        
         public virtual void Damaged(int atk, int defencePenetrationValue = 0)
         {
-            var realDamage =  Mathf.FloorToInt(atk * moreDamageMultiple) - (Defense - defencePenetrationValue);
-            Hp.Current -= realDamage;
+            damaged.Value = atk;
+            var realDamage = Mathf.FloorToInt(damaged.Value);// - (Defense - defencePenetrationValue);
+            hp.Current -= realDamage;
             onDamagedEvent?.Invoke(realDamage);
             
-            DebugManager.Log($"{name}이 {realDamage}만큼 피해를 입었습니다.");
+            DebugManager.Log($"{ownerObject.name}이 {realDamage}만큼 피해를 입었습니다.");
 
-            if (Hp.IsMin)
+            if (hp.IsMin)
             {
                 onDieEvent.Invoke();
                 dieCancelToken.Cancel();
@@ -63,10 +65,9 @@ namespace Status
         }
 
         // 스턴은 누적되지 않는다.
-        public void Stun(float duration) => StartCoroutine(StunCoroutine(duration));
-        private IEnumerator StunCoroutine(float duration)
+        public IEnumerator StunCoroutine(float duration)
         {
-            DebugManager.Log($"{name}이 스턴에 걸렸습니다.");
+            DebugManager.Log($"{ownerObject.name}이 스턴에 걸렸습니다.");
             
             ++stunRefCount;
             isStun = true;
@@ -75,7 +76,7 @@ namespace Status
             if (stunRefCount <= 0)
             {
                 isStun = false;
-                DebugManager.Log($"{name}이 스턴에서 해제되었습니다.");
+                DebugManager.Log($"{ownerObject.name}이 스턴에서 해제되었습니다.");
             }
         }
     }

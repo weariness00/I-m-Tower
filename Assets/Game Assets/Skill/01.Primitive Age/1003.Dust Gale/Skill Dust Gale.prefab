@@ -45,42 +45,76 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d799783bf19a904fb8fa212fd828988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value:
-    hp:
-      _min: 0
-      _max: 10
-      _current: 10
-      _isMin: 0
-      _isMax: 1
-      isOverMax: 0
-      isOverMin: 0
-    speed: 1
-    damage: 1
-    damageMultiple: 1
-    attackRange: 100
-    attackTimer:
-      _min: 0
-      _max: 6
-      _current: 0
-      _isMin: 1
-      _isMax: 0
-      isOverMax: 0
-      isOverMin: 0
+  ownerObject: {fileID: 0}
+  hp:
+    _min: 0
+    _max: 0
+    _current: 0
+    _isMin: 1
+    _isMax: 1
+    isOverMax: 0
+    isOverMin: 0
+  maxHp:
+    baseValue: 100
+    modifierList: []
+  speed:
+    baseValue: 1
+    modifierList: []
+  damage:
+    baseValue: 0
+    modifierList: []
+  criticalDamage:
+    baseValue: 1.5
+    modifierList: []
+  criticalChance:
+    baseValue: 0.1
+    modifierList: []
+  damaged:
+    baseValue: 0
+    modifierList: []
+  defense:
+    baseValue: 0
+    modifierList: []
+  attackRange:
+    baseValue: 10
+    modifierList: []
+  attackSpeed:
+    baseValue: 1
+    modifierList: []
+  attackTimer:
+    _min: 0
+    _max: 1
+    _current: 0
+    _isMin: 1
+    _isMax: 1
+    isOverMax: 0
+    isOverMin: 0
   onDieEvent:
     m_PersistentCalls:
       m_Calls: []
   isStun: 0
-  speedMultiple: 1
-  moreDamageMultiple: 1
-  level: 1
+  level:
+    _min: 0
+    _max: 50
+    _current: 0
+    _isMin: 1
+    _isMax: 0
+    isOverMax: 0
+    isOverMin: 0
   skillType: 2
   onLevelUpEvent:
     m_PersistentCalls:
       m_Calls: []
   dustRadius: 5
   dustDuration: 5
-  moveSpeedDown: 0.2
-  dustMoreDamageMultiple: 0
+  targetSpeedModifier:
+    value: -0.2
+    type: 1
+    isActive: 0
+  targetDamagedModifier:
+    value: 0
+    type: 0
+    isActive: 0
   stunDuration: 1
   stunProbability: 0
 --- !u!114 &8869894297349710926
@@ -98,8 +132,9 @@ MonoBehaviour:
   id: 1003
   skillName: "\uD759\uBA3C\uC9C0 \uBC14\uB78C"
   icon: {fileID: 0}
-  rating: 0
+  ageType: 0
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
+  status: {fileID: 0}
   dustGalePrefab: {fileID: 791827989357684879, guid: f619c085aa3e5584fb4efb65a32e641a, type: 3}

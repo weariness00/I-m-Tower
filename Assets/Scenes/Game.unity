@@ -6556,37 +6556,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f0d870f91fafa2419cc7384a22c3ebd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value:
-    hp:
-      _min: 0
-      _max: 100
-      _current: 100
-      _isMin: 0
-      _isMax: 1
-      isOverMax: 0
-      isOverMin: 0
-    speed: 1
-    damage: 1
-    damageMultiple: 1
-    criticalChange: 0.1
-    criticalMultiple: 2
-    attackRange: 1
-    attackTimer:
-      _min: 0
-      _max: 1
-      _current: 0
-      _isMin: 1
-      _isMax: 0
-      isOverMax: 1
-      isOverMin: 0
-    defense: 0
+  ownerObject: {fileID: 1232073196}
+  hp:
+    _min: 0
+    _max: 0
+    _current: 0
+    _isMin: 1
+    _isMax: 1
+    isOverMax: 0
+    isOverMin: 0
+  maxHp:
+    baseValue: 100
+    modifierList: []
+  speed:
+    baseValue: 1
+    modifierList: []
+  damage:
+    baseValue: 0
+    modifierList: []
+  criticalDamage:
+    baseValue: 1.5
+    modifierList: []
+  criticalChance:
+    baseValue: 0.1
+    modifierList: []
+  damaged:
+    baseValue: 0
+    modifierList: []
+  defense:
+    baseValue: 0
+    modifierList: []
+  attackRange:
+    baseValue: 10
+    modifierList: []
+  attackSpeed:
+    baseValue: 1
+    modifierList: []
+  attackTimer:
+    _min: 0
+    _max: 0
+    _current: 0
+    _isMin: 1
+    _isMax: 1
+    isOverMax: 0
+    isOverMin: 0
   onDieEvent:
     m_PersistentCalls:
       m_Calls: []
   isStun: 0
-  speedMultiple: 1
-  moreDamageMultiple: 1
-  DefenseMultiple: 1
   level: 0
   experience:
     _min: 0

@@ -18,7 +18,7 @@ namespace ProjectTile
         public ProjectileBase Projectile { get; set; }
         public void Move(float deltaTime)
         {
-            Projectile.transform.position += deltaTime * Projectile.ownerStatus.Speed * Projectile.transform.forward;
+            Projectile.transform.position += deltaTime * Projectile.ownerStatus.speed.Value * Projectile.transform.forward;
         }
     }
 
@@ -34,7 +34,7 @@ namespace ProjectTile
         public ProjectileBase Projectile { get; set; }
         public void Move(float deltaTime)
         {
-            if (Projectile.targetStatus != null && !Projectile.targetStatus.Hp.IsMin)
+            if (Projectile.targetStatus != null && !Projectile.targetStatus.hp.IsMin)
             {
                 direction = (Projectile.targetTransform.position - Projectile.transform.position).normalized;
             }
@@ -45,7 +45,7 @@ namespace ProjectTile
             }
 
             Projectile.transform.LookAt(Projectile.transform.position + direction);
-            Projectile.transform.position += deltaTime * Projectile.ownerStatus.Speed * direction;
+            Projectile.transform.position += deltaTime * Projectile.ownerStatus.speed.Value * direction;
         }
 
         public void SetDirection(Vector3 dir)

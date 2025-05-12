@@ -1,13 +1,13 @@
 {
-    "name": "Project.Status",
+    "name": "Project.Editor.Status",
     "rootNamespace": "",
     "references": [
         "GUID:cd10f377dfac1a148bd37ccfdd0d2b53",
-        "GUID:fad028808bd97b24886dc311701efab2",
-        "GUID:4e43c64074ecbed4080d6029d6028589",
-        "GUID:d1b919a941f039e42916158eb58a276d"
+        "GUID:61499bd637f67214584b8ac30c00983b"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

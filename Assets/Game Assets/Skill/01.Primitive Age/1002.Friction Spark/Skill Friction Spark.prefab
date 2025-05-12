@@ -45,34 +45,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c06d1e51748e46579b65a7e782e55926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value:
-    hp:
-      _min: 0
-      _max: 10
-      _current: 10
-      _isMin: 0
-      _isMax: 1
-      isOverMax: 0
-      isOverMin: 0
-    speed: 10
-    damage: 1
-    damageMultiple: 1
-    attackRange: 1
-    attackTimer:
-      _min: 0
-      _max: 1
-      _current: 0
-      _isMin: 1
-      _isMax: 0
-      isOverMax: 0
-      isOverMin: 0
+  ownerObject: {fileID: 0}
+  hp:
+    _min: 0
+    _max: 0
+    _current: 0
+    _isMin: 1
+    _isMax: 1
+    isOverMax: 0
+    isOverMin: 0
+  maxHp:
+    baseValue: 100
+    modifierList: []
+  speed:
+    baseValue: 1
+    modifierList: []
+  damage:
+    baseValue: 0
+    modifierList: []
+  criticalDamage:
+    baseValue: 1.5
+    modifierList: []
+  criticalChance:
+    baseValue: 0.1
+    modifierList: []
+  damaged:
+    baseValue: 0
+    modifierList: []
+  defense:
+    baseValue: 0
+    modifierList: []
+  attackRange:
+    baseValue: 10
+    modifierList: []
+  attackSpeed:
+    baseValue: 1
+    modifierList: []
+  attackTimer:
+    _min: 0
+    _max: 1
+    _current: 0
+    _isMin: 1
+    _isMax: 1
+    isOverMax: 0
+    isOverMin: 0
   onDieEvent:
     m_PersistentCalls:
       m_Calls: []
   isStun: 0
-  speedMultiple: 1
-  moreDamageMultiple: 1
-  level: 1
+  level:
+    _min: 0
+    _max: 50
+    _current: 0
+    _isMin: 1
+    _isMax: 0
+    isOverMax: 0
+    isOverMin: 0
   skillType: 0
   onLevelUpEvent:
     m_PersistentCalls:
@@ -82,6 +110,14 @@ MonoBehaviour:
   burnTickInterval: 0.5
   burnChange: 0.3
   burnDuration: 3
+  damageFlat:
+    value: 0
+    type: 0
+    isActive: 0
+  damagePercent:
+    value: 0
+    type: 0
+    isActive: 0
 --- !u!114 &8982193267050493924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,9 +133,10 @@ MonoBehaviour:
   id: 1002
   skillName: "\uB9C8\uCC30\uC758 \uBD88\uAF43"
   icon: {fileID: 0}
-  rating: 0
+  ageType: 0
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
+  status: {fileID: 0}
   sparkProjectilePrefab: {fileID: 2130342723573831170, guid: 13afee3396c021f42864d6a0f69a11e8, type: 3}
   burnEffectPrefab: {fileID: 198714429152696258, guid: fcf74f95928177e4cafdb18c5a23c7a0, type: 3}

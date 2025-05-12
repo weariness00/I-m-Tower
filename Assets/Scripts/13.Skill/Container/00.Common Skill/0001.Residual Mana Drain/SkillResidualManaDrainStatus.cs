@@ -21,7 +21,7 @@ namespace Skill
 
         public void Awake()
         {
-            originAttackTimeMaxValue = AttackTimer.Max;
+            originAttackTimeMaxValue = attackTimer.Max;
         }
 
         public void Start()
@@ -40,7 +40,7 @@ namespace Skill
             
             if (CheckGoalLevel(10))
             {
-                AttackTimer.Max += originAttackTimeMaxValue * 0.75f;
+                attackTimer.Max += originAttackTimeMaxValue * 0.75f;
                 originAttackTimeMaxValue *= 1.75f;
             }
             else if (CheckGoalLevel(20))

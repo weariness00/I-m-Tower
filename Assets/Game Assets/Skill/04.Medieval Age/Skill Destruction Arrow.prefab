@@ -48,10 +48,11 @@ MonoBehaviour:
   id: 4001
   skillName: "\uD30C\uAD34\uC758 \uD654\uC0B4"
   icon: {fileID: 0}
-  rating: 0
+  ageType: 0
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
+  status: {fileID: 0}
   arrowPrefab: {fileID: 6570474942989543696, guid: a3efef99689abe240bf7490d082d2486, type: 3}
 --- !u!114 &594781936574025199
 MonoBehaviour:
@@ -65,31 +66,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd6a8d00f270577449dcc3d8d2219377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value:
-    hp:
-      _min: 0
-      _max: 10
-      _current: 10
-      _isMin: 0
-      _isMax: 1
-      isOverMax: 0
-      isOverMin: 0
-    speed: 10
-    damage: 5
-    damageMultiple: 1
-    attackRange: 100
-    attackTimer:
-      _min: 0
-      _max: 1
-      _current: 0
-      _isMin: 1
-      _isMax: 0
-      isOverMax: 1
-      isOverMin: 0
+  ownerObject: {fileID: 0}
+  hp:
+    _min: 0
+    _max: 0
+    _current: 0
+    _isMin: 1
+    _isMax: 1
+    isOverMax: 0
+    isOverMin: 0
+  maxHp:
+    baseValue: 100
+    modifierList: []
+  speed:
+    baseValue: 1
+    modifierList: []
+  damage:
+    baseValue: 0
+    modifierList: []
+  criticalDamage:
+    baseValue: 1.5
+    modifierList: []
+  criticalChance:
+    baseValue: 0.1
+    modifierList: []
+  damaged:
+    baseValue: 0
+    modifierList: []
+  defense:
+    baseValue: 0
+    modifierList: []
+  attackRange:
+    baseValue: 10
+    modifierList: []
+  attackSpeed:
+    baseValue: 1
+    modifierList: []
+  attackTimer:
+    _min: 0
+    _max: 2
+    _current: 0
+    _isMin: 1
+    _isMax: 1
+    isOverMax: 0
+    isOverMin: 0
   onDieEvent:
     m_PersistentCalls:
       m_Calls: []
-  level: 1
+  isStun: 0
+  level:
+    _min: 0
+    _max: 50
+    _current: 0
+    _isMin: 1
+    _isMax: 0
+    isOverMax: 0
+    isOverMin: 0
   skillType: 0
   onLevelUpEvent:
     m_PersistentCalls:

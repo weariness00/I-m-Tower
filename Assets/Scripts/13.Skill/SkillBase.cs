@@ -1,5 +1,6 @@
 ﻿using System;
 using Leveling.Age;
+using Status;
 using UnityEngine;
 
 namespace Skill
@@ -14,7 +15,7 @@ namespace Skill
         public AgeType ageType;
         [HideInInspector] public LayerMask targetLayer;
 
-        [NonSerialized] public SkillStatus status;
+        public SkillStatus status;
         
         protected Collider[] searchColliders;
 
@@ -34,7 +35,7 @@ namespace Skill
     {
         public virtual string Explain()
         {
-            return $"{skillName}\n" + $"공격력 {status.Damage}, 공격 속도 {status.AttackSpeed}";
+            return $"{skillName}\n" + $"공격력 {status.damage}, 공격 속도 {status.attackSpeed}";
         }
     }
 

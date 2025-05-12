@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Manager;
 using Unit.Monster;
 using UnityEngine;
 using Util;
@@ -13,22 +14,22 @@ namespace Skill
         private new SphereCollider collider;
         [HideInInspector] public SkillDustGale skill;
 
-        private float moveSpeedDown = 0;
-        private float moreDamageMultiple = 0;
         private HashSet<MonsterControl> insideMonster = new();
 
         public void Awake()
         {
             collider = GetComponent<SphereCollider>();
             InitDustEffect();
+            
+            DebugManager.ToDo("스턴 넣기");
         }
 
         public void OnDestroy()
         {
             foreach (var monster in insideMonster)
             {
-                monster.status.speedMultiple += moveSpeedDown;
-                monster.status.moreDamageMultiple -= moreDamageMultiple;
+                monster.status.speed.RemoveModifier(skill.status.targetSpeedModifier);
+                monster.status.damaged.RemoveModifier(skill.status.targetDamagedModifier);
             }
             insideMonster.Clear();
         }
@@ -38,12 +39,12 @@ namespace Skill
             if (other.TryGetComponent(out MonsterControl monster) && !insideMonster.Contains(monster))
             {
                 insideMonster.Add(monster);
-                monster.status.speedMultiple -= moveSpeedDown;
-                monster.status.moreDamageMultiple += moreDamageMultiple;
+                monster.status.speed.AddModifier(skill.status.targetSpeedModifier);
+                monster.status.damaged.AddModifier(skill.status.targetDamagedModifier);
                 CancelDustGaleEffectTask(monster, monster.status.dieCancelToken.Token).Forget();
                 
-                if (skill.status.stunProbability.IsProbability())
-                    monster.status.Stun(skill.status.stunDuration);
+                // if (skill.status.stunProbability.IsProbability())
+                //     monster.status.Stun(skill.status.stunDuration);
             }
         }
 
@@ -52,17 +53,15 @@ namespace Skill
             if (other.TryGetComponent(out MonsterControl monster))
             {
                 insideMonster.Remove(monster);
-                monster.status.speedMultiple += moveSpeedDown;
-                monster.status.moreDamageMultiple -= moreDamageMultiple;
-                if (skill.status.stunProbability.IsProbability())
-                    monster.status.Stun(skill.status.stunDuration);
+                monster.status.speed.RemoveModifier(skill.status.targetSpeedModifier);
+                monster.status.damaged.RemoveModifier(skill.status.targetDamagedModifier);
+                // if (skill.status.stunProbability.IsProbability())
+                //     monster.status.Stun(skill.status.stunDuration);
             }
         }
 
         public void PoolOn()
         {
-            moveSpeedDown = skill.status.moveSpeedDown;
-            moreDamageMultiple = skill.status.dustMoreDamageMultiple;
             collider.radius = skill.status.dustRadius;
             dustEffect.Play();
             for (var i = 0; i < dustEffectArray.Length; i++)
@@ -80,6 +79,7 @@ namespace Skill
             dustEffect.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         }
 
+        // 모래 폭풍의 지속시간이 끝났을 경우 실행
         private async UniTask CancelDustGaleEffectTask(MonsterControl monster, CancellationToken token)
         {
             while (!token.IsCancellationRequested && gameObject.activeSelf)
@@ -89,8 +89,8 @@ namespace Skill
             if (insideMonster.Contains(monster))
             {
                 insideMonster.Remove(monster);
-                monster.status.speedMultiple += moveSpeedDown;
-                monster.status.moreDamageMultiple -= moreDamageMultiple;
+                monster.status.speed.RemoveModifier(skill.status.targetSpeedModifier);
+                monster.status.damaged.RemoveModifier(skill.status.targetDamagedModifier);
             }
         }
     }

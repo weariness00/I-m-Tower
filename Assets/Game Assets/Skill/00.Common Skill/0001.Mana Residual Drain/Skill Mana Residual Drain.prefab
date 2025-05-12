@@ -45,37 +45,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22d2f439ea8f4cbf87872673c4a8c446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value:
-    hp:
-      _min: 0
-      _max: 10
-      _current: 10
-      _isMin: 0
-      _isMax: 1
-      isOverMax: 0
-      isOverMin: 0
-    speed: 1
-    damage: 1
-    damageMultiple: 1
-    attackRange: 1
-    attackTimer:
-      _min: 0
-      _max: 1
-      _current: 0
-      _isMin: 1
-      _isMax: 0
-      isOverMax: 0
-      isOverMin: 0
+  ownerObject: {fileID: 0}
+  hp:
+    _min: 0
+    _max: 0
+    _current: 0
+    _isMin: 1
+    _isMax: 1
+    isOverMax: 0
+    isOverMin: 0
+  maxHp:
+    baseValue: 100
+    modifierList: []
+  speed:
+    baseValue: 1
+    modifierList: []
+  damage:
+    baseValue: 0
+    modifierList: []
+  criticalDamage:
+    baseValue: 1.5
+    modifierList: []
+  criticalChance:
+    baseValue: 0.1
+    modifierList: []
+  damaged:
+    baseValue: 0
+    modifierList: []
+  defense:
+    baseValue: 0
+    modifierList: []
+  attackRange:
+    baseValue: 10
+    modifierList: []
+  attackSpeed:
+    baseValue: 1
+    modifierList: []
+  attackTimer:
+    _min: 0
+    _max: 1
+    _current: 0
+    _isMin: 1
+    _isMax: 1
+    isOverMax: 0
+    isOverMin: 0
   onDieEvent:
     m_PersistentCalls:
       m_Calls: []
-  level: 0
+  isStun: 0
+  level:
+    _min: 0
+    _max: 50
+    _current: 0
+    _isMin: 1
+    _isMax: 0
+    isOverMax: 0
+    isOverMin: 0
   skillType: 0
   onLevelUpEvent:
     m_PersistentCalls:
       m_Calls: []
   drainManaAmount: 0.5
   drainManaMultiple: 1
+  drainManaSpeed:
+    _min: 0
+    _max: 0.3
+    _current: 0
+    _isMin: 1
+    _isMax: 0
+    isOverMax: 0
+    isOverMin: 0
+  isDensitySense: 0
+  doubleProcChance: 0
+  killTargetCount: -1
 --- !u!114 &4787740679431991636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,7 +133,8 @@ MonoBehaviour:
   id: 1
   skillName: "\uC794\uB958 \uB9C8\uB098 \uD761\uC218"
   icon: {fileID: 0}
-  rating: 0
+  ageType: 0
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
+  status: {fileID: 0}

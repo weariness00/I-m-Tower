@@ -43,7 +43,6 @@ namespace Unit.Monster
 
         public override void OnGetObject(MonsterControl monster)
         {
-            monster.InitStatus();
             monster.collider.enabled = true;
             monster.gameObject.SetActive(true);
             monster.aStarAgent.Find(monster.transform.position, targetTransform.position);
