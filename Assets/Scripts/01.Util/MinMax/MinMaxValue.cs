@@ -18,6 +18,19 @@ namespace Util
     [System.Serializable]
     public class MinMaxValue<T> where T : struct, IComparable
     {
+        [SerializeField] private T _min;
+        [SerializeField] private T _max;
+        [SerializeField] private T _current;
+        [SerializeField] private bool _isMin;
+        [SerializeField] private bool _isMax;
+
+        public bool isOverMax; // 기존의 Max보다 높은 값을 허용 할 것인지
+        public bool isOverMin; // 기존의 Min보다 낮은 값을 허용 할 것인지
+
+        public event Action<MinMaxValue<T>> onChangeValueMin;
+        public event Action<MinMaxValue<T>> onChangeValueMax;
+        public event Action<MinMaxValue<T>> onChangeValueCurrent;
+        
         public static implicit operator T(MinMaxValue<T> value)
         {
             return value.Current;
@@ -44,6 +57,7 @@ namespace Util
             set
             {
                 _min = value; 
+                onChangeValueMin?.Invoke(this);
                 CheckCurrent();
             }
         }
@@ -54,36 +68,14 @@ namespace Util
             set
             {
                 _max = value;
+                onChangeValueMax?.Invoke(this);
                 CheckCurrent();
             }
         }
         
-        [SerializeField] private T _min;
-        [SerializeField] private T _max;
-        [SerializeField] private T _current;
-        [SerializeField] private bool _isMin;
-        [SerializeField] private bool _isMax;
+        public bool IsMin => _isMin;
+        public bool IsMax => _isMax;
 
-        public bool isOverMax; // 기존의 Max보다 높은 값을 허용 할 것인지
-        public bool isOverMin; // 기존의 Min보다 낮은 값을 허용 할 것인지
-        public bool IsMin
-        {
-            get
-            {
-                CheckCurrent();
-                return _isMin;
-            }
-        }
-
-        public bool IsMax
-        {
-            get
-            {
-                CheckCurrent();
-                return _isMax;
-            }   
-        }
-        
         public MinMaxValue(bool _isOverMin = false, bool _isOverMax = false)
         {
             _current = default;
@@ -128,13 +120,25 @@ namespace Util
             }
             if (_current.CompareTo(_min) <= 0)
             {
-                if(isOverMin == false) {_current = _min;}
+                if (isOverMin == false)
+                {
+                    _current = _min;
+                    onChangeValueCurrent?.Invoke(this);
+                }
                 _isMin = true;
             }
             else if (_current.CompareTo(_max) >= 0)
             {
-                if(isOverMax == false) {_current = _max;}
+                if (isOverMax == false)
+                {
+                    _current = _max;
+                    onChangeValueCurrent?.Invoke(this);
+                }
                 _isMax = true;
+            }
+            else
+            {
+                onChangeValueCurrent?.Invoke(this);
             }
         }
 
@@ -185,12 +189,12 @@ namespace Util
         {
             if (this is MinMaxValue<int> intValue)
             {
-                var normalized = Mathf.InverseLerp(intValue._min, intValue._max, intValue);
+                var normalized = Mathf.InverseLerp(intValue._min, intValue._max, intValue._current);
                 return Mathf.Lerp(min, max, normalized);
             }
             if (this is MinMaxValue<float> floatValue)
             {
-                var normalized = Mathf.InverseLerp(floatValue._min, floatValue._max, floatValue);
+                var normalized = Mathf.InverseLerp(floatValue._min, floatValue._max, floatValue._current);
                 return Mathf.Lerp(min, max, normalized);
             }
 
