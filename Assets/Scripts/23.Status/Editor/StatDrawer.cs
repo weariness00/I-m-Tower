@@ -24,16 +24,22 @@ namespace Status.Editor
 
             float totalWidth = position.width;
 
+
             Rect foldoutRect = new Rect(position.x, y, FoldoutWidth, lineHeight);
-            Rect baseLabelRect = new Rect(foldoutRect.xMax + spacing, y, 70f, lineHeight);
+            // 폴드아웃 토글 출력
+            showModifiers = EditorGUI.Foldout(foldoutRect, showModifiers, GUIContent.none);
+            
+            // 🔹 라벨 출력
+            label = EditorGUI.BeginProperty(position, label, property);
+            position = EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), label);
+            
+            Rect baseLabelRect = new Rect(position.x + spacing, y, 40f, lineHeight);
             Rect baseValueRect = new Rect(baseLabelRect.xMax + spacing, y, 60f, lineHeight);
             Rect realValueRect = new Rect(baseValueRect.xMax + spacing, y, totalWidth - baseValueRect.xMax - spacing, lineHeight);
 
-            showModifiers = EditorGUI.Foldout(foldoutRect, showModifiers, GUIContent.none);
             EditorGUI.LabelField(baseLabelRect, "Value");
             EditorGUI.PropertyField(baseValueRect, baseValueProp, GUIContent.none);
 
-            // ✅ 안전하게 Stat 인스턴스 추출
             if (property.GetTargetObjectOfProperty() is Stat statObj)
             {
                 float realValue = statObj.GetValue();
@@ -44,8 +50,10 @@ namespace Status.Editor
 
             if (showModifiers)
             {
-                EditorGUI.PropertyField(new Rect(position.x + 10f, y, totalWidth, EditorGUI.GetPropertyHeight(modifiersProp, true)), modifiersProp, true);
+                EditorGUI.PropertyField(new Rect(foldoutRect.xMax + 10f, y, totalWidth - foldoutRect.xMax - 10f, EditorGUI.GetPropertyHeight(modifiersProp, true)), modifiersProp, true);
             }
+
+            EditorGUI.EndProperty();
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)

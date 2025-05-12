@@ -8,6 +8,10 @@ namespace Status.Editor
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            // 🔹 라벨 출력
+            label = EditorGUI.BeginProperty(position, label, property);
+            position = EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), label);
+            
             // 한 줄로 두 개 필드를 나누기
             float lineHeight = EditorGUIUtility.singleLineHeight;
             float spacing = 6f;
