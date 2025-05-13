@@ -136,5 +136,5 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
-  status: {fileID: 0}
+  status: {fileID: 4291024020747971566}
   dustGalePrefab: {fileID: 791827989357684879, guid: f619c085aa3e5584fb4efb65a32e641a, type: 3}

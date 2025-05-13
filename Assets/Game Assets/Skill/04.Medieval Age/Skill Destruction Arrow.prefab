@@ -52,7 +52,7 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
-  status: {fileID: 0}
+  status: {fileID: 594781936574025199}
   arrowPrefab: {fileID: 6570474942989543696, guid: a3efef99689abe240bf7490d082d2486, type: 3}
 --- !u!114 &594781936574025199
 MonoBehaviour:

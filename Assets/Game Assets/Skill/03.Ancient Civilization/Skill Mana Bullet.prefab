@@ -52,7 +52,7 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
-  status: {fileID: 0}
+  status: {fileID: 2174691079653892651}
   bulletPrefab: {fileID: 5374370856794175422, guid: 7aef203586c21604fac49543f449e006, type: 3}
 --- !u!114 &2174691079653892651
 MonoBehaviour:

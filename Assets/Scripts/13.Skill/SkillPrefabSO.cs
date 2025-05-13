@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Localization;
 using Util;
@@ -25,5 +26,12 @@ namespace Skill
         }
 
         public static SkillBase GetRandomSkill() => Instance.skillArray.Random();
+
+        public static SkillBase GetRandomSKillExcept(SkillBase[] exceptSkillArray)
+        {
+            // skill이 200개 이상일 경우에는 hashset을 사용하여 성능을 개선
+            var arr = Instance.skillArray.Except(exceptSkillArray).ToArray();
+            return arr.Random();
+        }
     }
 }

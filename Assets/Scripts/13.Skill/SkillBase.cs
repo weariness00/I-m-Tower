@@ -28,6 +28,7 @@ namespace Skill
         public virtual void Init()
         {
             status = GetComponent<SkillStatus>();
+            status.ownerObject = gameObject;
         }
     }
 

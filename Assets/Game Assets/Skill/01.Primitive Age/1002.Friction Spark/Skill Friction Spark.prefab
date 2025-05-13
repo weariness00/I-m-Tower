@@ -116,7 +116,7 @@ MonoBehaviour:
     isActive: 0
   damagePercent:
     value: 0
-    type: 0
+    type: 1
     isActive: 0
 --- !u!114 &8982193267050493924
 MonoBehaviour:
@@ -137,6 +137,6 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
-  status: {fileID: 0}
+  status: {fileID: 2630159364182360336}
   sparkProjectilePrefab: {fileID: 2130342723573831170, guid: 13afee3396c021f42864d6a0f69a11e8, type: 3}
   burnEffectPrefab: {fileID: 198714429152696258, guid: fcf74f95928177e4cafdb18c5a23c7a0, type: 3}

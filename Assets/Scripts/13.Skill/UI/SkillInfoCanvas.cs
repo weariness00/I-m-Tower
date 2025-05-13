@@ -1,139 +1,91 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using DG.Tweening;
-using NUnit.Framework;
+using Manager;
+using TMPro;
 using UnityEngine;
-using UnityEngine.Pool;
+using UnityEngine.UI;
 
 namespace Skill.UI
 {
-    public class SkillInfoCanvas : MonoBehaviour
+    public partial class SkillInfoCanvas : MonoBehaviour
     {
-        public SkillManager targetSkillManager;
-
-        [Header("스킬 Log 관련")]
-        public Canvas addLogCanvas;
-        public Transform logParent;
-        public SkillAddLogUI skillAddLogUIPrefab;
-        private ObjectPool<SkillAddLogUI> logUIPool;
-        private Queue<SkillAddLogUI> activeLogUIQueue = new();
-        private SkillAddLogUI prevLog;
-        public float itemSpacing = 8f;
-        public float minScale = 0.7f;
-
-        [Header("모든 스킬 Info 관련")]
-        public Canvas listCanvas;
+        public SkillManager skillManager;
 
         public void Awake()
         {
-            logUIPool = new(
-                () => Instantiate(skillAddLogUIPrefab, logParent),
-                logUI =>
-                {
-                    logUI.gameObject.SetActive(true);
-                    logUI.rectTransform.anchoredPosition = Vector2.zero;
-                    logUI.rectTransform.localScale = Vector3.one * 1.2f;
-                    logUI.rectTransform.anchoredPosition = new Vector2(0, -1 * (logUI.rectTransform.rect.height + itemSpacing));
-                    logUI.canvasGroup.alpha = 1;
-                },
-                logUI =>
-                {
-                    if(activeLogUIQueue.Count != 0) activeLogUIQueue.Dequeue();
-                    logUI.gameObject.SetActive(false);
-                    if (prevLog == logUI)
-                        prevLog = null;
-                },
-                logUI => Destroy(logUI.gameObject),
-                true,
-                20,
-                20);
-
-            var logUIList = new List<SkillAddLogUI>();
-            for (int i = 0; i < 20; i++)
-            {
-                var logUI = logUIPool.Get();
-                logUIList.Add(logUI);
-            }
-            foreach (var skillAddLogUI in logUIList)
-                logUIPool.Release(skillAddLogUI);
-
-            targetSkillManager.onSkillLevelUpEvent += CreateNewSkillAddNewLog;
+            CreateAllSkillSummeryUI();
+            
+            detailUI.rootObject.SetActive(false);
+            
+            skillManager.onAddNewSkillEvent += AddNewSkill;
+            skillManager.onSkillLevelUpEvent += LevelUpSkill;
         }
 
-        // 추가된 스킬의 Log를 생성
-        private void CreateNewSkillAddNewLog(SkillBase skill)
+        private void AddNewSkill(SkillBase skill)
         {
-            if (logUIPool.CountActive == 20)
-                logUIPool.Release(activeLogUIQueue.Peek());
-            if (prevLog != null)
-            {
-                prevLog.StopAllCoroutines();
-                prevLog.StartCoroutine(prevLog.AlphaEnumerator(3f));
-                prevLog.StartCoroutine(LogReleaseEnumerator(prevLog, 3f));
-            }
-
-            var logUI = logUIPool.Get();
-            logUI.SetSkill(skill);
-            prevLog = logUI;
+            int index = Array.BinarySearch(summeryUIArray, skill.id);
+            var summeryUI = summeryUIArray[index];
             
-            activeLogUIQueue.Enqueue(logUI);
-            StopAllCoroutines();
-            StartCoroutine(AnimateLogEntries());
+            DebugManager.ToDo("소지한 스킬인것처럼 보이는 ui");
         }
         
-        private IEnumerator AnimateLogEntries()
+        private void LevelUpSkill(SkillBase skill)
         {
-            float duration = 0.2f;
-            float t = 0f;
+            int index = Array.BinarySearch(summeryUIArray, skill.id);
+            var summeryUI = summeryUIArray[index];
+            summeryUI.levelText.text = $"LV.{skill.status.level.Current}/{skill.status.level.Max}";
+        }
+    }
 
-            int count = activeLogUIQueue.Count;
-            var logs = activeLogUIQueue.ToArray(); // 스택 → 배열 (최근 생성 순서 반영)
-            Array.Reverse(logs);
-
-            Vector2[] startPositions = new Vector2[count];
-            Vector2[] endPositions = new Vector2[count];
-
-            Vector3[] startScales = new Vector3[count];
-            Vector3[] endScales = new Vector3[count];
-
-            for (int i = 0; i < count; i++)
+    // 스킬 리스트 관련
+    public partial class SkillInfoCanvas
+    {
+        [Header("Summery 정보")]
+        public ScrollRect summeryScrollRect;
+        public SkillInfoSummeryUI summeryUIPrefab;
+        private SkillInfoSummeryUI[] summeryUIArray;
+        
+        // 모든 스킬에 대한 UI를 생성
+        private void CreateAllSkillSummeryUI()
+        {
+            summeryUIArray = new SkillInfoSummeryUI[SkillPrefabSO.Instance.skillArray.Length];
+            for (var i = 0; i < SkillPrefabSO.Instance.skillArray.Length; i++)
             {
-                var log = logs[i];
+                var skill = SkillPrefabSO.Instance.skillArray[i];
+                var summeryUI = Instantiate(summeryUIPrefab, summeryScrollRect.content);
+                summeryUI.skillID = skill.id;
+                summeryUI.icon.sprite = skill.icon;
+                summeryUI.nameText.text = skill.skillName;
+                summeryUI.levelText.text = $"LV.{skill.status.level.Current}/{skill.status.level.Max}";
 
-                startPositions[i] = log.rectTransform.anchoredPosition;
-                endPositions[i] = new Vector2(0, Mathf.Clamp(i-1,0, count) * (log.rectTransform.rect.height * 0.7f + itemSpacing) + (i > 0 ? log.rectTransform.rect.height : 0f));
-                
-                startScales[i] = log.rectTransform.localScale;
-                endScales[i] = (i == 0) ? Vector3.one : Vector3.one * 0.7f;
-            }
-
-            while (t < 1f)
-            {
-                t += Time.deltaTime / duration;
-
-                for (int i = 0; i < count; i++)
-                {
-                    var log = logs[i];
-                    log.rectTransform.anchoredPosition = Vector3.Lerp(startPositions[i], endPositions[i], t);
-                    log.rectTransform.localScale = Vector3.Lerp(startScales[i], endScales[i], t);
-                }
-
-                yield return null;
-            }
-
-            // 보정
-            for (int i = 0; i < count; i++)
-            {
-                logs[i].rectTransform.anchoredPosition = endPositions[i];
-                logs[i].rectTransform.localScale = endScales[i];
+                summeryUIArray[i] = summeryUI;
             }
         }
+    }
 
-        private IEnumerator LogReleaseEnumerator(SkillAddLogUI log, float duration)
+    // Detail 정보 관련
+    public partial class SkillInfoCanvas
+    {
+        [Header("Detail 정보")] 
+        public DetailUI detailUI;
+        
+        [Serializable]
+        public class DetailUI
         {
-            yield return new WaitForSeconds(duration);
-            logUIPool.Release(log);
+            [Tooltip("최상위 부모")]
+            public GameObject rootObject;
+            [Tooltip("스킬 아이콘")]
+            public Image icon;
+            [Tooltip("스킬 이름")]
+            public TMP_Text nameText;
+            [Tooltip("스킬 레벨 텍스트 \"LV.현재/최대\"")]
+            public TMP_Text levelText;
+            [Tooltip("스킬 효과 설명")]
+            public TMP_Text explainText;
+            [Tooltip("스킬 스탯 표시")]
+            public TMP_Text statText;
+            [Tooltip("스킬 다음 레벨 스탯 표시")]
+            public TMP_Text nextLevelStatText;
         }
     }
 }

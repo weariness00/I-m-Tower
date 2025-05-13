@@ -109,17 +109,17 @@ MonoBehaviour:
   targetDefensePenetrationMultiple: 0
   targetDamagedModifier:
     value: 0
-    type: 0
+    type: 1
     isActive: 0
   targetMoreDamageMultipleDuration: 0
   targetHpPercent: 0
   damageModifier:
     value: 0
-    type: 0
+    type: 1
     isActive: 0
   criticalDamageModifier:
     value: 0
-    type: 0
+    type: 1
     isActive: 0
   slamCriticalChangeModifier:
     value: 0
@@ -144,6 +144,6 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
-  status: {fileID: 0}
+  status: {fileID: 3104248361935584391}
   debrisPrefab: {fileID: 6652333672847785722, guid: a820300185b06024fa9ff11fd36be198, type: 3}
   hitEffectPrefab: {fileID: 2089605140711329207, guid: bb9e6c25528eec64b921ed16e556d1c0, type: 3}
