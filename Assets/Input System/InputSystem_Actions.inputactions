@@ -81,7 +81,7 @@
                     "name": "Sprint",
                     "type": "Button",
                     "id": "641cd816-40e6-41b4-8c3d-04687c349290",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -492,7 +492,7 @@
                     "name": "Submit",
                     "type": "Button",
                     "id": "7607c7b6-cd76-4816-beef-bd0341cfe950",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -501,7 +501,7 @@
                     "name": "Cancel",
                     "type": "Button",
                     "id": "15cef263-9014-4fd5-94d9-4e4a6234a6ef",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -570,7 +570,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ClickDelta",
+                    "name": "Delta",
                     "type": "Value",
                     "id": "6003e15a-6cc2-4f58-b15b-0e278571c3a7",
                     "expectedControlType": "Vector2",
@@ -585,6 +585,15 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "MultiTap",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Press",
+                    "type": "Button",
+                    "id": "41ae8044-dbc5-43e4-a17b-9ec4eca6d7b2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press",
                     "initialStateCheck": false
                 }
             ],
@@ -921,6 +930,28 @@
                 },
                 {
                     "name": "",
+                    "id": "62972665-a1bd-427c-92de-f26f3f80b63b",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f14ec5dd-664d-47d8-a2f1-d8910cf80486",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "8d66d5ba-88d7-48e6-b1cd-198bbfef7ace",
                     "path": "<Pen>/tip",
                     "interactions": "",
@@ -1014,7 +1045,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "ClickDelta",
+                    "action": "Delta",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1025,7 +1056,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Touch",
-                    "action": "ClickDelta",
+                    "action": "Delta",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1048,6 +1079,28 @@
                     "processors": "",
                     "groups": ";Touch",
                     "action": "DoubleClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4c73cd17-99cb-4f0c-a250-e779937ef758",
+                    "path": "<Mouse>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dc5a7819-1672-4297-97d0-43cbbc579285",
+                    "path": "<Touchscreen>/touch*/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Touch",
+                    "action": "Press",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
