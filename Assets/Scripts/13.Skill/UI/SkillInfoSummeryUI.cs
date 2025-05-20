@@ -7,6 +7,8 @@ namespace Skill.UI
 {
     public partial class SkillInfoSummeryUI : MonoBehaviour
     {
+        public Button button;
+        
         public int skillID;
         [Tooltip("스킬 아이콘")]
         public Image icon;

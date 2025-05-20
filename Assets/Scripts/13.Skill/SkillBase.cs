@@ -36,7 +36,7 @@ namespace Skill
     {
         public virtual string Explain()
         {
-            return $"{skillName}\n" + $"공격력 {status.damage}, 공격 속도 {status.attackSpeed}";
+            return $"{skillName}\n";
         }
     }
 

@@ -53,6 +53,8 @@ namespace Skill.UI
             {
                 var skill = SkillPrefabSO.Instance.skillArray[i];
                 var summeryUI = Instantiate(summeryUIPrefab, summeryScrollRect.content);
+                summeryUI.button.onClick.AddListener(() => OnDetail(skill.id));
+                
                 summeryUI.skillID = skill.id;
                 summeryUI.icon.sprite = skill.icon;
                 summeryUI.nameText.text = skill.skillName;
@@ -86,6 +88,21 @@ namespace Skill.UI
             public TMP_Text statText;
             [Tooltip("스킬 다음 레벨 스탯 표시")]
             public TMP_Text nextLevelStatText;
+        }
+
+        private void OnDetail(int skillID)
+        {
+            var skill = skillManager.GetSkill(skillID);
+            if (skill == null)
+                skill = SkillPrefabSO.GetSkill(skillID);
+            
+            detailUI.rootObject.SetActive(true);
+
+            detailUI.icon.sprite = skill.icon;
+            detailUI.nameText.text = skill.skillName;
+            detailUI.levelText.text = $"LV.{skill.status.level.Current}/{skill.status.level.Max}";
+            detailUI.explainText.text = skill.Explain();
+            detailUI.statText.text = string.Join("\n", $"공격력 {skill.status.damage}", $"공격 속도 {skill.status.attackSpeed}");
         }
     }
 }

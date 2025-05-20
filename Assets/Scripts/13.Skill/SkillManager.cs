@@ -55,5 +55,15 @@ namespace Skill
         {
             AddSkill(hasSkillCount <= hasSkillDictionary.Count ? hasSkillDictionary.Values.ToArray().Random() : SkillPrefabSO.GetRandomSkill());
         }
+
+        public SkillBase GetSkill(int id)
+        {
+            if (!hasSkillDictionary.TryGetValue(id, out var skill))
+            {
+                DebugManager.LogError($"소지한 스킬이 아닙니다. [id : {id}]");
+            }
+
+            return skill;
+        }
     }
 }
