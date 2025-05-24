@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4706306208156722795
+--- !u!1 &1486542712137718043
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3720489826101811399}
-  - component: {fileID: 3104248361935584391}
-  - component: {fileID: 1653000983646291803}
+  - component: {fileID: 1426411633501981585}
+  - component: {fileID: 2374780603925700004}
+  - component: {fileID: 4787740679431991636}
   m_Layer: 0
-  m_Name: Skill Telekinetic Slam
+  m_Name: Skill Mana Residual Drain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3720489826101811399
+--- !u!4 &1426411633501981585
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4706306208156722795}
+  m_GameObject: {fileID: 1486542712137718043}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -33,16 +33,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3104248361935584391
+--- !u!114 &2374780603925700004
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4706306208156722795}
+  m_GameObject: {fileID: 1486542712137718043}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0853171317945a2948f9eced8bac081, type: 3}
+  m_Script: {fileID: 11500000, guid: 22d2f439ea8f4cbf87872673c4a8c446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ownerObject: {fileID: 0}
@@ -105,45 +105,36 @@ MonoBehaviour:
   onLevelUpEvent:
     m_PersistentCalls:
       m_Calls: []
-  upDamageSize: 10
-  targetDefensePenetrationMultiple: 0
-  targetDamagedModifier:
-    value: 0
-    type: 1
-    isActive: 0
-  targetMoreDamageMultipleDuration: 0
-  targetHpPercent: 0
-  damageModifier:
-    value: 0
-    type: 1
-    isActive: 0
-  criticalDamageModifier:
-    value: 0
-    type: 1
-    isActive: 0
-  slamCriticalChangeModifier:
-    value: 0
-    type: 0
-    isActive: 0
---- !u!114 &1653000983646291803
+  drainManaAmount: 0.5
+  drainManaMultiple: 1
+  drainManaSpeed:
+    _min: 0
+    _max: 0.3
+    _current: 0
+    _isMin: 1
+    _isMax: 0
+    isOverMax: 0
+    isOverMin: 0
+  isDensitySense: 0
+  doubleProcChance: 0
+  killTargetCount: -1
+--- !u!114 &4787740679431991636
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4706306208156722795}
+  m_GameObject: {fileID: 1486542712137718043}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a49ed20d2ef2405ba222f4e8f9effd28, type: 3}
+  m_Script: {fileID: 11500000, guid: 4384b14efd14444ba636d74fdfac6029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 1001
-  skillName: "\uB099\uD558 \uCDA9\uACA9"
+  id: 701
+  skillName: "\uC794\uB958 \uB9C8\uB098 \uD761\uC218"
   icon: {fileID: 0}
   ageType: 0
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
-  status: {fileID: 3104248361935584391}
-  debrisPrefab: {fileID: 6652333672847785722, guid: a820300185b06024fa9ff11fd36be198, type: 3}
-  hitEffectPrefab: {fileID: 2089605140711329207, guid: bb9e6c25528eec64b921ed16e556d1c0, type: 3}
+  status: {fileID: 2374780603925700004}
