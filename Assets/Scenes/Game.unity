@@ -5303,6 +5303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuObjectArray:
   - {fileID: 447914526}
+  - {fileID: 1318636282}
 --- !u!1 &666687738
 GameObject:
   m_ObjectHideFlags: 0
@@ -10068,6 +10069,7 @@ GameObject:
   - component: {fileID: 1232073197}
   - component: {fileID: 1232073199}
   - component: {fileID: 1232073201}
+  - component: {fileID: 1232073202}
   m_Layer: 6
   m_Name: Tower
   m_TagString: Tower
@@ -10088,6 +10090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: {fileID: 1232073199}
+  pointData: {fileID: 0}
   skillManager: {fileID: 1232073201}
 --- !u!4 &1232073198
 Transform:
@@ -10212,6 +10215,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useSkillCount: 5
   hasSkillCount: 8
+--- !u!114 &1232073202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232073196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f2a402be9b0cc1499dd45d5e2eb9a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  techPoint: 0
+  bioPoint: 0
 --- !u!1001 &1234771433
 PrefabInstance:
   m_ObjectHideFlags: 0
