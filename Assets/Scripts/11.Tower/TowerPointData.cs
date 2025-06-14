@@ -1,4 +1,5 @@
 ﻿using System;
+using R3;
 using UnityEngine;
 
 namespace Tower
@@ -7,9 +8,17 @@ namespace Tower
     {
         [Tooltip("기술 포인트")][SerializeField] private int techPoint = 0;
         [Tooltip("생물 포인트")][SerializeField] private int bioPoint = 0;
+        
+        [NonSerialized] public ReactiveProperty<int> techPointReactive = new ReactiveProperty<int>(0);
+        [NonSerialized] public ReactiveProperty<int> bioPointReactive = new(0);
+
+        public void Awake()
+        {
+            techPointReactive.Value = techPoint;
+            bioPointReactive.Value = bioPoint;
+        }
 
         public void AddTechPoint(int value) => techPoint += value;
-        
         public void UseTechPoint(int useValue, Action useCompleteAction)
         {
             if(techPoint > useValue) return;
