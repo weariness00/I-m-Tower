@@ -60,7 +60,7 @@ namespace Skill
         {
             if (!hasSkillDictionary.TryGetValue(id, out var skill))
             {
-                DebugManager.LogError($"소지한 스킬이 아닙니다. [id : {id}]");
+                DebugManager.LogWarning($"소지한 스킬이 아닙니다. [id : {id}]");
             }
 
             return skill;

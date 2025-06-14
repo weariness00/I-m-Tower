@@ -23,5 +23,12 @@ namespace Status
             this.value = value;
             type = t;
         }
+        
+        public StatModifier(ModifierType t, bool isActive)
+        {
+            this.value = default;
+            type = t;
+            this.isActive = isActive;
+        }
     }
 }

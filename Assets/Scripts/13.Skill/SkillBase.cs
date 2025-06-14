@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Skill
 {
-    public partial class SkillBase : MonoBehaviour
+    public abstract partial class SkillBase : MonoBehaviour
     {
         public int id;
         public string skillName;
@@ -32,7 +32,7 @@ namespace Skill
         }
     }
 
-    public abstract partial class SkillBase
+    public partial class SkillBase
     {
         public virtual string Explain()
         {

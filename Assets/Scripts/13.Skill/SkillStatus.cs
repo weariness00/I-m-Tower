@@ -1,6 +1,7 @@
 ﻿using Status;
 using Manager;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 using Util;
 
 namespace Skill
@@ -9,6 +10,7 @@ namespace Skill
     {
         public MinMaxValue<int> level = new(0,0,50);
         public SkillType skillType;
+        public SkillAttributeType attributeType;
 
         public UnityEvent<int> onLevelUpEvent = new();
 

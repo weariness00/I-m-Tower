@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillArray:
   - {fileID: 4787740679431991636, guid: 84a40bc127bc593459e1be6738e6c726, type: 3}
-  - {fileID: 1653000983646291803, guid: a2c6184d1a7a3e643aa3165ac6b1b154, type: 3}
   - {fileID: 8982193267050493924, guid: 909fe78113a6b574fa6ecd2f05f6e25c, type: 3}
+  - {fileID: 9216979223574944553, guid: bb75d5d36ee87064c95dbc86a3115d40, type: 3}
   - {fileID: 8869894297349710926, guid: 453506a5d36e17e449bcec086a8c65e4, type: 3}
+  - {fileID: 1653000983646291803, guid: a2c6184d1a7a3e643aa3165ac6b1b154, type: 3}
   - {fileID: 5777552427496914014, guid: ece613dd4a1b6544d96cfc948d72777b, type: 3}
   - {fileID: 8157671785556365833, guid: 6faafbec32361b34792354eb91c50f45, type: 3}

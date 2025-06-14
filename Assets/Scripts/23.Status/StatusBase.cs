@@ -33,17 +33,22 @@ namespace Status
         private int stunRefCount = 0; // 현재 스턴중인 횟수
         public bool isStun;
 
-        public int Damage => Mathf.FloorToInt(damage.Value * ((criticalChance.Value.IsProbability() ? criticalDamage.Value : 1) + 1));
-        
+        public int Damage => Mathf.FloorToInt(damage.Value * (criticalChance.Value.IsProbability() ? criticalDamage.Value : 1));
+
+        public virtual void Awake()
+        {
+            Init();
+            attackTimer.onChangeValueCurrent += UpdateAttackTimer;
+        }
+
         public virtual void Init()
         {
             hp.SetMax(Mathf.CeilToInt(maxHp.Value));
         }
 
-        public void UpdateAttackTimer(float time)
+        public void UpdateAttackTimer(MinMaxValue<float> value)
         {
-            attackTimer.Max = 1f / attackSpeed.Value;
-            attackTimer.Current += time;
+            value.Max = 1f / attackSpeed.Value;
         }
         
         public virtual void Damaged(int atk, int defencePenetrationValue = 0)

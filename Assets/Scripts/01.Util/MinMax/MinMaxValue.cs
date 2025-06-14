@@ -26,7 +26,7 @@ namespace Util
 
         public bool isOverMax; // 기존의 Max보다 높은 값을 허용 할 것인지
         public bool isOverMin; // 기존의 Min보다 낮은 값을 허용 할 것인지
-
+        
         public event Action<MinMaxValue<T>> onChangeValueMin;
         public event Action<MinMaxValue<T>> onChangeValueMax;
         public event Action<MinMaxValue<T>> onChangeValueCurrent;
@@ -47,8 +47,12 @@ namespace Util
             }
             set
             {
-                _current = value;
-                CheckCurrent();
+                if (_current.CompareTo(value) != 0)
+                {
+                    _current = value;
+                    CheckCurrent();
+                    onChangeValueCurrent?.Invoke(this);
+                }
             }
         }
         public T Min
@@ -56,9 +60,15 @@ namespace Util
             get => _min;
             set
             {
-                _min = value; 
-                onChangeValueMin?.Invoke(this);
-                CheckCurrent();
+                if(_min.CompareTo(value) != 0)
+                {
+                    var prevCurrent = _current;
+                    _min = value; 
+                    CheckCurrent();
+                    onChangeValueMin?.Invoke(this);
+                    if (prevCurrent.CompareTo(_current) != 0)
+                        onChangeValueCurrent?.Invoke(this);
+                }
             }
         }
         
@@ -67,9 +77,15 @@ namespace Util
             get => _max;
             set
             {
-                _max = value;
-                onChangeValueMax?.Invoke(this);
-                CheckCurrent();
+                if (_max.CompareTo(value) != 0)
+                {
+                    var prevCurrent = _current;
+                    _max = value;
+                    onChangeValueMax?.Invoke(this);
+                    CheckCurrent();
+                    if (prevCurrent.CompareTo(_current) != 0)
+                        onChangeValueCurrent?.Invoke(this);
+                }
             }
         }
         
@@ -118,27 +134,21 @@ namespace Util
             {
                 _isMin = _isMax = true;
             }
-            if (_current.CompareTo(_min) <= 0)
+            if (_current.CompareTo(_min) < 0)
             {
                 if (isOverMin == false)
                 {
                     _current = _min;
-                    onChangeValueCurrent?.Invoke(this);
                 }
                 _isMin = true;
             }
-            else if (_current.CompareTo(_max) >= 0)
+            else if (_current.CompareTo(_max) > 0)
             {
                 if (isOverMax == false)
                 {
                     _current = _max;
-                    onChangeValueCurrent?.Invoke(this);
                 }
                 _isMax = true;
-            }
-            else
-            {
-                onChangeValueCurrent?.Invoke(this);
             }
         }
 
