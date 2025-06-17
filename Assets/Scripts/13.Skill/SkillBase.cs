@@ -15,20 +15,13 @@ namespace Skill
         public AgeType ageType;
         [HideInInspector] public LayerMask targetLayer;
 
-        public SkillStatus status { get; protected set; }
+        public abstract SkillStatus Status { get; }
         
         protected Collider[] searchColliders;
 
         public virtual void Awake()
         {
             targetLayer = LayerMask.GetMask("Monster");
-            Init();
-        }
-
-        public virtual void Init()
-        {
-            status = GetComponent<SkillStatus>();
-            status.ownerObject = gameObject;
         }
     }
 

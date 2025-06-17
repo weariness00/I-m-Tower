@@ -38,7 +38,7 @@ namespace Skill.UI
         {
             int index = Array.BinarySearch(summeryUIArray, skill.id);
             var summeryUI = summeryUIArray[index];
-            summeryUI.levelText.text = $"LV.{skill.status.level.Current}/{skill.status.level.Max}";
+            summeryUI.levelText.text = $"LV.{skill.Status.level.Current}/{skill.Status.level.Max}";
         }
     }
 
@@ -63,7 +63,7 @@ namespace Skill.UI
                 summeryUI.skillID = skill.id;
                 summeryUI.icon.sprite = skill.icon;
                 summeryUI.nameText.text = skill.skillName;
-                summeryUI.levelText.text = $"LV.{skill.status.level.Current}/{skill.status.level.Max}";
+                summeryUI.levelText.text = $"LV.{skill.Status.level.Current}/{skill.Status.level.Max}";
 
                 summeryUIArray[i] = summeryUI;
             }
@@ -110,9 +110,9 @@ namespace Skill.UI
 
             detailUI.icon.sprite = skill.icon;
             detailUI.nameText.text = skill.skillName;
-            detailUI.levelText.text = $"LV.{skill.status.level.Current}/{skill.status.level.Max}";
+            detailUI.levelText.text = $"LV.{skill.Status.level.Current}/{skill.Status.level.Max}";
             detailUI.explainText.text = skill.Explain();
-            detailUI.statText.text = string.Join("\n", $"공격력 {skill.status.damage}", $"공격 속도 {skill.status.attackSpeed}");
+            detailUI.statText.text = string.Join("\n", $"공격력 {skill.Status.damage}", $"공격 속도 {skill.Status.attackSpeed}");
         }
     }
 }

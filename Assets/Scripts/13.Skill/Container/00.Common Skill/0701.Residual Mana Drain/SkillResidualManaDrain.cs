@@ -1,6 +1,7 @@
 ﻿using System;
 using Game;
 using Tower;
+using UnityEditor;
 using UnityEngine;
 using Util;
 
@@ -10,8 +11,10 @@ namespace Skill
     [RequireComponent(typeof(SkillResidualManaDrainStatus))]
     public class SkillResidualManaDrain : SkillBase
     {
-        [NonSerialized] public new SkillResidualManaDrainStatus status;
-        
+        [SerializeField] private SkillResidualManaDrainStatus status;
+
+        public override SkillStatus Status => status;
+
         public void Update()
         {
             status.attackTimer.Current += Time.deltaTime;
@@ -26,13 +29,7 @@ namespace Skill
                 }
             }
         }
-
-        public override void Init()
-        {
-            base.Init();
-            status = base.status as SkillResidualManaDrainStatus;
-        }
-
+        
         public override string Explain()
         {
             var value = base.Explain();

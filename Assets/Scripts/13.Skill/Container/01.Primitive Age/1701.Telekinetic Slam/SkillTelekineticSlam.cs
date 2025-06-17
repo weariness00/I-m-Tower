@@ -2,6 +2,7 @@
 using ProjectTile;
 using Status;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Pool;
 using Util;
@@ -11,13 +12,16 @@ namespace Skill
     [RequireComponent(typeof(SkillTelekineticSlamStatus))]
     public class SkillTelekineticSlam : SkillBase
     {
-        [NonSerialized] public new SkillTelekineticSlamStatus status;
+        [SerializeField] private SkillTelekineticSlamStatus status;
 
         public ProjectileBase debrisPrefab;
 
         private ObjectPool<ProjectileBase> projectilePool;
         public ParticleSystem hitEffectPrefab;
         public ObjectPool<ParticleSystem> hitEffectPool;
+        
+        public override SkillStatus Status => status;
+        
         public override void Awake()
         {
             base.Awake();
@@ -61,12 +65,6 @@ namespace Skill
                 debris.StartCoroutine(debris.ChangedMoveCoroutine());
                 status.attackTimer.SetMin();
             }
-        }
-
-        public override void Init()
-        {
-            base.Init();
-            status = base.status as SkillTelekineticSlamStatus;
         }
 
         public override string Explain()

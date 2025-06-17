@@ -1,6 +1,7 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
 using Unit.Monster;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Pool;
 using Util;
@@ -10,11 +11,11 @@ namespace Skill
     [RequireComponent(typeof(SkillDustGaleStatus))]
     public class SkillDustGale : SkillBase
     {
-        [NonSerialized] public new SkillDustGaleStatus status;
+        [SerializeField] private SkillDustGaleStatus status;
         public DustGaleObject dustGalePrefab;
 
         public ObjectPool<DustGaleObject> dustGalePool;
-
+        public override SkillStatus Status => status;
         public override void Awake()
         {
             base.Awake();
@@ -23,7 +24,7 @@ namespace Skill
                 () =>
                 {
                     var dustGale = Instantiate(dustGalePrefab);
-                    dustGale.skill = this;
+                    dustGale.SetSkill(this);
                     
                     return dustGale;
                 },
@@ -57,12 +58,6 @@ namespace Skill
                     WaitTask(dustGale, status.dustDuration).Forget();
                 }
             }
-        }
-
-        public override void Init()
-        {
-            base.Init();
-            status = base.status as SkillDustGaleStatus;
         }
 
         // 임시

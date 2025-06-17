@@ -1,6 +1,7 @@
 ﻿using System;
 using ProjectTile;
 using Status;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Pool;
 using Util;
@@ -10,11 +11,12 @@ namespace Skill
     [RequireComponent(typeof(SkillManaBulletStatus))]
     public class SkillManaBullet : SkillBase
     {
-        [NonSerialized] public new SkillManaBulletStatus status;
+        [SerializeField] private SkillManaBulletStatus status;
         
         public ProjectileBase bulletPrefab;
         private ObjectPool<ProjectileBase> projectilePool;
 
+        public override SkillStatus Status => status;
         public override void Awake()
         {
             base.Awake();
@@ -37,15 +39,9 @@ namespace Skill
         public void Update()
         {
             status.attackTimer.Current += Time.deltaTime;
-            if(status.attackTimer.IsMax && TryInstantiateProjectile(out var bullet)) status.attackTimer.SetMin();
+            if (status.attackTimer.IsMax && TryInstantiateProjectile(out var bullet)) status.attackTimer.SetMin();
         }
 
-        public override void Init()
-        {
-            base.Init();
-            status = base.status as SkillManaBulletStatus;
-        }
-        
         private bool TryInstantiateProjectile(out ProjectileBase projectile)
         {
             var length = Physics.OverlapSphereNonAlloc(transform.position, status.attackRange, searchColliders, targetLayer);

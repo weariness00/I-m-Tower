@@ -1,6 +1,7 @@
 ﻿using System;
 using Status;
 using ProjectTile;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Pool;
 using Util;
@@ -10,12 +11,14 @@ namespace Skill
     [RequireComponent(typeof(SkillDestructionArrowStatus))]
     public class SkillDestructionArrow : SkillBase
     {
-        [NonSerialized] public new SkillDestructionArrowStatus status;
+        [SerializeField] private SkillDestructionArrowStatus status;
 
         public ProjectileBase arrowPrefab;
 
         private Collider[] searchColliders = new Collider[100];
         private ObjectPool<ProjectileBase> projectilePool;
+        
+        public override SkillStatus Status => status;
         
         public override void Awake()
         {
@@ -44,12 +47,6 @@ namespace Skill
             status.attackTimer.Current += Time.deltaTime;
             
             if(status.attackTimer.IsMax && TryInstantiateProjectile(out var arrow)) status.attackTimer.SetMin();
-        }
-
-        public override void Init()
-        {
-            base.Init();
-            status = base.status as SkillDestructionArrowStatus;
         }
         
         private bool TryInstantiateProjectile(out ProjectileBase projectile)

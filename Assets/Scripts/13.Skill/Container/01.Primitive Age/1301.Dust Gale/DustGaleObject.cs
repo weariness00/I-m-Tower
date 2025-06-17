@@ -12,7 +12,8 @@ namespace Skill
     public partial class DustGaleObject : MonoBehaviour, IPoolOnOff
     {
         private new SphereCollider collider;
-        [HideInInspector] public SkillDustGale skill;
+        [NonSerialized] private SkillDustGale skill;
+        [NonSerialized] private SkillDustGaleStatus status;
 
         private HashSet<MonsterControl> insideMonster = new();
 
@@ -28,8 +29,8 @@ namespace Skill
         {
             foreach (var monster in insideMonster)
             {
-                monster.status.speed.RemoveModifier(skill.status.targetSpeedModifier);
-                monster.status.damaged.RemoveModifier(skill.status.targetDamagedModifier);
+                monster.status.speed.RemoveModifier(status.targetSpeedModifier);
+                monster.status.damaged.RemoveModifier(status.targetDamagedModifier);
             }
             insideMonster.Clear();
         }
@@ -39,8 +40,8 @@ namespace Skill
             if (other.TryGetComponent(out MonsterControl monster) && !insideMonster.Contains(monster))
             {
                 insideMonster.Add(monster);
-                monster.status.speed.AddModifier(skill.status.targetSpeedModifier);
-                monster.status.damaged.AddModifier(skill.status.targetDamagedModifier);
+                monster.status.speed.AddModifier(status.targetSpeedModifier);
+                monster.status.damaged.AddModifier(status.targetDamagedModifier);
                 CancelDustGaleEffectTask(monster, monster.status.dieCancelToken.Token).Forget();
                 
                 // if (skill.status.stunProbability.IsProbability())
@@ -53,24 +54,30 @@ namespace Skill
             if (other.TryGetComponent(out MonsterControl monster))
             {
                 insideMonster.Remove(monster);
-                monster.status.speed.RemoveModifier(skill.status.targetSpeedModifier);
-                monster.status.damaged.RemoveModifier(skill.status.targetDamagedModifier);
+                monster.status.speed.RemoveModifier(status.targetSpeedModifier);
+                monster.status.damaged.RemoveModifier(status.targetDamagedModifier);
                 // if (skill.status.stunProbability.IsProbability())
                 //     monster.status.Stun(skill.status.stunDuration);
             }
         }
 
+        public void SetSkill(SkillDustGale dustGaleSkill)
+        {
+            skill = dustGaleSkill;
+            status = dustGaleSkill.Status as SkillDustGaleStatus;
+        }
+
         public void PoolOn()
         {
-            collider.radius = skill.status.dustRadius;
+            collider.radius = status.dustRadius;
             dustEffect.Play();
             for (var i = 0; i < dustEffectArray.Length; i++)
             {
                 var main = dustEffectArray[i].main;
                 var shape = dustEffectArray[i].shape;
-                main.startSize = new (dustEffectOriginDataArray[i].StartSize1 * skill.status.dustRadius, dustEffectOriginDataArray[i].StartSize2 * skill.status.dustRadius);
-                shape.radius = skill.status.dustRadius * dustEffectOriginDataArray[i].Radius;
-                shape.radius = skill.status.dustRadius * dustEffectOriginDataArray[i].RadiusThickness;
+                main.startSize = new (dustEffectOriginDataArray[i].StartSize1 * status.dustRadius, dustEffectOriginDataArray[i].StartSize2 * status.dustRadius);
+                shape.radius = status.dustRadius * dustEffectOriginDataArray[i].Radius;
+                shape.radius = status.dustRadius * dustEffectOriginDataArray[i].RadiusThickness;
             }
         }
 
@@ -89,8 +96,8 @@ namespace Skill
             if (insideMonster.Contains(monster))
             {
                 insideMonster.Remove(monster);
-                monster.status.speed.RemoveModifier(skill.status.targetSpeedModifier);
-                monster.status.damaged.RemoveModifier(skill.status.targetDamagedModifier);
+                monster.status.speed.RemoveModifier(status.targetSpeedModifier);
+                monster.status.damaged.RemoveModifier(status.targetDamagedModifier);
             }
         }
     }

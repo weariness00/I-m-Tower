@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Unit.Monster;
+using UnityEditor;
 using UnityEngine;
 
 namespace Skill
@@ -12,10 +13,12 @@ namespace Skill
         // 타워에서 물이 웅덩이에서 한번 떨어지는 형식
         // 한번 쏟아지는 시간은 2초
         // tick(0.5초)당 데미지 
-        [NonSerialized] public new Skill_TippingBowlStatus status;
+        [SerializeField] private Skill_TippingBowlStatus status;
         
         private HashSet<MonsterControl> targetMonsterHashSet = new();
-        
+
+        public override SkillStatus Status => status;
+
         public void Update()
         {
             // 스킬 무한 지속
@@ -90,13 +93,7 @@ namespace Skill
                 RemoveInsideMonster(monster);
             }
         }
-
-        public override void Init()
-        {
-            base.Init();
-            status = base.status as Skill_TippingBowlStatus;
-        }
-
+        
         private void ApplyDamage()
         {
             foreach (var monster in targetMonsterHashSet)

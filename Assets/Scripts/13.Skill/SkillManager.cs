@@ -47,9 +47,9 @@ namespace Skill
             else
                 skill = skillManagerData.hasSkillDictionary[skill.id];
 
-            skill.status.LevelUp(1);
+            skill.Status.LevelUp(1);
             skillManagerData.OnLevelUpSkill(skill);
-            DebugManager.Log($"{name}의 {skill.skillName}의 레벨 업 [현재 레벨 : {skill.status.level}]");
+            DebugManager.Log($"{name}의 {skill.skillName}의 레벨 업 [현재 레벨 : {skill.Status.level}]");
         }
 
         public void AddRandomSkill()

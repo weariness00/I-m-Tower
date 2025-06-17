@@ -16,7 +16,7 @@ namespace Skill.UI
         public void SetSkill(SkillBase skill)
         {
             icon.sprite = skill.icon;
-            logText.text = $"[{LocalizationExtension.Localize(skill.skillName, SkillPrefabSO.SkillNameTableKey)}] Level({skill.status.level.Current})";
+            logText.text = $"[{LocalizationExtension.Localize(skill.skillName, SkillPrefabSO.SkillNameTableKey)}] Level({skill.Status.level.Current})";
         }
 
         public IEnumerator AlphaEnumerator(float duration)

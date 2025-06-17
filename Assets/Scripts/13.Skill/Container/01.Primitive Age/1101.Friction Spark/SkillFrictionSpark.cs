@@ -1,5 +1,6 @@
 ﻿using System;
 using ProjectTile;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.VFX;
@@ -12,13 +13,14 @@ namespace Skill
     [RequireComponent(typeof(SkillFrictionSparkStatus))]
     public class SkillFrictionSpark : SkillBase
     {
-        [NonSerialized] public new SkillFrictionSparkStatus status;
+        [SerializeField] private SkillFrictionSparkStatus status;
         public SparkProjectile sparkProjectilePrefab;
 
         private ObjectPool<ProjectileBase> projectilePool;
         public ObjectPool<ParticleSystem> burnEffectPool;
         public ParticleSystem burnEffectPrefab;
 
+        public override SkillStatus Status => status;
         public override void Awake()
         {
             base.Awake();
@@ -80,12 +82,6 @@ namespace Skill
                 status.attackTimer.SetMin();
                 projectilePool.Get();
             }
-        }
-
-        public override void Init()
-        {
-            base.Init();
-            status = base.status as SkillFrictionSparkStatus;
         }
     }
 }

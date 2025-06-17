@@ -13,7 +13,7 @@ namespace Skill.Editor
                 var script = target as SkillBase;
                 if (GUILayout.Button("Level Up"))
                 {
-                    script.status.LevelUp(1);
+                    script.Status.LevelUp(1);
                 }
             }
             
