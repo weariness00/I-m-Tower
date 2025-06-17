@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Skill.UI
 {
-    public partial class SkillInfoSummeryUI : MonoBehaviour
+    public partial class SkillInfoSummeryView : MonoBehaviour
     {
         public Button button;
         
@@ -18,7 +18,7 @@ namespace Skill.UI
         public TMP_Text levelText;
     }
     
-    public partial class SkillInfoSummeryUI : IComparable
+    public partial class SkillInfoSummeryView : IComparable
     {
         public int CompareTo(object obj)
         {

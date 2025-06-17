@@ -15,7 +15,7 @@ namespace Skill
         public AgeType ageType;
         [HideInInspector] public LayerMask targetLayer;
 
-        public SkillStatus status;
+        public SkillStatus status { get; protected set; }
         
         protected Collider[] searchColliders;
 

@@ -4,24 +4,29 @@ using Manager;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Util;
 
 namespace Skill.UI
 {
-    public partial class SkillInfoCanvas : MonoBehaviour
+    public partial class SkillInfoView : MonoBehaviour
     {
-        public SkillManager skillManager;
-
-        public void Awake()
+        private SkillManager skillManager;
+        
+        public void OnDisable()
         {
-            CreateAllSkillSummeryUI();
-            
             detailUI.rootObject.SetActive(false);
-            
-            skillManager.onAddNewSkillEvent += AddNewSkill;
-            skillManager.onSkillLevelUpEvent += LevelUpSkill;
         }
 
-        private void AddNewSkill(SkillBase skill)
+        public void SetSkillManager(SkillManager value)
+        {
+            skillManager = value;
+            var data = value.skillManagerData;
+            CreateAllSkillSummeryUI();
+            data.onAddNewSkillEvent += AddNewSkillEvent;
+            data.onLevelUpSkillEvent += LevelUpSkillEvent;
+        }
+
+        public void AddNewSkillEvent(SkillBase skill)
         {
             int index = Array.BinarySearch(summeryUIArray, skill.id);
             var summeryUI = summeryUIArray[index];
@@ -29,7 +34,7 @@ namespace Skill.UI
             DebugManager.ToDo("소지한 스킬인것처럼 보이는 ui");
         }
         
-        private void LevelUpSkill(SkillBase skill)
+        public void LevelUpSkillEvent(SkillBase skill)
         {
             int index = Array.BinarySearch(summeryUIArray, skill.id);
             var summeryUI = summeryUIArray[index];
@@ -38,17 +43,17 @@ namespace Skill.UI
     }
 
     // 스킬 리스트 관련
-    public partial class SkillInfoCanvas
+    public partial class SkillInfoView
     {
         [Header("Summery 정보")]
         public ScrollRect summeryScrollRect;
-        public SkillInfoSummeryUI summeryUIPrefab;
-        private SkillInfoSummeryUI[] summeryUIArray;
+        public SkillInfoSummeryView summeryUIPrefab;
+        private SkillInfoSummeryView[] summeryUIArray;
         
         // 모든 스킬에 대한 UI를 생성
         private void CreateAllSkillSummeryUI()
         {
-            summeryUIArray = new SkillInfoSummeryUI[SkillPrefabSO.Instance.skillArray.Length];
+            summeryUIArray = new SkillInfoSummeryView[SkillPrefabSO.Instance.skillArray.Length];
             for (var i = 0; i < SkillPrefabSO.Instance.skillArray.Length; i++)
             {
                 var skill = SkillPrefabSO.Instance.skillArray[i];
@@ -66,7 +71,7 @@ namespace Skill.UI
     }
 
     // Detail 정보 관련
-    public partial class SkillInfoCanvas
+    public partial class SkillInfoView
     {
         [Header("Detail 정보")] 
         public DetailUI detailUI;
@@ -76,6 +81,9 @@ namespace Skill.UI
         {
             [Tooltip("최상위 부모")]
             public GameObject rootObject;
+
+            [HideInInspector][Tooltip("스킬 아이디")] public int skillID;
+            
             [Tooltip("스킬 아이콘")]
             public Image icon;
             [Tooltip("스킬 이름")]
@@ -88,15 +96,17 @@ namespace Skill.UI
             public TMP_Text statText;
             [Tooltip("스킬 다음 레벨 스탯 표시")]
             public TMP_Text nextLevelStatText;
-        }
 
+            [Tooltip("장착 버튼")] public Button equipButton;
+        }
+        
         private void OnDetail(int skillID)
         {
-            var skill = skillManager.GetSkill(skillID);
+            var skill = skillManager.skillManagerData.GetSkill(skillID);
             if (skill == null)
                 skill = SkillPrefabSO.GetSkill(skillID);
-            
             detailUI.rootObject.SetActive(true);
+            detailUI.skillID = skillID;
 
             detailUI.icon.sprite = skill.icon;
             detailUI.nameText.text = skill.skillName;

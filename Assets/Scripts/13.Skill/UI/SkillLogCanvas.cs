@@ -8,10 +8,8 @@ using UnityEngine.Pool;
 
 namespace Skill.UI
 {
-    public class SkillLogCanvas : MonoBehaviour
+    public class SkillLogView : MonoBehaviour
     {
-        public SkillManager targetSkillManager;
-
         public Canvas addLogCanvas;
         public Transform logParent;
         public SkillAddLogUI skillAddLogUIPrefab;
@@ -53,12 +51,16 @@ namespace Skill.UI
             }
             foreach (var skillAddLogUI in logUIList)
                 logUIPool.Release(skillAddLogUI);
+        }
 
-            targetSkillManager.onSkillLevelUpEvent += CreateNewSkillAddNewLog;
+        public void SetSkillManager(SkillManager value)
+        {
+            var data = value.skillManagerData;
+            data.onLevelUpSkillEvent += GenerateSkillLog;
         }
 
         // 추가된 스킬의 Log를 생성
-        private void CreateNewSkillAddNewLog(SkillBase skill)
+        public void GenerateSkillLog(SkillBase skill)
         {
             if (logUIPool.CountActive == 20)
                 logUIPool.Release(activeLogUIQueue.Peek());

@@ -26,9 +26,9 @@ namespace Skill
 
         public void Start()
         {
-            if (GameManager.HasInstance)
+            if (TowerControl.HasInstance)
             {
-                TowerControl.Instance.skillManager.onAddNewSkillEvent += OnAddNewSkill;
+                TowerControl.Instance.skillManager.skillManagerData.onAddNewSkillEvent += OnAddNewSkill;
             }
         }
 
@@ -49,7 +49,7 @@ namespace Skill
                 // 최대 30%까지만 감소
                 if (GameManager.HasInstance)
                 {
-                    drainManaSpeed.Current = TowerControl.Instance.skillManager.HasSkillCount * 0.1f * upCount;
+                    drainManaSpeed.Current = TowerControl.Instance.skillManager.skillManagerData.HasSkillCount * 0.1f * upCount;
                 }
                 // 예외 처리용 or 테스트 용
                 else

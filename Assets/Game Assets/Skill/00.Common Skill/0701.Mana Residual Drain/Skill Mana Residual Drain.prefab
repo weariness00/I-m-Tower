@@ -102,6 +102,7 @@ MonoBehaviour:
     isOverMax: 0
     isOverMin: 0
   skillType: 0
+  attributeType: 0
   onLevelUpEvent:
     m_PersistentCalls:
       m_Calls: []
