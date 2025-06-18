@@ -40,9 +40,9 @@ namespace Util
         {
             get
             {
-#if UNITY_EDITOR // Editor 상에서는 초기화가 안되고 나머지 값들이 그대로 남아있는 현상을 없애기 위해 사용
-                CheckCurrent();
-#endif
+    // #if UNITY_EDITOR // Editor 상에서는 초기화가 안되고 나머지 값들이 그대로 남아있는 현상을 없애기 위해 사용
+    //                 CheckCurrent();
+    // #endif
                 return _current;
             }
             set
@@ -142,7 +142,7 @@ namespace Util
                 }
                 _isMin = true;
             }
-            else if (_current.CompareTo(_max) >= 0)
+            if (_current.CompareTo(_max) >= 0)
             {
                 if (isOverMax == false)
                 {

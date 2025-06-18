@@ -52,7 +52,7 @@ namespace Util
         
         public float[] spawnIntervals; // 스폰 간격, 1개일 경우 반복 여러개일 경우 순차적으로 실행
         private int _spawnIntervalCount = -1;
-        [HideInInspector] public MinMaxValue<float> intervalTimer = new(true);
+        public MinMaxValue<float> intervalTimer = new(true);
     
         public UnityEvent<TGameObject> onSpawnSuccessAction; // 스폰 되면 실행하는 이벤트
         private bool _isPlay = false;
@@ -122,10 +122,11 @@ namespace Util
             {
                 if (isPause == false)
                 {
-                    if(!spawnCount.IsMax) intervalTimer.Current -= Time.deltaTime * timeScale;
-                    if (intervalTimer.IsMin && !spawnCount.IsMax)
+                    if(!spawnCount.IsMax)
                     {
-                        Spawn();
+                        intervalTimer.Current -= Time.deltaTime * timeScale;
+                        if (intervalTimer.IsMin)
+                            Spawn();
                     }
                 }
                 yield return null;
