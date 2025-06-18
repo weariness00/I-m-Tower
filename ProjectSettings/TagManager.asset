@@ -36,8 +36,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - See Through
+  - Mask
   - Non NavMesh
   m_SortingLayers:
   - name: Default
