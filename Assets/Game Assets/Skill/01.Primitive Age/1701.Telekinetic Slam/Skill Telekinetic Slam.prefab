@@ -102,6 +102,7 @@ MonoBehaviour:
     isOverMax: 0
     isOverMin: 0
   skillType: 0
+  attributeType: 0
   onLevelUpEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -139,7 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1701
   skillName: "\uB099\uD558 \uCDA9\uACA9"
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 846d70ce4e10e664dbbf9632bcadcc12, type: 3}
   ageType: 0
   targetLayer:
     serializedVersion: 2

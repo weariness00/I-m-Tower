@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1201
   skillName: "\uBB3C\uADF8\uB987 \uAE30\uC6B8\uC774\uAE30"
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 387b1c1ec2712a746aa0eeb50aca10b7, type: 3}
   ageType: 0
   targetLayer:
     serializedVersion: 2

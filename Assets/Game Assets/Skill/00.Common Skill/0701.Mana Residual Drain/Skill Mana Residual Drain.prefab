@@ -133,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 701
   skillName: "\uC794\uB958 \uB9C8\uB098 \uD761\uC218"
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 7d85774b25d320a4087404995cfabe81, type: 3}
   ageType: 0
   targetLayer:
     serializedVersion: 2
