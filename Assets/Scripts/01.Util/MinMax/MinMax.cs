@@ -92,9 +92,14 @@ namespace Util
 
     public static class MinMaxFloatExtension
     {
+        public static float Magnitude(this MinMax<float> value)
+        {
+            return Mathf.Abs(value.Min) + Mathf.Abs(value.Max);
+        }
+        
         public static int Length(this MinMax<float> value)
         {
-            return (int)(Mathf.Abs(value.Min) + Mathf.Abs(value.Max));
+            return (int)value.Magnitude();
         }
     }
 }

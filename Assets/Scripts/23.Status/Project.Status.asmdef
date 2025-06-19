@@ -2,6 +2,7 @@
     "name": "Project.Status",
     "rootNamespace": "",
     "references": [
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
         "GUID:cd10f377dfac1a148bd37ccfdd0d2b53",
         "GUID:fad028808bd97b24886dc311701efab2",
         "GUID:4e43c64074ecbed4080d6029d6028589",

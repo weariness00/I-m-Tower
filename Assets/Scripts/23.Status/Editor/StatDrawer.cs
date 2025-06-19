@@ -42,7 +42,7 @@ namespace Status.Editor
 
             if (property.GetTargetObjectOfProperty() is Stat statObj)
             {
-                float realValue = statObj.GetValue();
+                float realValue = statObj.Value;
                 EditorGUI.LabelField(realValueRect, $"Real Value: {realValue}");
             }
 

@@ -11,6 +11,8 @@ namespace Skill
         public int HasSkillCount => hasSkillDictionary.Count;
         public Dictionary<int, SkillBase> useSkillDictionary = new(); // 실제 사용하고 있는 스킬들 (key : 스킬 소켓, value : 스킬)
 
+        [NonSerialized] public List<SkillBase> levelMaxSkillList = new();
+
         public int useSkillCount = 5; // 사용 가능한 스킬 갯수
         public int hasSkillCount = 8; // 소지 가능한 스킬 갯수
 

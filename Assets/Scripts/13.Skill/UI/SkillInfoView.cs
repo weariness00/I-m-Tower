@@ -61,6 +61,7 @@ namespace Skill.UI
                 summeryUI.button.onClick.AddListener(() => OnDetail(skill.id));
                 
                 summeryUI.skillID = skill.id;
+                summeryUI.frameImage.sprite = SkillPrefabSO.GetSkillFrameSprite(skill.ageType);
                 summeryUI.icon.sprite = skill.icon;
                 summeryUI.nameText.text = skill.skillName;
                 summeryUI.levelText.text = $"LV.{skill.Status.level.Current}/{skill.Status.level.Max}";

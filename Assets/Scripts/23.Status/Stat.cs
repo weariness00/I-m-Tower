@@ -36,7 +36,7 @@ namespace Status
             modifierList.Remove(modifier);
         }
 
-        public float GetValue()
+        private float GetValue()
         {
             float finalValue = baseValue;
             float percentAdd = 0f;

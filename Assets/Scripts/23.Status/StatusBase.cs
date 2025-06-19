@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Threading;
+using Cysharp.Threading.Tasks;
 using Manager;
 using UnityEngine;
 using UnityEngine.Events;
@@ -23,7 +24,7 @@ namespace Status
         [Tooltip("방어력")] public Stat defense = new(0);
         
         public Stat attackRange = new(10);
-        public Stat attackSpeed = new(1);
+        [Tooltip("Value초당 1번 공격")] public Stat attackSpeed = new(1);
         public MinMaxValue<float> attackTimer = new(0,1);
         
         [HideInInspector] public UnityEvent onDieEvent = new ();
@@ -37,6 +38,10 @@ namespace Status
 
         public virtual void Awake()
         {
+            if(ownerObject == null)
+            {
+                ownerObject = gameObject;
+            }
             Init();
             attackTimer.onChangeValueCurrent += UpdateAttackTimer;
         }
@@ -46,11 +51,12 @@ namespace Status
             hp.SetMax(Mathf.CeilToInt(maxHp.Value));
         }
 
-        public void UpdateAttackTimer(MinMaxValue<float> value)
+        private void UpdateAttackTimer(MinMaxValue<float> value)
         {
-            value.Max = 1f / attackSpeed.Value;
+            value.Max = attackSpeed.Value;
         }
         
+        public void Damaged(float atk, int defencePenetrationValue = 0) =>Damaged(Mathf.FloorToInt(atk), defencePenetrationValue);
         public virtual void Damaged(int atk, int defencePenetrationValue = 0)
         {
             damaged.Value = atk;
@@ -83,6 +89,21 @@ namespace Status
                 isStun = false;
                 DebugManager.Log($"{ownerObject.name}이 스턴에서 해제되었습니다.");
             }
+        }
+
+        public void GetDebuff(IDebuffController debuff, float tick, float duration) => GetDebuffTask(debuff, tick, duration, dieCancelToken.Token).Forget();
+        private async UniTask GetDebuffTask(IDebuffController debuff, float tick, float duration, CancellationToken token)
+        {
+            float t = 0;
+            debuff.Enter(this);
+            while (t < duration)
+            {
+                if (token.IsCancellationRequested) break;
+                debuff.Execute(this);
+                await UniTask.Delay(TimeSpan.FromSeconds(tick), cancellationToken: token);
+                t += tick;
+            }
+            debuff.End(this);
         }
     }
 }

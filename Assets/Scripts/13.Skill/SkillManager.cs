@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Manager;
+using NUnit.Framework;
 using Skill.UI;
 using UnityEngine;
 using Util;
@@ -48,13 +49,25 @@ namespace Skill
                 skill = skillManagerData.hasSkillDictionary[skill.id];
 
             skill.Status.LevelUp(1);
+            if(skill.Status.level.IsMax) skillManagerData.levelMaxSkillList.Add(skill);
             skillManagerData.OnLevelUpSkill(skill);
             DebugManager.Log($"{name}의 {skill.skillName}의 레벨 업 [현재 레벨 : {skill.Status.level}]");
         }
 
         public void AddRandomSkill()
         {
-            AddSkill(skillManagerData.hasSkillCount <= skillManagerData.hasSkillDictionary.Count ? skillManagerData.hasSkillDictionary.Values.ToArray().Random() : SkillPrefabSO.GetRandomSkill());
+            var hasSkillArray = skillManagerData.hasSkillDictionary.Values.ToArray();
+            var levelMaxSkillArray = skillManagerData.levelMaxSkillList.ToArray();
+            while (true)
+            {
+                var skill = skillManagerData.hasSkillCount <= 
+                            skillManagerData.hasSkillDictionary.Count ? hasSkillArray.Except(levelMaxSkillArray).ToArray().Random() : SkillPrefabSO.GetRandomSKillExcept(levelMaxSkillArray);
+                if (skill.Status.level.IsMax)
+                    continue;
+
+                AddSkill(skill);
+                break;
+            }
         }
     }
 }

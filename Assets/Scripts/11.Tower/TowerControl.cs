@@ -88,7 +88,7 @@ namespace Tower
         private void OnPointSkillLevelUpButton(TowerPointData.PointType type, int skillID)
         {
             var skill = skillManager.skillManagerData.GetSkill(skillID);
-            if (skill == null) return;
+            if (skill == null || skill.Status.level.IsMax) return;
             if (!pointData.UsePoint(type, 1)) return;
             switch (type)
             {

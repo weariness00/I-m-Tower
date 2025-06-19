@@ -101,7 +101,7 @@ MonoBehaviour:
     baseValue: 10
     modifierList: []
   attackSpeed:
-    baseValue: 0.25
+    baseValue: 10
     modifierList: []
   attackTimer:
     _min: 0

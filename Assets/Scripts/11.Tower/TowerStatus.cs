@@ -11,8 +11,9 @@ namespace Tower
         [Header("Tower Status 관련")]
         public int level;
         public MinMaxValue<float> experience = new(0,0,1,false,true);
-
         public UnityEvent onLevelUpEvent = new();
+
+        public Stat bleedingDamage = new(1);
 
         public void AddEXP(float exp)
         {

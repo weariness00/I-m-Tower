@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a745a6a5ac60a498d7e42dcba62f4a, type: 3}
   m_Name: Skill Prefab List
   m_EditorClassIdentifier: 
+  skillUIFrameArray:
+  - {fileID: 21300000, guid: ba2796ed3579f2a45934dde04368a15e, type: 3}
   skillArray:
+  - {fileID: 9211457546012878648, guid: ead7c2de417e3b142a32bad81799314c, type: 3}
   - {fileID: 4787740679431991636, guid: 84a40bc127bc593459e1be6738e6c726, type: 3}
   - {fileID: 8982193267050493924, guid: 909fe78113a6b574fa6ecd2f05f6e25c, type: 3}
   - {fileID: 9216979223574944553, guid: bb75d5d36ee87064c95dbc86a3115d40, type: 3}
   - {fileID: 8869894297349710926, guid: 453506a5d36e17e449bcec086a8c65e4, type: 3}
   - {fileID: 1653000983646291803, guid: a2c6184d1a7a3e643aa3165ac6b1b154, type: 3}
-  - {fileID: 5777552427496914014, guid: ece613dd4a1b6544d96cfc948d72777b, type: 3}
-  - {fileID: 8157671785556365833, guid: 6faafbec32361b34792354eb91c50f45, type: 3}

@@ -10,6 +10,8 @@ namespace Skill.UI
         public Button button;
         
         public int skillID;
+        [Tooltip("스킬 프레임")] public Image frameImage;
+        
         [Tooltip("스킬 아이콘")]
         public Image icon;
         [Tooltip("스킬 이름")]

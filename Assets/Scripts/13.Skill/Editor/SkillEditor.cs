@@ -13,6 +13,11 @@ namespace Skill.Editor
                 var script = target as SkillBase;
                 if (GUILayout.Button("Level Up"))
                 {
+                    if (script.Status.level.IsMax)
+                    {
+                        Debug.LogWarning($"{script.name}의 Level이 최대입니다.");
+                        return;
+                    }
                     script.Status.LevelUp(1);
                 }
             }

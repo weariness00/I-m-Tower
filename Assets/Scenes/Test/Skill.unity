@@ -619,6 +619,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcecbfe709dd9ae4799cd3243231dffe, type: 3}
+--- !u!4 &284171678 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3636910168862796963, guid: ead7c2de417e3b142a32bad81799314c, type: 3}
+  m_PrefabInstance: {fileID: 6609799309766448120}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &289939916 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5734590494499124481, guid: 469ac250658782b48bc5bca6b0cd09b9, type: 3}
@@ -5107,6 +5112,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1101699250}
+  - component: {fileID: 1101699252}
+  - component: {fileID: 1101699251}
+  - component: {fileID: 1101699253}
   m_Layer: 0
   m_Name: Skills
   m_TagString: Untagged
@@ -5131,8 +5139,114 @@ Transform:
   - {fileID: 2072136604}
   - {fileID: 335926645}
   - {fileID: 1166922143}
+  - {fileID: 284171678}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1101699251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101699249}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f13eafcff774fb7bd307763f69ae400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  status: {fileID: 1101699253}
+  pointView: {fileID: 0}
+  pointData: {fileID: 1101699252}
+  skillManager: {fileID: 0}
+--- !u!114 &1101699252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101699249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f2a402be9b0cc1499dd45d5e2eb9a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  techPoint: 0
+  bioPoint: 0
+--- !u!114 &1101699253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101699249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f0d870f91fafa2419cc7384a22c3ebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerObject: {fileID: 0}
+  hp:
+    _min: 0
+    _max: 0
+    _current: 0
+    _isMin: 1
+    _isMax: 1
+    isOverMax: 0
+    isOverMin: 0
+  maxHp:
+    baseValue: 100
+    modifierList: []
+  speed:
+    baseValue: 1
+    modifierList: []
+  damage:
+    baseValue: 0
+    modifierList: []
+  criticalDamage:
+    baseValue: 1.5
+    modifierList: []
+  criticalChance:
+    baseValue: 0.1
+    modifierList: []
+  damaged:
+    baseValue: 0
+    modifierList: []
+  defense:
+    baseValue: 0
+    modifierList: []
+  attackRange:
+    baseValue: 10
+    modifierList: []
+  attackSpeed:
+    baseValue: 1
+    modifierList: []
+  attackTimer:
+    _min: 0
+    _max: 1
+    _current: 1
+    _isMin: 0
+    _isMax: 1
+    isOverMax: 0
+    isOverMin: 0
+  onDieEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  isStun: 0
+  level: 0
+  experience:
+    _min: 0
+    _max: 1
+    _current: 0
+    _isMin: 1
+    _isMax: 0
+    isOverMax: 1
+    isOverMin: 0
+  onLevelUpEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  bleedingDamage:
+    baseValue: 1
+    modifierList: []
 --- !u!1 &1110333209
 GameObject:
   m_ObjectHideFlags: 0
@@ -17478,9 +17592,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 725699702264956131, guid: bb75d5d36ee87064c95dbc86a3115d40, type: 3}
+      propertyPath: ownerObject
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1118731796625987382, guid: bb75d5d36ee87064c95dbc86a3115d40, type: 3}
       propertyPath: m_Name
       value: Tipping Bowl
+      objectReference: {fileID: 0}
+    - target: {fileID: 1118731796625987382, guid: bb75d5d36ee87064c95dbc86a3115d40, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -21915,6 +22037,63 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!1001 &6609799309766448120
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1101699250}
+    m_Modifications:
+    - target: {fileID: 3189700133881622869, guid: ead7c2de417e3b142a32bad81799314c, type: 3}
+      propertyPath: m_Name
+      value: Skill Primitive Gust
+      objectReference: {fileID: 0}
+    - target: {fileID: 3636910168862796963, guid: ead7c2de417e3b142a32bad81799314c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3636910168862796963, guid: ead7c2de417e3b142a32bad81799314c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3636910168862796963, guid: ead7c2de417e3b142a32bad81799314c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3636910168862796963, guid: ead7c2de417e3b142a32bad81799314c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3636910168862796963, guid: ead7c2de417e3b142a32bad81799314c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3636910168862796963, guid: ead7c2de417e3b142a32bad81799314c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3636910168862796963, guid: ead7c2de417e3b142a32bad81799314c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3636910168862796963, guid: ead7c2de417e3b142a32bad81799314c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3636910168862796963, guid: ead7c2de417e3b142a32bad81799314c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3636910168862796963, guid: ead7c2de417e3b142a32bad81799314c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ead7c2de417e3b142a32bad81799314c, type: 3}
 --- !u!33 &6613793795310099018
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -23325,7 +23504,10 @@ MonoBehaviour:
     modifierList: []
   damage:
     baseValue: 0
-    modifierList: []
+    modifierList:
+    - value: -1
+      type: 1
+      isActive: 0
   criticalDamage:
     baseValue: 1.5
     modifierList: []

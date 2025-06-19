@@ -169,6 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 2299178923138395884}
   skillID: 0
+  frameImage: {fileID: 6720236044692943728}
   icon: {fileID: 1678468205472354248}
   nameText: {fileID: 534055718204668199}
   levelText: {fileID: 4093434390739943238}
